@@ -31,6 +31,14 @@ class SomeUtils {
 
     }
 
+    public static synchronized ArrayList<ObjectContainer> getObj() {
+        return obj;
+    }
+
+    public  static synchronized ArrayList<EventContainer> getEvents() {
+        return events;
+    }
+
     static float changeCoordinate(float coord, char axis) {
         float rez = -2f;
         //float pixelCount=-1000f;
@@ -880,4 +888,6 @@ class SomeUtils {
         }
         return o;
     }
+
+
 }

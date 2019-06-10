@@ -12,12 +12,12 @@ import java.util.ArrayList;
  */
 
 public class Level1 extends Level {
-    boolean isRunning = false;
-    EventContainer eventContainer;
-    ObjectContainer objectContainer;
-    AnimationContainer animationContainer;
+    private boolean isRunning = false;
+    private EventContainer eventContainer;
+    private ObjectContainer objectContainer;
+    private AnimationContainer animationContainer;
 //    ObjectContainer touchedBullet;
-    long lastTime;
+    private long lastTime;
 
     private float clDist, clSin, clCos;
 
@@ -25,7 +25,9 @@ public class Level1 extends Level {
 
     private ObjectContainer touchedBullet = null;
 
-    int score;
+    private int score;
+
+    private EventMaker eventMaker = new EventMaker();
 
 
     @Override

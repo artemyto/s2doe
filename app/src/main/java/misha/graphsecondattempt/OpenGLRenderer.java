@@ -9,6 +9,7 @@ import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.FloatBuffer;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
@@ -36,7 +37,7 @@ import static java.lang.Boolean.TRUE;
 
 /**
  * Created by master22 on 4/24/2018.
- Package: ${PACKAGE_NAME}, project: TriforcePower.
+ * Package: ${PACKAGE_NAME}, project: TriforcePower.
  */
 
 public class OpenGLRenderer implements GLSurfaceView.Renderer {
@@ -96,14 +97,14 @@ public class OpenGLRenderer implements GLSurfaceView.Renderer {
 
     }
 
-    private void doAnimationIfNeed () {
+    private void doAnimationIfNeed() {
         ArrayList<Boolean> indexes = new ArrayList<>();
-        for (int i = 0;i<wantDelete.size();++i){
+        for (int i = 0; i < wantDelete.size(); ++i) {
             indexes.add(FALSE);
         }
         //Collections.fill(indexes, FALSE);
         ObjectContainer o;
-        for (int i = 0;i<SomeUtils.obj.size();++i) {
+        for (int i = 0; i < SomeUtils.obj.size(); ++i) {
             boolean cont = true;
 //            if (needToBindData) {
 //                prepareData();
@@ -116,28 +117,27 @@ public class OpenGLRenderer implements GLSurfaceView.Renderer {
                 --i;
                 needToBindData = true;
                 cont = false;
-            }
-            else {//if (!wantDelete.isEmpty()) {
-                    //
-                    //Collections.fill(indexes, Boolean.FALSE);
-                    for (int j = 0; j < wantDelete.size(); ++j) {
+            } else {//if (!wantDelete.isEmpty()) {
+                //
+                //Collections.fill(indexes, Boolean.FALSE);
+                for (int j = 0; j < wantDelete.size(); ++j) {
 
 
-                        if (wantDelete.get(j).equals(o.getName())) {
-                            indexes.add(FALSE);
-                            SomeUtils.obj.remove(i);
-                            --i;
-                            needToBindData = true;
-                            //wantDelete.remove(j);
+                    if (wantDelete.get(j).equals(o.getName())) {
+                        indexes.add(FALSE);
+                        SomeUtils.obj.remove(i);
+                        --i;
+                        needToBindData = true;
+                        //wantDelete.remove(j);
 
-                            indexes.set(j,TRUE);
-                            cont = false;
-                        }
-                        //else indexes.add(FALSE);
-
-
+                        indexes.set(j, TRUE);
+                        cont = false;
                     }
+                    //else indexes.add(FALSE);
+
+
                 }
+            }
 
 
             if (cont) {
@@ -146,13 +146,13 @@ public class OpenGLRenderer implements GLSurfaceView.Renderer {
                     if (o.isAnimated() && !o.getAnim().isEmpty() && o.getAnim().get(0).isRedrawable()) {
                         int sw = redrawableAnimation(o);
 
-                        if(sw==2){
+                        if (sw == 2) {
                             o.getAnim().remove(0);
                             if (o.getAnim().size() == 0) {
                                 o.setAnimated(false);
                                 boolean outOfRange = true;
                                 for (int x = 0, y = 1; x < o.getVertices().length; x += 3, y += 3) {
-                                    outOfRange = outOfRange && (o.getVertices()[x]<-1 || o.getVertices()[x]>1) && (o.getVertices()[y]<-1 || o.getVertices()[y]>1);
+                                    outOfRange = outOfRange && (o.getVertices()[x] < -1 || o.getVertices()[x] > 1) && (o.getVertices()[y] < -1 || o.getVertices()[y] > 1);
                                 }
                                 if (outOfRange)
                                     o.setNeedToDelete(true);
@@ -161,8 +161,7 @@ public class OpenGLRenderer implements GLSurfaceView.Renderer {
 
                         prepareData();
                         bindData();
-                    }
-                    else if (o.isAnimated()) {
+                    } else if (o.isAnimated()) {
                         int sw = setModelMatrix(o);
                         switch (sw) {
                             case 0:
@@ -191,7 +190,7 @@ public class OpenGLRenderer implements GLSurfaceView.Renderer {
                                     }
                                     sumX += o.getVertices()[x];
                                     sumY += o.getVertices()[y];
-                                    outOfRange = outOfRange && (o.getVertices()[x]<-1 || o.getVertices()[x]>1) && (o.getVertices()[y]<-1 || o.getVertices()[y]>1);
+                                    outOfRange = outOfRange && (o.getVertices()[x] < -1 || o.getVertices()[x] > 1) && (o.getVertices()[y] < -1 || o.getVertices()[y] > 1);
                                 }
                                 o.setCenterX(sumX / (o.getVertices().length / 3.0f));
                                 o.setCenterY(sumY / (o.getVertices().length / 3.0f));
@@ -228,14 +227,14 @@ public class OpenGLRenderer implements GLSurfaceView.Renderer {
             }
 
         }
-int k = 0;
-for (int i=0;i<indexes.size();++i) {
-            if(indexes.get(i)) {
-                wantDelete.remove(i-k);
+        int k = 0;
+        for (int i = 0; i < indexes.size(); ++i) {
+            if (indexes.get(i)) {
+                wantDelete.remove(i - k);
                 //indexes.remove(i);
-                k+=1;
+                k += 1;
             }
-}
+        }
     }
 
     private void doEvents() {
@@ -249,7 +248,7 @@ for (int i=0;i<indexes.size();++i) {
                     e.setPrevTime(curTime);
                 }
 
-                if (e.isRandomizedTime() && e.getWaitTime() <0) {
+                if (e.isRandomizedTime() && e.getWaitTime() < 0) {
                     double rand = Math.random();
                     e.setWaitTime((int) (rand * (e.getRandomTop() - e.getRandomBottom())) + e.getRandomBottom());
                 }
@@ -260,8 +259,8 @@ for (int i=0;i<indexes.size();++i) {
                             //e.o -> SomeUtils.obj
                             if (game != null) {
                                 ObjectContainer newO;
-                                if (e.getNeedToGenerateObject() ==1)
-                                    newO=SomeUtils.generateBullet();
+                                if (e.getNeedToGenerateObject() == 1)
+                                    newO = SomeUtils.generateBullet();
                                 else
                                     newO = ObjectContainer.copy(e.getO());
                                 SomeUtils.obj.add(newO);
@@ -287,34 +286,32 @@ for (int i=0;i<indexes.size();++i) {
                             //e.newAnimY
                             //e.o
                             AnimationContainer an = e.getO().getAnim().get(0);
-                           // float speedX = an.distanceX/an.duration;
+                            // float speedX = an.distanceX/an.duration;
 //                            float speedY = an.distanceY/an.duration;
 //                            float distance = (float)Math.sqrt(an.distanceX*an.distanceX+an.distanceY*an.distanceY);
-                            float canonDist1 = (float)Math.sqrt(an.getDistanceX() * an.getDistanceX() + an.getDistanceY() /SomeUtils.aspectRatio* an.getDistanceY() /SomeUtils.aspectRatio);
+                            float canonDist1 = (float) Math.sqrt(an.getDistanceX() * an.getDistanceX() + an.getDistanceY() / SomeUtils.aspectRatio * an.getDistanceY() / SomeUtils.aspectRatio);
 //                            float speed = distance/an.duration;
                             an.setDistanceX(e.getNewAnimX() - e.getO().getCenterX());
-                            if (an.getDistanceX() <0) {
+                            if (an.getDistanceX() < 0) {
                                 an.setDistanceX(-an.getDistanceX());
                                 an.setDirectionX(false);
-                            }
-                            else an.setDirectionX(true);
+                            } else an.setDirectionX(true);
                             an.setDistanceY(e.getNewAnimY() - e.getO().getCenterY());
-                            if (an.getDistanceY() <0) {
+                            if (an.getDistanceY() < 0) {
                                 an.setDistanceY(-an.getDistanceY());
                                 an.setDirectionY(false);
-                            }
-                            else an.setDirectionY(true);
+                            } else an.setDirectionY(true);
 //                            distance = (float)Math.sqrt(an.distanceX*an.distanceX+an.distanceY*an.distanceY);
-                            float canonDist2 = (float)Math.sqrt(an.getDistanceX() * an.getDistanceX() + an.getDistanceY() /SomeUtils.aspectRatio* an.getDistanceY() /SomeUtils.aspectRatio);
+                            float canonDist2 = (float) Math.sqrt(an.getDistanceX() * an.getDistanceX() + an.getDistanceY() / SomeUtils.aspectRatio * an.getDistanceY() / SomeUtils.aspectRatio);
 //                            an.duration = Math.round(distance/speed);
                             an.setDuration(Math.round(canonDist2 / canonDist1 * an.getDuration()));
                             //an.duration = Math.round(an.distanceX/speedX);
                             an.setStarted(false);
                             float differenceX = e.getO().getCenterX() - an.getStartCenterX();
                             float differenceY = e.getO().getCenterY() - an.getStartCenterY();
-                            for (int j = 0; j< e.getO().getVertices().length; j+=3) {
-                                e.getO().getVertices()[j] +=differenceX;
-                                e.getO().getVertices()[j+1] +=differenceY;
+                            for (int j = 0; j < e.getO().getVertices().length; j += 3) {
+                                e.getO().getVertices()[j] += differenceX;
+                                e.getO().getVertices()[j + 1] += differenceY;
                             }
 
                             break;
@@ -324,8 +321,7 @@ for (int i=0;i<indexes.size();++i) {
                         //prepareData();
                         //bindData();
                     }
-                    if (!e.isCycled())
-                    {
+                    if (!e.isCycled()) {
                         e.setPass(true);
                         //SomeUtils.events.remove(i);
                         //   --i;
@@ -345,19 +341,20 @@ for (int i=0;i<indexes.size();++i) {
 
     private void prepareData() {
         int sizeOfVertexData = 0;
-        for (int i = 0; i < SomeUtils.obj.size(); ++i) {
-            sizeOfVertexData += SomeUtils.obj.get(i).getVertices().length;
+        List<ObjectContainer> objects = SomeUtils.getObj();
+        for (int i = 0; i < objects.size(); ++i) {
+            sizeOfVertexData += objects.get(i).getVertices().length;
         }
         vertexData = ByteBuffer.allocateDirect(sizeOfVertexData * 4).order(ByteOrder.nativeOrder()).asFloatBuffer();
         //synchronized (SomeUtils.obj) {
         int pos = 0;
-            for (ObjectContainer o : SomeUtils.obj) {
-                    vertexData.put(o.getVertices());
-                    o.setInOpenglCache(true);
-                    o.setStartPoint(pos);
-                    o.setNumberOfPoints(o.getVertices().length / 3);
-                    pos+= o.getNumberOfPoints();
-            }
+        for (ObjectContainer o : objects) {
+            vertexData.put(o.getVertices());
+            o.setInOpenglCache(true);
+            o.setStartPoint(pos);
+            o.setNumberOfPoints(o.getVertices().length / 3);
+            pos += o.getNumberOfPoints();
+        }
         ///}
     }
 
@@ -436,7 +433,7 @@ for (int i=0;i<indexes.size();++i) {
                     returnedCommand = 2;
                 }
 
-            }else {
+            } else {
                 float transX = 0;
                 float transY = 0;
                 if (distanceX > 0) {
@@ -455,8 +452,7 @@ for (int i=0;i<indexes.size();++i) {
                 o.increaseCenterY(transY);
                 if (o.getName().equals("bullet")) {
                     o.setVertices(SomeUtils.getEllipse(o.getCenterX(), o.getCenterY(), SomeUtils.changeDistance(22.5f, 'x'), SomeUtils.changeDistance(45, 'y')));
-                }
-                else {
+                } else {
                     for (int x = 0, y = 1; x < o.getVertices().length; x += 3, y += 3) {
                         o.getVertices()[x] += transX;
                         o.getVertices()[y] += transY;
@@ -466,8 +462,6 @@ for (int i=0;i<indexes.size();++i) {
 
                 //o.centerX = SomeUtils.evaluateCenter(o.vertices, transX, 'x');
                 //o.centerY = SomeUtils.evaluateCenter(o.vertices, transY, 'y');
-
-
 
 
             }
