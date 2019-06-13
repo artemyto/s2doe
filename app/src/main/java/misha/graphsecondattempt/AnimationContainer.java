@@ -48,6 +48,24 @@ class AnimationContainer {
         return newA;
     }
 
+    AnimationContainer getCopy() {
+        AnimationContainer newA = new AnimationContainer();
+        newA.duration = duration;
+        newA.distanceX = distanceX;
+        newA.distanceY = distanceY;
+        newA.directionX = directionX;
+        newA.directionY = directionY;
+        newA.wantStop = wantStop;
+        newA.isInfinite = isInfinite;
+        newA.isStarted = isStarted;
+//        newA.isInfinite = oldA.isInfinite;
+        newA.startCenterX = startCenterX;
+        newA.startCenterY = startCenterY;
+        newA.isRedrawable = isRedrawable;
+        newA.lastTime = lastTime;
+        return newA;
+    }
+
     public long getDuration() {
         return duration;
     }

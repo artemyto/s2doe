@@ -62,6 +62,32 @@ class ObjectContainer {
         return newO;
     }
 
+    ObjectContainer getCopy () {
+        ObjectContainer newO = new ObjectContainer();
+        for (AnimationContainer a:anim) {
+            newO.anim.add(a.getCopy());
+        }
+        newO.centerX = centerX;
+        newO.centerY = centerY;
+        newO.colorR = colorR;
+        newO.colorB = colorB;
+        newO.colorG = colorG;
+        newO.GLvertices = Arrays.copyOf(GLvertices, GLvertices.length);
+        newO.vertices = Arrays.copyOf(vertices, vertices.length);
+        newO.isDrawed = isDrawed;
+        newO.isAnimated = isAnimated;
+        newO.minX = minX;
+        newO.minY = minY;
+        newO.numberOfPoints = numberOfPoints;
+        newO.startPoint = startPoint;
+        newO.isInOpenglCache = isInOpenglCache;
+        newO.needToDelete = needToDelete;
+        newO.name = name;
+        newO.fanOrStrip = fanOrStrip;
+
+        return newO;
+    }
+
     public void setVertices(float[] vertices) {
         this.vertices = vertices;
     }

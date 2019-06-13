@@ -169,4 +169,30 @@ private String nameOfObject;//not use '==' !
     public ObjectContainer getO() {
         return o;
     }
+
+    EventContainer getCopy() {
+        EventContainer e = new EventContainer();
+        e.kindOfEvent = kindOfEvent;
+        e.nameOfObject = nameOfObject;
+        e.needToRebindData = false;
+//        e.a = a.get;
+        e.a = new AnimationContainer[a.length];
+        for (int i = 0; i < a.length; ++i) {
+            e.a[i] = a[i].getCopy();
+        }
+        e.o = o.getCopy();
+        e.needToGenerateObject = needToGenerateObject;
+        e.cycled = cycled;
+        e.randomizedTime = randomizedTime;
+        e.randomTop = randomTop;
+        e.randomBottom = randomBottom;
+        e.waitTime = waitTime;
+        e.pass = pass;
+        e.timed = timed;
+        e.prevTime = prevTime;
+        e.newAnimX = newAnimX;
+        e.newAnimY = newAnimY;
+        e.name = name;
+        return e;
+    }
 }

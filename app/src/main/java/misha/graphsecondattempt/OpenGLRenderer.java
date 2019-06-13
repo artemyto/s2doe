@@ -10,6 +10,7 @@ import java.nio.ByteOrder;
 import java.nio.FloatBuffer;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
@@ -52,6 +53,8 @@ public class OpenGLRenderer implements GLSurfaceView.Renderer {
     //private String wantDelete = "-1";
     private ArrayList<String> wantDelete = new ArrayList<>();
 
+    private static ArrayList<ObjectContainer> obj;
+
 
     private float[] mModelMatrix = new float[16];
 
@@ -85,9 +88,9 @@ public class OpenGLRenderer implements GLSurfaceView.Renderer {
         //Matrix.setIdentityM(mModelMatrix, 0);
         //bindMatrix();
         doAnimationIfNeed();
-        doEvents();
+//        doEvents();
         //удаление объектов, отмеченных на удаление
-        if (this.needToBindData || SomeUtils.needToRebindData) {
+        if (this.needToBindData || SomeUtils.needToRebindData || GameObjects.isObjectsChanged()) {
             prepareData();
             bindData();
             this.needToBindData = false;
@@ -104,16 +107,16 @@ public class OpenGLRenderer implements GLSurfaceView.Renderer {
         }
         //Collections.fill(indexes, FALSE);
         ObjectContainer o;
-        for (int i = 0; i < SomeUtils.obj.size(); ++i) {
+        for (int i = 0; i < obj.size(); ++i) {
             boolean cont = true;
 //            if (needToBindData) {
 //                prepareData();
 //                bindData();
 //                needToBindData = false;
 //            }
-            o = SomeUtils.obj.get(i);
+            o = obj.get(i);
             if (o.isNeedToDelete()) {
-                SomeUtils.obj.remove(i);
+                obj.remove(i);
                 --i;
                 needToBindData = true;
                 cont = false;
@@ -125,7 +128,7 @@ public class OpenGLRenderer implements GLSurfaceView.Renderer {
 
                     if (wantDelete.get(j).equals(o.getName())) {
                         indexes.add(FALSE);
-                        SomeUtils.obj.remove(i);
+                        obj.remove(i);
                         --i;
                         needToBindData = true;
                         //wantDelete.remove(j);
@@ -204,11 +207,11 @@ public class OpenGLRenderer implements GLSurfaceView.Renderer {
                                 }
                                 prepareData();
                                 bindData();
-                                //SomeUtils.needToBindData = true;
+                                //needToBindData = true;
                                 break;
                         }
                     }
-//                if (SomeUtils.needToBindData) {
+//                if (needToBindData) {
 //                    prepareData();
 //                    bindData();
 //                    needToBindDataFalse();//this.needToBindData = false;
@@ -237,11 +240,11 @@ public class OpenGLRenderer implements GLSurfaceView.Renderer {
         }
     }
 
-    private void doEvents() {
+/*    private void doEvents() {
         //совершение событий, которые должны были произойти к этому моменту, но еще не произошли
         long curTime = SystemClock.uptimeMillis();
-        for (int i = 0; i < SomeUtils.events.size(); ++i) {
-            EventContainer e = SomeUtils.events.get(i);
+        for (int i = 0; i < events.size(); ++i) {
+            EventContainer e = events.get(i);
             if (!e.isPass()) {
 
                 if (e.getPrevTime() < 0) {
@@ -337,18 +340,19 @@ public class OpenGLRenderer implements GLSurfaceView.Renderer {
             //sleepTime = Math.max(sleepTime, e.waitTime);
 
         }
-    }
+    }*/
 
     private void prepareData() {
         int sizeOfVertexData = 0;
-        List<ObjectContainer> objects = SomeUtils.getObj();
-        for (int i = 0; i < objects.size(); ++i) {
-            sizeOfVertexData += objects.get(i).getVertices().length;
+//        List<ObjectContainer> objects = GameObjects.getObjects();
+        obj = GameObjects.getObjects();
+        for (int i = 0; i < obj.size(); ++i) {
+            sizeOfVertexData += obj.get(i).getVertices().length;
         }
         vertexData = ByteBuffer.allocateDirect(sizeOfVertexData * 4).order(ByteOrder.nativeOrder()).asFloatBuffer();
         //synchronized (SomeUtils.obj) {
         int pos = 0;
-        for (ObjectContainer o : objects) {
+        for (ObjectContainer o : obj) {
             vertexData.put(o.getVertices());
             o.setInOpenglCache(true);
             o.setStartPoint(pos);
@@ -451,7 +455,7 @@ public class OpenGLRenderer implements GLSurfaceView.Renderer {
                 o.increaseCenterX(transX);
                 o.increaseCenterY(transY);
                 if (o.getName().equals("bullet")) {
-                    o.setVertices(SomeUtils.getEllipse(o.getCenterX(), o.getCenterY(), SomeUtils.changeDistance(22.5f, 'x'), SomeUtils.changeDistance(45, 'y')));
+                    o.setVertices(ObjectTemplates.getEllipse(o.getCenterX(), o.getCenterY(), ScreenParameters.changeDistance(22.5f, 'x'), ScreenParameters.changeDistance(45, 'y')));
                 } else {
                     for (int x = 0, y = 1; x < o.getVertices().length; x += 3, y += 3) {
                         o.getVertices()[x] += transX;

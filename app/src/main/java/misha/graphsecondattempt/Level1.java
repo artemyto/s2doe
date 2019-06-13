@@ -27,7 +27,7 @@ public class Level1 extends Level {
 
     private int score;
 
-    private EventMaker eventMaker = new EventMaker();
+    private EventMaker eventMaker;
 
 
     @Override
@@ -38,14 +38,15 @@ public class Level1 extends Level {
     @Override
     void start() {
         isRunning = true;
-        SomeUtils.obj = new ArrayList<>();
-        SomeUtils.events = new ArrayList<>();
+//        SomeUtils.obj = new ArrayList<>();
+        GameObjects.eraseObjects();
+//        SomeUtils.events = new ArrayList<>();
 
         objectContainer = new ObjectContainer();
-        objectContainer.setVertices(new float[]{SomeUtils.changeCoordinate(0, 'x'), SomeUtils.changeCoordinate(0, 'y'), 0.99f,
-                                  SomeUtils.changeCoordinate(720, 'x'), SomeUtils.changeCoordinate(0, 'y'), 0.99f,
-                                  SomeUtils.changeCoordinate(720, 'x'), SomeUtils.changeCoordinate(1280, 'y'), 0.99f,
-                                  SomeUtils.changeCoordinate(0, 'x'), SomeUtils.changeCoordinate(1280, 'y'), 0.99f});
+        objectContainer.setVertices(new float[]{ScreenParameters.changeCoordinate(0, 'x'), ScreenParameters.changeCoordinate(0, 'y'), 0.99f,
+                                  ScreenParameters.changeCoordinate(720, 'x'), ScreenParameters.changeCoordinate(0, 'y'), 0.99f,
+                                  ScreenParameters.changeCoordinate(720, 'x'), ScreenParameters.changeCoordinate(1280, 'y'), 0.99f,
+                                  ScreenParameters.changeCoordinate(0, 'x'), ScreenParameters.changeCoordinate(1280, 'y'), 0.99f});
         objectContainer.setColorR(0.50f);
         objectContainer.setColorG(0.50f);
         objectContainer.setColorB(0.50f);
@@ -56,7 +57,11 @@ public class Level1 extends Level {
         objectContainer.setInOpenglCache(true);
         objectContainer.setMinX(-1);
         objectContainer.setMinY(-1);
-        SomeUtils.obj.add(objectContainer);
+//        SomeUtils.obj.add(objectContainer);
+//        GameEvents.addEvent(objectContainer);
+        GameObjects.addObject(objectContainer);
+
+
 
 //        objectContainer = new ObjectContainer();
 ////                objectContainer.setVertices(SomeUtils.getCircle(objectContainer.getCenterX(), objectContainer.getCenterY(), objectContainer.getMinX()));
@@ -82,12 +87,12 @@ public class Level1 extends Level {
         switch(type) {
             //action_down
             case 0:
-                objectContainer = SomeUtils.getTouchedBullet(SomeUtils.changeCoordinate(x,'x'), SomeUtils.changeCoordinate(y, 'y'));
+                objectContainer = GameObjects.getTouchedBullet(ScreenParameters.changeCoordinate(x,'x'), ScreenParameters.changeCoordinate(y, 'y'));
                 if (objectContainer == null) {
                     objectContainer = new ObjectContainer();
 //                objectContainer.setVertices(SomeUtils.getCircle(objectContainer.getCenterX(), objectContainer.getCenterY(), objectContainer.getMinX()));
-                    objectContainer.setVertices(SomeUtils.getDigit2(300, 300, 30));
-                    objectContainer.setVertices(SomeUtils.getCircle(SomeUtils.changeCoordinate(x, 'x'), SomeUtils.changeCoordinate(y, 'y'), SomeUtils.changeDistance(50, 'x')));
+                    objectContainer.setVertices(ObjectTemplates.getDigit2(300, 300, 30));
+                    objectContainer.setVertices(ObjectTemplates.getCircle(ScreenParameters.changeCoordinate(x, 'x'), ScreenParameters.changeCoordinate(y, 'y'), ScreenParameters.changeDistance(50, 'x')));
                     objectContainer.setColorR(0.10f);
                     objectContainer.setColorG(0.50f);
                     objectContainer.setColorB(0.90f);
@@ -111,7 +116,9 @@ public class Level1 extends Level {
 //                eventContainer.setRandomBottom(3000);
 //                eventContainer.setNeedToGenerateObject(1);
                     eventContainer.setO(objectContainer);
-                    SomeUtils.events.add(eventContainer);
+//                    SomeUtils.events.add(eventContainer);
+                    GameEvents.addEvent(eventContainer);
+                    if (eventMaker == null || !eventMaker.isRunning()) eventMaker = new EventMaker();
                 }
                 else {
                     touchBeginX = x;
@@ -128,8 +135,8 @@ public class Level1 extends Level {
                 if (touchedBullet != null) {
                     float[] v = touchedBullet.getVertices();
                     for(int i = 0; i < v.length; i+=3) {
-                        v[i] = v[i] + SomeUtils.changeDistance(touchCurX-touchLastX, 'x');
-                        v[i+1] = v[i+1] + SomeUtils.changeDistance(touchCurY-touchLastY, 'y');
+                        v[i] = v[i] + ScreenParameters.changeDistance(touchCurX-touchLastX, 'x');
+                        v[i+1] = v[i+1] + ScreenParameters.changeDistance(touchCurY-touchLastY, 'y');
                     }
                     touchLastX = touchCurX;
                     touchLastY = touchCurY;

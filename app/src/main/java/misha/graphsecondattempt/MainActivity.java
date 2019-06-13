@@ -52,7 +52,8 @@ public class MainActivity extends AppCompatActivity implements Level.MyCallback 
         setContentView(glSurfaceView);
         glSurfaceView.setOnTouchListener(onTouch);
         mode = true;
-        SomeUtils.game = game;
+//        SomeUtils.game = game;
+        GameParameters.setGame(game);
 
     }
     View.OnClickListener onClick = new View.OnClickListener() {
@@ -116,11 +117,11 @@ public class MainActivity extends AppCompatActivity implements Level.MyCallback 
         DisplayMetrics metrics = new DisplayMetrics();
         display.getMetrics(metrics);
 
-        SomeUtils.screenWidth = metrics.widthPixels;
-        SomeUtils.screenHeight = metrics.heightPixels;
-        SomeUtils.aspectRatio = ((float) SomeUtils.screenHeight) / SomeUtils.screenWidth;
-        SomeUtils.screenWidth2 = SomeUtils.screenWidth / 2;
-        SomeUtils.screenHeight2 = SomeUtils.screenHeight / 2;
+        ScreenParameters.screenWidth = metrics.widthPixels;
+        ScreenParameters.screenHeight = metrics.heightPixels;
+        ScreenParameters.aspectRatio = ((float) ScreenParameters.screenHeight) / ScreenParameters.screenWidth;
+        ScreenParameters.screenWidth2 = ScreenParameters.screenWidth / 2;
+        ScreenParameters.screenHeight2 = ScreenParameters.screenHeight / 2;
 
     }
 }
