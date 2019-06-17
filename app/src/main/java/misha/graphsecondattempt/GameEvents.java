@@ -25,4 +25,12 @@ public class GameEvents {
         events.add(e);
     }
 
+    public static synchronized void removeEvent(String s) {
+        for (int i = 0; i < events.size(); ++i) {
+            if (events.get(i).getName().equals(s)) {
+                events.remove(i);
+                break;
+            }
+        }
+    }
 }

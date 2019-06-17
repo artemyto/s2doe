@@ -3,7 +3,6 @@ package misha.graphsecondattempt;
 import android.os.SystemClock;
 
 import java.util.ArrayList;
-import java.util.Objects;
 
 public class EventMaker implements Runnable {
     private Thread thread;
@@ -39,18 +38,18 @@ public class EventMaker implements Runnable {
                                 //new object
                                 //e.o -> SomeUtils.obj
 
-                                    ObjectContainer newO;
-                                    if (e.getNeedToGenerateObject() == 1)
-                                        newO = ObjectTemplates.generateBullet();
-                                    else
-                                        newO = ObjectContainer.copy(e.getO());
+                                ObjectContainer newO;
+                                if (e.getNeedToGenerateObject() == 1)
+                                    newO = ObjectTemplates.generateBullet();
+                                else
+                                    newO = ObjectContainer.copy(e.getO());
 //                                    SomeUtils.obj.add(newO);
-                                    GameObjects.addObject(newO);
-
+                                GameObjects.addObject(newO);
+                                GameObjects.setObjectsChanged();
 
                                 break;
                             case 'b':
-                                GameObjects.deleteObject(e.getName());
+                                GameObjects.removeObject(e.getName());
 //                                if (!GameObjects.isWantDeleteContains(e.getName()))
 //
 //                                    GameObjects.wantDelete.add(e.getName());
@@ -71,7 +70,7 @@ public class EventMaker implements Runnable {
                                 // float speedX = an.distanceX/an.duration;
 //                            float speedY = an.distanceY/an.duration;
 //                            float distance = (float)Math.sqrt(an.distanceX*an.distanceX+an.distanceY*an.distanceY);
-                                float canonDist1 = (float) Math.sqrt(an.getDistanceX() * an.getDistanceX() + an.getDistanceY() / ScreenParameters.aspectRatio * an.getDistanceY() / ScreenParameters.aspectRatio);
+                                float canonDist1 = (float) Math.sqrt(an.getDistanceX() * an.getDistanceX() + an.getDistanceY() / ScreenUtils.aspectRatio * an.getDistanceY() / ScreenUtils.aspectRatio);
 //                            float speed = distance/an.duration;
                                 an.setDistanceX(e.getNewAnimX() - e.getO().getCenterX());
                                 if (an.getDistanceX() < 0) {
@@ -84,7 +83,7 @@ public class EventMaker implements Runnable {
                                     an.setDirectionY(false);
                                 } else an.setDirectionY(true);
 //                            distance = (float)Math.sqrt(an.distanceX*an.distanceX+an.distanceY*an.distanceY);
-                                float canonDist2 = (float) Math.sqrt(an.getDistanceX() * an.getDistanceX() + an.getDistanceY() / ScreenParameters.aspectRatio * an.getDistanceY() / ScreenParameters.aspectRatio);
+                                float canonDist2 = (float) Math.sqrt(an.getDistanceX() * an.getDistanceX() + an.getDistanceY() / ScreenUtils.aspectRatio * an.getDistanceY() / ScreenUtils.aspectRatio);
 //                            an.duration = Math.round(distance/speed);
                                 an.setDuration(Math.round(canonDist2 / canonDist1 * an.getDuration()));
                                 //an.duration = Math.round(an.distanceX/speedX);
@@ -108,7 +107,9 @@ public class EventMaker implements Runnable {
                         if (!e.isCycled()) {
                             e.setPass(true);
                             //SomeUtils.events.remove(i);
-                            //   --i;
+                            GameEvents.removeEvent(e.getName());
+                            events.remove(i);
+                               --i;
                         }
                         e.setPrevTime(curTime);
                         if (e.isRandomizedTime()) {
@@ -121,7 +122,7 @@ public class EventMaker implements Runnable {
                 //sleepTime = Math.max(sleepTime, e.waitTime);
 
             }
-            GameEvents.setEvents(events);
+//            GameEvents.setEvents(events);
             if (events.isEmpty()) continueCycle = false;
         }
 

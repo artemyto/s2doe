@@ -88,6 +88,29 @@ class ObjectContainer {
         return newO;
     }
 
+    static void copy (ObjectContainer where, ObjectContainer what) {
+        for (AnimationContainer a:what.anim) {
+            where.anim.add(a.getCopy());
+        }
+        where.centerX = what.centerX;
+        where.centerY = what.centerY;
+        where.colorR = what.colorR;
+        where.colorB = what.colorB;
+        where.colorG = what.colorG;
+        where.GLvertices = Arrays.copyOf(what.GLvertices, what.GLvertices.length);
+        where.vertices = Arrays.copyOf(what.vertices, what.vertices.length);
+        where.isDrawed = what.isDrawed;
+        where.isAnimated = what.isAnimated;
+        where.minX = what.minX;
+        where.minY = what.minY;
+        where.numberOfPoints = what.numberOfPoints;
+        where.startPoint = what.startPoint;
+        where.isInOpenglCache = what.isInOpenglCache;
+        where.needToDelete = what.needToDelete;
+        where.name = what.name;
+        where.fanOrStrip = what.fanOrStrip;
+    }
+
     public void setVertices(float[] vertices) {
         this.vertices = vertices;
     }

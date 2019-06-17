@@ -176,10 +176,13 @@ private String nameOfObject;//not use '==' !
         e.nameOfObject = nameOfObject;
         e.needToRebindData = false;
 //        e.a = a.get;
-        e.a = new AnimationContainer[a.length];
-        for (int i = 0; i < a.length; ++i) {
-            e.a[i] = a[i].getCopy();
+        if (a != null) {
+            e.a = new AnimationContainer[a.length];
+            for (int i = 0; i < a.length; ++i) {
+                e.a[i] = a[i].getCopy();
+            }
         }
+        else e.a = null;
         e.o = o.getCopy();
         e.needToGenerateObject = needToGenerateObject;
         e.cycled = cycled;

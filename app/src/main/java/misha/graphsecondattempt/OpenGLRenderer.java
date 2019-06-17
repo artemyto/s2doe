@@ -9,8 +9,6 @@ import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.FloatBuffer;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
 
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
@@ -95,6 +93,7 @@ public class OpenGLRenderer implements GLSurfaceView.Renderer {
             bindData();
             this.needToBindData = false;
             SomeUtils.needToRebindData = false;
+            GameObjects.setObjectsNotChanged();
         }
 //        glClear(GL_COLOR_BUFFER_BIT);
 
@@ -376,10 +375,10 @@ public class OpenGLRenderer implements GLSurfaceView.Renderer {
 
                 o.getAnim().get(0).setStartTime(curTime);
                 o.getAnim().get(0).setStarted(true);
-//                o.centerX = SomeUtils.evaluateCenter(o.vertices, transX, 'x');
-//                o.centerY = SomeUtils.evaluateCenter(o.vertices, transY, 'y');
-                o.getAnim().get(0).setStartCenterX(SomeUtils.evaluateCenter(o.getVertices(), 0, 'x'));
-                o.getAnim().get(0).setStartCenterY(SomeUtils.evaluateCenter(o.getVertices(), 0, 'y'));
+//                o.centerX = GameObjects.evaluateCenter(o.vertices, transX, 'x');
+//                o.centerY = GameObjects.evaluateCenter(o.vertices, transY, 'y');
+                o.getAnim().get(0).setStartCenterX(GameObjects.evaluateCenter(o.getVertices(), 0, 'x'));
+                o.getAnim().get(0).setStartCenterY(GameObjects.evaluateCenter(o.getVertices(), 0, 'y'));
             } else if (o.getAnim().get(0).isStarted()) {
                 long timePassed = curTime - o.getAnim().get(0).getStartTime();
                 if (timePassed >= duration) {
@@ -404,8 +403,8 @@ public class OpenGLRenderer implements GLSurfaceView.Renderer {
                         }
                     }
                     Matrix.translateM(mModelMatrix, 0, transX, transY, 0);
-                    o.setCenterX(SomeUtils.evaluateCenter(o.getVertices(), transX, 'x'));
-                    o.setCenterY(SomeUtils.evaluateCenter(o.getVertices(), transY, 'y'));
+                    o.setCenterX(GameObjects.evaluateCenter(o.getVertices(), transX, 'x'));
+                    o.setCenterY(GameObjects.evaluateCenter(o.getVertices(), transY, 'y'));
                     //game.isClosely(o);
                 }
             }
@@ -424,10 +423,10 @@ public class OpenGLRenderer implements GLSurfaceView.Renderer {
             a.setStartTime(curTime);
             a.setLastTime(curTime);
             a.setStarted(true);
-//                o.centerX = SomeUtils.evaluateCenter(o.vertices, transX, 'x');
-//                o.centerY = SomeUtils.evaluateCenter(o.vertices, transY, 'y');
-            a.setStartCenterX(SomeUtils.evaluateCenter(o.getVertices(), 0, 'x'));
-            a.setStartCenterY(SomeUtils.evaluateCenter(o.getVertices(), 0, 'y'));
+//                o.centerX = GameObjects.evaluateCenter(o.vertices, transX, 'x');
+//                o.centerY = GameObjects.evaluateCenter(o.vertices, transY, 'y');
+            a.setStartCenterX(GameObjects.evaluateCenter(o.getVertices(), 0, 'x'));
+            a.setStartCenterY(GameObjects.evaluateCenter(o.getVertices(), 0, 'y'));
         } else if (a.isStarted()) {
             long timePassed = curTime - a.getLastTime();
             if (curTime - a.getStartTime() >= duration) {
@@ -455,7 +454,7 @@ public class OpenGLRenderer implements GLSurfaceView.Renderer {
                 o.increaseCenterX(transX);
                 o.increaseCenterY(transY);
                 if (o.getName().equals("bullet")) {
-                    o.setVertices(ObjectTemplates.getEllipse(o.getCenterX(), o.getCenterY(), ScreenParameters.changeDistance(22.5f, 'x'), ScreenParameters.changeDistance(45, 'y')));
+                    o.setVertices(ObjectTemplates.getEllipse(o.getCenterX(), o.getCenterY(), ScreenUtils.transformDistance(22.5f, 'x'), ScreenUtils.transformDistance(45, 'y')));
                 } else {
                     for (int x = 0, y = 1; x < o.getVertices().length; x += 3, y += 3) {
                         o.getVertices()[x] += transX;
@@ -464,8 +463,8 @@ public class OpenGLRenderer implements GLSurfaceView.Renderer {
                 }
 
 
-                //o.centerX = SomeUtils.evaluateCenter(o.vertices, transX, 'x');
-                //o.centerY = SomeUtils.evaluateCenter(o.vertices, transY, 'y');
+                //o.centerX = GameObjects.evaluateCenter(o.vertices, transX, 'x');
+                //o.centerY = GameObjects.evaluateCenter(o.vertices, transY, 'y');
 
 
             }
