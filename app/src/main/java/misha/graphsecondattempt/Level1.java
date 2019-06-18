@@ -16,6 +16,8 @@ public class Level1 extends Level {
     private AnimationContainer animationContainer;
 
     private int count = 0;
+    private long touchTime = 0;
+    private boolean doubleTouch = false;
 
     private String touchedObjectName = "";
     //    ObjectContainer touchedBullet;
@@ -91,6 +93,10 @@ public class Level1 extends Level {
             //action_down
             case 0:
 //            case 1:
+                if (curTime - touchTime <= 500) doubleTouch = true;
+                else doubleTouch = false;
+                touchTime = curTime;
+
                 touchedObjectName = GameObjects.getTouchedBulletName(ScreenUtils.transformCoordinate(x, 'x'), ScreenUtils.transformCoordinate(y, 'y'));
 //                objectContainer = GameObjects.getTouchedBullet(ScreenUtils.transformCoordinate(x, 'x'), ScreenUtils.transformCoordinate(y, 'y'));
 //                objectContainer = null;
@@ -144,7 +150,8 @@ public class Level1 extends Level {
             case 1:
                 touchCurY = y;
                 touchCurX = x;
-                if (!touchedObjectName.equals("")) {
+
+                if (!touchedObjectName.equals("") && !doubleTouch) {
                     touchedBullet = GameObjects.getObject(touchedObjectName);
                     if (touchedBullet != null) {
                         float[] v = touchedBullet.getVertices();
@@ -165,6 +172,7 @@ public class Level1 extends Level {
                 break;
             case 2://action_down
                 touchedObjectName = "";
+
                 break;
         }
     }
