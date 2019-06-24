@@ -83,9 +83,15 @@ public class OpenGLRenderer implements GLSurfaceView.Renderer {
     public void onDrawFrame(GL10 gl10) {
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-        //Matrix.setIdentityM(mModelMatrix, 0);
-        //bindMatrix();
-        doAnimationIfNeed();
+        Matrix.setIdentityM(mModelMatrix, 0);
+        bindMatrix();
+
+//        doAnimationIfNeed();
+        for (ObjectContainer o:obj) {
+
+            glUniform4f(uColorLocation, o.getColorR(), o.getColorG(), o.getColorB(), 0f);
+            glDrawArrays(o.getFanOrStrip(), o.getStartPoint(), o.getNumberOfPoints());
+        }
 //        doEvents();
         //удаление объектов, отмеченных на удаление
         if (this.needToBindData || SomeUtils.needToRebindData || GameObjects.isObjectsChanged()) {

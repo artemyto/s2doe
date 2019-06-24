@@ -2,6 +2,8 @@ package misha.graphsecondattempt;
 
 import android.os.SystemClock;
 
+import java.util.ArrayList;
+
 //import android.widget.Toast;
 
 /**
@@ -32,6 +34,7 @@ public class Level1 extends Level {
     private int score;
 
     private EventMaker eventMaker;
+    private AnimationMaker animationMaker;
 
 
     @Override
@@ -119,6 +122,16 @@ public class Level1 extends Level {
                     objectContainer.setMinY(-1);
                     objectContainer.setCenterX(GameObjects.evaluateCenter(objectContainer.getVertices(), 0, 'x'));
                     objectContainer.setCenterY(GameObjects.evaluateCenter(objectContainer.getVertices(), 0, 'y'));
+
+//                    ArrayList<AnimationContainer> acl = new ArrayList<>();
+                    animationContainer = new AnimationContainer();
+                    animationContainer.setRedrawable(true);
+                    animationContainer.setDistanceX(ScreenUtils.transformDistance(100, 'x'));
+                    animationContainer.setDistanceY(ScreenUtils.transformDistance(100, 'y'));
+                    animationContainer.setDuration(2000);
+//                    objectContainer.getAnim().add(animationContainer);
+                    objectContainer.addAnimation(animationContainer);
+                    objectContainer.setAnimated(true);
 //                SomeUtils.obj.add(objectContainer);
                     eventContainer = new EventContainer();
                     eventContainer.setRandomizedTime(false);
@@ -130,7 +143,7 @@ public class Level1 extends Level {
 //                eventContainer.setRandomTop(4500);
 //                eventContainer.setRandomBottom(3000);
 //                eventContainer.setNeedToGenerateObject(1);
-                    eventContainer.setO(objectContainer);
+                    eventContainer.setObject(objectContainer);
 //                    SomeUtils.events.add(eventContainer);
 //                    long curTime = SystemClock.uptimeMillis();
                     eventContainer.setName("bullet" + count);
@@ -138,6 +151,8 @@ public class Level1 extends Level {
                     GameEvents.addEvent(eventContainer);
                     if (eventMaker == null || !eventMaker.isRunning())
                         eventMaker = new EventMaker();
+                    if (animationMaker == null || !animationMaker.isRunning())
+                        animationMaker = new AnimationMaker();
                 } else {
                     touchBeginX = x;
                     touchBeginY = y;

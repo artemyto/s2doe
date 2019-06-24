@@ -45,6 +45,7 @@ class AnimationContainer {
         newA.startCenterY = oldA.startCenterY;
         newA.isRedrawable = oldA.isRedrawable;
         newA.lastTime = oldA.lastTime;
+        newA.lastTime = oldA.lastTime;
         return newA;
     }
 
@@ -63,6 +64,7 @@ class AnimationContainer {
         newA.startCenterY = startCenterY;
         newA.isRedrawable = isRedrawable;
         newA.lastTime = lastTime;
+        newA.startTime = startTime;
         return newA;
     }
 

@@ -162,7 +162,7 @@ private String nameOfObject;//not use '==' !
         return a;
     }
 
-    public void setO(ObjectContainer o) {
+    public void setObject(ObjectContainer o) {
         this.o = o;
     }
 

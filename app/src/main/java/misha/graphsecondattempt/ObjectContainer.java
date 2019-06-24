@@ -243,6 +243,10 @@ class ObjectContainer {
         return anim;
     }
 
+    void addAnimation(AnimationContainer a) {
+        anim.add(a);
+    }
+
     public float[] getVertices() {
         return vertices;
     }

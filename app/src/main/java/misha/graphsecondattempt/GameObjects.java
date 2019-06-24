@@ -27,12 +27,33 @@ public class GameObjects {
         return ret;
     }
 
-    public static synchronized void setObjects(ArrayList<ObjectContainer> o) {
-        obj = o;
+    public static synchronized void setObjects(ArrayList<ObjectContainer> objects) {
+//        obj = o;
+        obj = new ArrayList<>();
+        for (ObjectContainer o:objects)
+            obj.add(o.getCopy());
+        objectsChanged = true;
     }
+
+    /*public static synchronized void addObjects(ObjectContainer o) {
+        obj.add(o);
+    }*/
 
     public static synchronized void addObject(ObjectContainer o) {
         obj.add(o);
+    }
+
+    public static synchronized void addOrReplaceObject(ObjectContainer o) {
+        boolean notReplaced = true;
+        for (int i = 0; i < obj.size(); ++i) {
+            if (obj.get(i).getName().equals(o.getName())) {
+                obj.set(i, o.getCopy());
+                notReplaced = false;
+                break;
+            }
+        }
+        if (notReplaced) obj.add(o.getCopy());
+        GameObjects.objectsChanged = true;
     }
 
     public static synchronized ArrayList<String> getWantDelete() {
@@ -48,6 +69,7 @@ public class GameObjects {
                 break;
             }
         }
+        objectsChanged = true;
     }
 
     public static synchronized void removeObjects(String s) {
@@ -58,6 +80,7 @@ public class GameObjects {
             }
 //            break;
         }
+        objectsChanged = true;
     }
 
     public static synchronized boolean isWantDeleteContains(String s) {
