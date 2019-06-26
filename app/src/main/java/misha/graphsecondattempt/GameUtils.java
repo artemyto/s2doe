@@ -1,11 +1,12 @@
 package misha.graphsecondattempt;
 
-public class GameUtils {
+class GameUtils {
     private GameUtils() {
 
     }
 
-    public static Level game;
+    static Level game;
+
     static int gameScore = 0;
 
     static void setGame(Level game) {

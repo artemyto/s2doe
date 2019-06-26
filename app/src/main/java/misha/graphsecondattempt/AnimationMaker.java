@@ -4,7 +4,7 @@ import android.os.SystemClock;
 
 import java.util.ArrayList;
 
-public class AnimationMaker implements Runnable {
+class AnimationMaker implements Runnable {
     private Thread thread;
 
     AnimationMaker() {
@@ -29,7 +29,7 @@ public class AnimationMaker implements Runnable {
                     notRemoved = true;
                     animationExists = true;
                     AnimationContainer a = o.getAnim().get(0);
-                    long duration = a.getDuration();
+                    long duration = a.getDurationMillis();
                     float distanceX = a.getDistanceX();
                     float distanceY = a.getDistanceY();
                     long curTime = SystemClock.uptimeMillis();
@@ -37,10 +37,8 @@ public class AnimationMaker implements Runnable {
                         a.setStartTime(curTime);
                         a.setLastTime(curTime);
                         a.setStarted(true);
-//                o.centerX = GameObjects.evaluateCenter(o.vertices, transX, 'x');
-//                o.centerY = GameObjects.evaluateCenter(o.vertices, transY, 'y');
-                        a.setStartCenterX(GameObjects.evaluateCenter(o.getVertices(), 0, 'x'));
-                        a.setStartCenterY(GameObjects.evaluateCenter(o.getVertices(), 0, 'y'));
+                        a.setStartCenterX(GameObjects.evaluateCenterX(o.getVertices()));
+                        a.setStartCenterY(GameObjects.evaluateCenterY(o.getVertices()));
                     } else {
                         //TODO is passed a right word?
                         long timePassed = curTime - a.getLastTime();
@@ -57,8 +55,6 @@ public class AnimationMaker implements Runnable {
                                         outOfRange = outOfRange && (o.getVertices()[x] < -1 || o.getVertices()[x] > 1) && (o.getVertices()[y] < -1 || o.getVertices()[y] > 1);
                                     }
                                     if (outOfRange) {
-//                                        o.setNeedToDelete(true);
-//                                        GameObjects.removeObject(objects.get(i).getName());
                                         GameObjects.removeObject(objects.get(i).getName());
                                         objects.remove(i);
                                         --i;
@@ -82,22 +78,23 @@ public class AnimationMaker implements Runnable {
                                 }
                             }
 
-                            float vertices[] = o.getVertices();
+                            float[] vertices = o.getVertices();
                             for (int x = 0, y = 1; x < vertices.length; x += 3, y += 3) {
                                 vertices[x] += transX;
                                 vertices[y] += transY;
                             }
 
-                            o.setVertices(vertices);
-                            o.increaseCenterX(transX);
+//                            o.setVertices(vertices);
+//                            o.increaseCenterX(transX);
+//                            o.increaseCenterY(transY);
+                            o.setCenterX(GameObjects.evaluateCenterX(vertices));
+                            o.setCenterY(GameObjects.evaluateCenterY(vertices));
 
-                            o.increaseCenterY(transY);
-//                            o.setCenterX(GameObjects.evaluateCenter(vertices, 0, 'x'));
-//                            o.setCenterY(GameObjects.evaluateCenter(vertices, 0, 'y'));
                             a.setLastTime(curTime);
                         }
                     }
-                    if (notRemoved) GameObjects.addOrReplaceObject(objects.get(i));
+                    if (notRemoved) GameObjects.addOrReplaceObject(o);
+//                    if (notRemoved) GameObjects.changeObject(o.getName(), o);
                 }
             }
 //            GameObjects.setObjects(objects);
@@ -105,7 +102,7 @@ public class AnimationMaker implements Runnable {
         }
     }
 
-    public synchronized boolean isRunning() {
+    synchronized boolean isRunning() {
         return thread.isAlive();
     }
 

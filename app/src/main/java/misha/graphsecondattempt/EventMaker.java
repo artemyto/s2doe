@@ -4,7 +4,7 @@ import android.os.SystemClock;
 
 import java.util.ArrayList;
 
-public class EventMaker implements Runnable {
+class EventMaker implements Runnable {
     private Thread thread;
 
     EventMaker() {
@@ -70,7 +70,7 @@ public class EventMaker implements Runnable {
                                 // float speedX = an.distanceX/an.duration;
 //                            float speedY = an.distanceY/an.duration;
 //                            float distance = (float)Math.sqrt(an.distanceX*an.distanceX+an.distanceY*an.distanceY);
-                                float canonDist1 = (float) Math.sqrt(an.getDistanceX() * an.getDistanceX() + an.getDistanceY() / ScreenUtils.aspectRatio * an.getDistanceY() / ScreenUtils.aspectRatio);
+                                float canonDist1 = (float) Math.sqrt(an.getDistanceX() * an.getDistanceX() + an.getDistanceY() / ScreenUtils.getAspectRatio() * an.getDistanceY() / ScreenUtils.getAspectRatio());
 //                            float speed = distance/an.duration;
                                 an.setDistanceX(e.getNewAnimX() - e.getO().getCenterX());
                                 if (an.getDistanceX() < 0) {
@@ -83,9 +83,9 @@ public class EventMaker implements Runnable {
                                     an.setDirectionY(false);
                                 } else an.setDirectionY(true);
 //                            distance = (float)Math.sqrt(an.distanceX*an.distanceX+an.distanceY*an.distanceY);
-                                float canonDist2 = (float) Math.sqrt(an.getDistanceX() * an.getDistanceX() + an.getDistanceY() / ScreenUtils.aspectRatio * an.getDistanceY() / ScreenUtils.aspectRatio);
+                                float canonDist2 = (float) Math.sqrt(an.getDistanceX() * an.getDistanceX() + an.getDistanceY() / ScreenUtils.getAspectRatio() * an.getDistanceY() / ScreenUtils.getAspectRatio());
 //                            an.duration = Math.round(distance/speed);
-                                an.setDuration(Math.round(canonDist2 / canonDist1 * an.getDuration()));
+                                an.setDurationMillis(Math.round(canonDist2 / canonDist1 * an.getDurationMillis()));
                                 //an.duration = Math.round(an.distanceX/speedX);
                                 an.setStarted(false);
                                 float differenceX = e.getO().getCenterX() - an.getStartCenterX();
@@ -129,7 +129,7 @@ public class EventMaker implements Runnable {
 
     }
 
-    public synchronized boolean isRunning() {
+    synchronized boolean isRunning() {
         return thread.isAlive();
     }
 

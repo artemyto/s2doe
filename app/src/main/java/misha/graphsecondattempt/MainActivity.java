@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity implements Level.MyCallback 
         glSurfaceView = new GLSurfaceView(this);
         glSurfaceView.setEGLContextClientVersion(2);
         game = new Level1();
-        oGlRend = new OpenGLRenderer(this, game);
+        oGlRend = new OpenGLRenderer(this);
         glSurfaceView.setRenderer(oGlRend);
         game.start();//this);
         game.registerCallBack(this);
@@ -65,8 +65,7 @@ public class MainActivity extends AppCompatActivity implements Level.MyCallback 
     View.OnTouchListener onTouch = new View.OnTouchListener() {
         @Override
         public boolean onTouch(View v, MotionEvent event) {
-            if (game.isRunning()){// && event.getActionIndex() == 0) {//  && event.getAction() == MotionEvent.ACTION_DOWN) );
-                //st();
+            if (game.isRunning()){
                 switch (event.getAction()) {
                     case MotionEvent.ACTION_DOWN:
                         game.wasTouched(event.getX(), event.getY(), 0);
@@ -79,8 +78,6 @@ public class MainActivity extends AppCompatActivity implements Level.MyCallback 
                         game.wasTouched(event.getX(), event.getY(), 2);
                         break;
                 }
-                //int pointerIndex = event.getActionIndex();
-                //if (pointerIndex == 5) game.startLevel2();
             }
             return false;
         }
@@ -117,9 +114,5 @@ public class MainActivity extends AppCompatActivity implements Level.MyCallback 
         DisplayMetrics metrics = new DisplayMetrics();
         display.getMetrics(metrics);
         ScreenUtils.setScreenParameters(metrics.widthPixels, metrics.heightPixels);
-
-//        ScreenUtils.setScreenWidth(metrics.widthPixels);
-
-
     }
 }

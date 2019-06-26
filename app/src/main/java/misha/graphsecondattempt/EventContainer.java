@@ -4,7 +4,6 @@ package misha.graphsecondattempt;
  * Created by master22 on 4/24/2018.
  Package: ${PACKAGE_NAME}, project: TriforcePower.
  */
-//TODO условия наступления для событий! Доп., переменная level в каждом событии, ее сравниваем с переменной в гейме. Так можно делать уровни!
 class EventContainer {
     private char kindOfEvent=' ';
 
@@ -34,139 +33,139 @@ private String nameOfObject;//not use '==' !
 
     private String name;
 
-    public char getKindOfEvent() {
+    char getKindOfEvent() {
         return kindOfEvent;
     }
 
-    public void setKindOfEvent(char kindOfEvent) {
+    void setKindOfEvent(char kindOfEvent) {
         this.kindOfEvent = kindOfEvent;
     }
 
-    public void setName(String name) {
+    void setName(String name) {
         this.name = name;
     }
 
-    public String getName() {
+    String getName() {
         return name;
     }
 
-    public String getNameOfObject() {
+    String getNameOfObject() {
         return nameOfObject;
     }
 
-    public void setNameOfObject(String nameOfObject) {
+    void setNameOfObject(String nameOfObject) {
         this.nameOfObject = nameOfObject;
     }
 
-    public boolean isNeedToRebindData() {
+    boolean isNeedToRebindData() {
         return needToRebindData;
     }
 
-    public void setNeedToRebindData(boolean needToRebindData) {
-        this.needToRebindData = needToRebindData;
+    void setNeedToRebindData() {
+        this.needToRebindData = true;
     }
 
-    public int getNeedToGenerateObject() {
+    int getNeedToGenerateObject() {
         return needToGenerateObject;
     }
 
-    public void setNeedToGenerateObject(int needToGenerateObject) {
+    void setNeedToGenerateObject(int needToGenerateObject) {
         this.needToGenerateObject = needToGenerateObject;
     }
 
-    public boolean isCycled() {
+    boolean isCycled() {
         return cycled;
     }
 
-    public void setCycled(boolean cycled) {
+    void setCycled(boolean cycled) {
         this.cycled = cycled;
     }
 
-    public float getNewAnimX() {
+    float getNewAnimX() {
         return newAnimX;
     }
 
-    public void setNewAnimX(float newAnimX) {
+    void setNewAnimX(float newAnimX) {
         this.newAnimX = newAnimX;
     }
 
-    public float getNewAnimY() {
+    float getNewAnimY() {
         return newAnimY;
     }
 
-    public void setNewAnimY(float newAnimY) {
+    void setNewAnimY(float newAnimY) {
         this.newAnimY = newAnimY;
     }
 
-    public boolean isRandomizedTime() {
+    boolean isRandomizedTime() {
         return randomizedTime;
     }
 
-    public void setRandomizedTime(boolean randomizedTime) {
+    void setRandomizedTime(boolean randomizedTime) {
         this.randomizedTime = randomizedTime;
     }
 
-    public int getRandomBottom() {
+    int getRandomBottom() {
         return randomBottom;
     }
 
-    public void setRandomBottom(int randomBottom) {
+    void setRandomBottom(int randomBottom) {
         this.randomBottom = randomBottom;
     }
 
-    public int getRandomTop() {
+    int getRandomTop() {
         return randomTop;
     }
 
-    public void setRandomTop(int randomTop) {
+    void setRandomTop(int randomTop) {
         this.randomTop = randomTop;
     }
 
-    public long getWaitTime() {
+    long getWaitTime() {
         return waitTime;
     }
 
-    public void setWaitTime(long waitTime) {
+    void setWaitTime(long waitTime) {
         this.waitTime = waitTime;
     }
 
-    public boolean isPass() {
+    boolean isPass() {
         return pass;
     }
 
-    public void setPass(boolean pass) {
+    void setPass(boolean pass) {
         this.pass = pass;
     }
 
-    public boolean isTimed() {
+    boolean isTimed() {
         return timed;
     }
 
-    public void setTimed(boolean timed) {
+    void setTimed(boolean timed) {
         this.timed = timed;
     }
 
-    public long getPrevTime() {
+    long getPrevTime() {
         return prevTime;
     }
 
-    public void setPrevTime(long prevTime) {
+    void setPrevTime(long prevTime) {
         this.prevTime = prevTime;
     }
 
-    public void setA(AnimationContainer[] a) {
+    void setA(AnimationContainer[] a) {
         this.a = a;
     }
 
-    public AnimationContainer[] getA() {
+    AnimationContainer[] getA() {
         return a;
     }
 
-    public void setObject(ObjectContainer o) {
+    void setObject(ObjectContainer o) {
         this.o = o;
     }
 
-    public ObjectContainer getO() {
+    ObjectContainer getO() {
         return o;
     }
 

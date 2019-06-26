@@ -2,8 +2,6 @@ package misha.graphsecondattempt;
 
 import android.os.SystemClock;
 
-import java.util.ArrayList;
-
 //import android.widget.Toast;
 
 /**
@@ -11,7 +9,7 @@ import java.util.ArrayList;
  * Package: bg.fallingbullets, project: FallingBullets.
  */
 
-public class Level1 extends Level {
+class Level1 extends Level {
     private boolean isRunning = false;
     private EventContainer eventContainer;
     private ObjectContainer objectContainer;
@@ -22,7 +20,6 @@ public class Level1 extends Level {
     private boolean doubleTouch = false;
 
     private String touchedObjectName = "";
-    //    ObjectContainer touchedBullet;
     private long lastTime;
 
     private float clDist, clSin, clCos;
@@ -36,6 +33,9 @@ public class Level1 extends Level {
     private EventMaker eventMaker;
     private AnimationMaker animationMaker;
 
+    private final int ACTION_DOWN = 0;
+    private final int ACTION_MOVE = 1;
+    private final int ACTION_UP = 2;
 
     @Override
     void isClosely(ObjectContainer o) {
@@ -45,15 +45,12 @@ public class Level1 extends Level {
     @Override
     void start() {
         isRunning = true;
-//        SomeUtils.obj = new ArrayList<>();
         GameObjects.eraseObjects();
-//        SomeUtils.events = new ArrayList<>();
-
         objectContainer = new ObjectContainer();
-        objectContainer.setVertices(new float[]{ScreenUtils.transformCoordinate(0, 'x'), ScreenUtils.transformCoordinate(0, 'y'), 0.99f,
-                ScreenUtils.transformCoordinate(720, 'x'), ScreenUtils.transformCoordinate(0, 'y'), 0.99f,
-                ScreenUtils.transformCoordinate(720, 'x'), ScreenUtils.transformCoordinate(1280, 'y'), 0.99f,
-                ScreenUtils.transformCoordinate(0, 'x'), ScreenUtils.transformCoordinate(1280, 'y'), 0.99f});
+        objectContainer.setVertices(new float[]{ScreenUtils.transformCoordinateX(0), ScreenUtils.transformCoordinateY(0), 0.99f,
+                                                ScreenUtils.transformCoordinateX(720), ScreenUtils.transformCoordinateY(0), 0.99f,
+                                                ScreenUtils.transformCoordinateX(720), ScreenUtils.transformCoordinateY(1280), 0.99f,
+                                                ScreenUtils.transformCoordinateX(0), ScreenUtils.transformCoordinateY(1280), 0.99f});
         objectContainer.setColorR(0.50f);
         objectContainer.setColorG(0.50f);
         objectContainer.setColorB(0.50f);
@@ -64,52 +61,23 @@ public class Level1 extends Level {
         objectContainer.setInOpenglCache(true);
         objectContainer.setMinX(-1);
         objectContainer.setMinY(-1);
-//        SomeUtils.obj.add(objectContainer);
-//        GameEvents.addEvent(objectContainer);
         GameObjects.addObject(objectContainer);
-
-
-//        objectContainer = new ObjectContainer();
-////                objectContainer.setVertices(SomeUtils.getCircle(objectContainer.getCenterX(), objectContainer.getCenterY(), objectContainer.getMinX()));
-//        objectContainer.setVertices(SomeUtils.getDigit2(300, 300, 30));
-//        objectContainer.setVertices(SomeUtils.getCircle(1, 1, 1));
-//        objectContainer.setColorR(0.10f);
-//        objectContainer.setColorG(0.50f);
-//        objectContainer.setColorB(0.90f);
-//        objectContainer.setStartPoint(0);
-//        objectContainer.setNumberOfPoints(4);
-//        objectContainer.setName("background");
-//        objectContainer.setDrawed(true);
-//        objectContainer.setInOpenglCache(true);
-//        objectContainer.setMinX(-1);
-//        objectContainer.setMinY(-1);
-//
-//        SomeUtils.obj.add(objectContainer);
-
     }
 
     @Override
     void wasTouched(float x, float y, int type) {
         long curTime = SystemClock.uptimeMillis();
-//        String name = GameObjects.getTouchedBulletName(ScreenUtils.transformCoordinate(x, 'x'), ScreenUtils.transformCoordinate(y, 'y'));
         switch (type) {
-            //action_down
-            case 0:
-//            case 1:
+
+            case ACTION_DOWN:
                 if (curTime - touchTime <= 500) doubleTouch = true;
                 else doubleTouch = false;
                 touchTime = curTime;
-
-                touchedObjectName = GameObjects.getTouchedBulletName(ScreenUtils.transformCoordinate(x, 'x'), ScreenUtils.transformCoordinate(y, 'y'));
-//                objectContainer = GameObjects.getTouchedBullet(ScreenUtils.transformCoordinate(x, 'x'), ScreenUtils.transformCoordinate(y, 'y'));
-//                objectContainer = null;
-
-//                if (objectContainer == null) {
+                touchedObjectName = GameObjects.getTouchedBulletName(ScreenUtils.transformCoordinateX(x), ScreenUtils.transformCoordinateY(y));
                 if (touchedObjectName.equals("")) {
+
                     objectContainer = new ObjectContainer();
-//                objectContainer.setVertices(SomeUtils.getCircle(objectContainer.getCenterX(), objectContainer.getCenterY(), objectContainer.getMinX()));
-//                    objectContainer.setVertices(ObjectTemplates.getDigit2(300, 300, 30));
-                    objectContainer.setVertices(ObjectTemplates.getCircle(ScreenUtils.transformCoordinate(x, 'x'), ScreenUtils.transformCoordinate(y, 'y'), ScreenUtils.transformDistance(50, 'x'), 'x'));
+                    objectContainer.setVertices(ObjectTemplates.getCircle(ScreenUtils.transformCoordinateX(x), ScreenUtils.transformCoordinateY(y), ScreenUtils.transformDistanceX(50), 'x'));
                     objectContainer.setColorR(0.10f);
                     objectContainer.setColorG(0.50f);
                     objectContainer.setColorB(0.90f);
@@ -120,32 +88,26 @@ public class Level1 extends Level {
                     objectContainer.setInOpenglCache(true);
                     objectContainer.setMinX(-1);
                     objectContainer.setMinY(-1);
-                    objectContainer.setCenterX(GameObjects.evaluateCenter(objectContainer.getVertices(), 0, 'x'));
-                    objectContainer.setCenterY(GameObjects.evaluateCenter(objectContainer.getVertices(), 0, 'y'));
+                    objectContainer.setCenterX(GameObjects.evaluateCenterX(objectContainer.getVertices()));
+                    objectContainer.setCenterY(GameObjects.evaluateCenterY(objectContainer.getVertices()));
 
-//                    ArrayList<AnimationContainer> acl = new ArrayList<>();
                     animationContainer = new AnimationContainer();
                     animationContainer.setRedrawable(true);
-                    animationContainer.setDistanceX(ScreenUtils.transformDistance(100, 'x'));
-                    animationContainer.setDistanceY(ScreenUtils.transformDistance(100, 'y'));
-                    animationContainer.setDuration(2000);
-//                    objectContainer.getAnim().add(animationContainer);
+                    animationContainer.setDistanceX(ScreenUtils.transformDistanceX(100));
+                    animationContainer.setDistanceY(ScreenUtils.transformDistanceY(100));
+                    animationContainer.setDurationMillis(2000);
+
                     objectContainer.addAnimation(animationContainer);
                     objectContainer.setAnimated(true);
-//                SomeUtils.obj.add(objectContainer);
+
                     eventContainer = new EventContainer();
                     eventContainer.setRandomizedTime(false);
                     eventContainer.setWaitTime(0);
                     eventContainer.setCycled(false);
                     eventContainer.setKindOfEvent('a');
-                    eventContainer.setNeedToRebindData(true);
-                    //eventContainer.needToGenerateObject = true;
-//                eventContainer.setRandomTop(4500);
-//                eventContainer.setRandomBottom(3000);
-//                eventContainer.setNeedToGenerateObject(1);
+                    eventContainer.setNeedToRebindData();
+
                     eventContainer.setObject(objectContainer);
-//                    SomeUtils.events.add(eventContainer);
-//                    long curTime = SystemClock.uptimeMillis();
                     eventContainer.setName("bullet" + count);
                     count++;
                     GameEvents.addEvent(eventContainer);
@@ -158,11 +120,10 @@ public class Level1 extends Level {
                     touchBeginY = y;
                     touchCurX = touchLastX = touchBeginX;
                     touchCurY = touchLastY = touchBeginY;
-//                    touchedBullet = objectContainer;
                 }
                 break;
-            //action_move
-            case 1:
+
+            case ACTION_MOVE:
                 touchCurY = y;
                 touchCurX = x;
 
@@ -171,21 +132,19 @@ public class Level1 extends Level {
                     if (touchedBullet != null) {
                         float[] v = touchedBullet.getVertices();
                         for (int i = 0; i < v.length; i += 3) {
-                            v[i] = v[i] + ScreenUtils.transformDistance(touchCurX - touchLastX, 'x');
-                            v[i + 1] = v[i + 1] - ScreenUtils.transformDistance(touchCurY - touchLastY, 'y');
-//                            v[i+1] = 1;
-//                            v[i] = 1;
+                            v[i] = v[i] + ScreenUtils.transformDistanceX(touchCurX - touchLastX);
+                            v[i + 1] = v[i + 1] - ScreenUtils.transformDistanceY(touchCurY - touchLastY);
                         }
-//                        touchedBullet.setVertices(v);
-                        touchedBullet.setCenterX(GameObjects.evaluateCenter(v, 0, 'x'));
-                        touchedBullet.setCenterY(GameObjects.evaluateCenter(v, 0, 'y'));
+                        touchedBullet.setCenterX(GameObjects.evaluateCenterX(v));
+                        touchedBullet.setCenterY(GameObjects.evaluateCenterY(v));
                         GameObjects.changeObject(touchedObjectName,touchedBullet);
                         touchLastX = touchCurX;
                         touchLastY = touchCurY;
                     }
                 }
                 break;
-            case 2://action_down
+
+            case ACTION_UP:
                 touchedObjectName = "";
 
                 break;

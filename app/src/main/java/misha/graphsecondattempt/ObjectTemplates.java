@@ -2,40 +2,40 @@ package misha.graphsecondattempt;
 
 import static android.opengl.GLES20.GL_TRIANGLES;
 
-public class ObjectTemplates {
+class ObjectTemplates {
     private ObjectTemplates() {
 
     }
 
     static float[] getDigit0(int x, int y, int step) {
         float[] rez = new float[]{
-                ScreenUtils.transformCoordinate(x, 'x'), ScreenUtils.transformCoordinate(y - step, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x, 'x'), ScreenUtils.transformCoordinate(y - step * 6, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step, 'x'), ScreenUtils.transformCoordinate(y - step * 6, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step, 'x'), ScreenUtils.transformCoordinate(y - step * 6, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x, 'x'), ScreenUtils.transformCoordinate(y - step, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step, 'x'), ScreenUtils.transformCoordinate(y - step, 'y'), 0.98f,
+                ScreenUtils.transformCoordinateX(x), ScreenUtils.transformCoordinateY(y - step), 0.98f,
+                ScreenUtils.transformCoordinateX(x), ScreenUtils.transformCoordinateY(y - step * 6), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step * 6), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step * 6), 0.98f,
+                ScreenUtils.transformCoordinateX(x), ScreenUtils.transformCoordinateY(y - step), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step), 0.98f,
 
-                ScreenUtils.transformCoordinate(x - step, 'x'), ScreenUtils.transformCoordinate(y - step, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 3, 'x'), ScreenUtils.transformCoordinate(y - step, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step, 'x'), ScreenUtils.transformCoordinate(y, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step, 'x'), ScreenUtils.transformCoordinate(y, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 3, 'x'), ScreenUtils.transformCoordinate(y - step, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 3, 'x'), ScreenUtils.transformCoordinate(y, 'y'), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y), 0.98f,
 
-                ScreenUtils.transformCoordinate(x - step * 3, 'x'), ScreenUtils.transformCoordinate(y - step, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 3, 'x'), ScreenUtils.transformCoordinate(y - step * 6, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 4, 'x'), ScreenUtils.transformCoordinate(y - step * 6, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 4, 'x'), ScreenUtils.transformCoordinate(y - step * 6, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 3, 'x'), ScreenUtils.transformCoordinate(y - step, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 4, 'x'), ScreenUtils.transformCoordinate(y - step, 'y'), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step * 6), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 4), ScreenUtils.transformCoordinateY(y - step * 6), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 4), ScreenUtils.transformCoordinateY(y - step * 6), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 4), ScreenUtils.transformCoordinateY(y - step), 0.98f,
 
-                ScreenUtils.transformCoordinate(x - step * 3, 'x'), ScreenUtils.transformCoordinate(y - step * 6, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 3, 'x'), ScreenUtils.transformCoordinate(y - step * 7, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step, 'x'), ScreenUtils.transformCoordinate(y - step * 7, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step, 'x'), ScreenUtils.transformCoordinate(y - step * 7, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 3, 'x'), ScreenUtils.transformCoordinate(y - step * 6, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step, 'x'), ScreenUtils.transformCoordinate(y - step * 6, 'y'), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step * 6), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step * 7), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step * 7), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step * 7), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step * 6), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step * 6), 0.98f,
 
 
         };
@@ -44,26 +44,26 @@ public class ObjectTemplates {
 
     static float[] getDigit1(int x, int y, int step) {
         float[] rez = new float[]{
-                ScreenUtils.transformCoordinate(x, 'x'), ScreenUtils.transformCoordinate(y, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x, 'x'), ScreenUtils.transformCoordinate(y - step, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 3, 'x'), ScreenUtils.transformCoordinate(y, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x, 'x'), ScreenUtils.transformCoordinate(y - step, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 3, 'x'), ScreenUtils.transformCoordinate(y, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 3, 'x'), ScreenUtils.transformCoordinate(y - step, 'y'), 0.98f,
+                ScreenUtils.transformCoordinateX(x), ScreenUtils.transformCoordinateY(y), 0.98f,
+                ScreenUtils.transformCoordinateX(x), ScreenUtils.transformCoordinateY(y - step), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y), 0.98f,
+                ScreenUtils.transformCoordinateX(x), ScreenUtils.transformCoordinateY(y - step), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step), 0.98f,
 
-                ScreenUtils.transformCoordinate(x - step * 2, 'x'), ScreenUtils.transformCoordinate(y - step, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step, 'x'), ScreenUtils.transformCoordinate(y - step, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step, 'x'), ScreenUtils.transformCoordinate(y - step * 7, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step, 'x'), ScreenUtils.transformCoordinate(y - step * 7, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 2, 'x'), ScreenUtils.transformCoordinate(y - step, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 2, 'x'), ScreenUtils.transformCoordinate(y - step * 7, 'y'), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 2), ScreenUtils.transformCoordinateY(y - step), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step * 7), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step * 7), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 2), ScreenUtils.transformCoordinateY(y - step), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 2), ScreenUtils.transformCoordinateY(y - step * 7), 0.98f,
 
-                ScreenUtils.transformCoordinate(x - step * 2, 'x'), ScreenUtils.transformCoordinate(y - step * 6, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 2, 'x'), ScreenUtils.transformCoordinate(y - step * 5, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 3, 'x'), ScreenUtils.transformCoordinate(y - step * 5, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 3, 'x'), ScreenUtils.transformCoordinate(y - step * 5, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 2, 'x'), ScreenUtils.transformCoordinate(y - step * 6, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 3, 'x'), ScreenUtils.transformCoordinate(y - step * 6, 'y'), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 2), ScreenUtils.transformCoordinateY(y - step * 6), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 2), ScreenUtils.transformCoordinateY(y - step * 5), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step * 5), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step * 5), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 2), ScreenUtils.transformCoordinateY(y - step * 6), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step * 6), 0.98f,
 
         };
 
@@ -72,61 +72,61 @@ public class ObjectTemplates {
 
     static float[] getDigit2(int x, int y, int step) {
         float[] rez = new float[]{
-                ScreenUtils.transformCoordinate(x, 'x'), ScreenUtils.transformCoordinate(y, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x, 'x'), ScreenUtils.transformCoordinate(y - step * 2, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step, 'x'), ScreenUtils.transformCoordinate(y - step * 2, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step, 'x'), ScreenUtils.transformCoordinate(y - step * 2, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x, 'x'), ScreenUtils.transformCoordinate(y, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step, 'x'), ScreenUtils.transformCoordinate(y, 'y'), 0.98f,
+                ScreenUtils.transformCoordinateX(x), ScreenUtils.transformCoordinateY(y), 0.98f,
+                ScreenUtils.transformCoordinateX(x), ScreenUtils.transformCoordinateY(y - step * 2), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step * 2), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step * 2), 0.98f,
+                ScreenUtils.transformCoordinateX(x), ScreenUtils.transformCoordinateY(y), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y), 0.98f,
 
-                ScreenUtils.transformCoordinate(x - step, 'x'), ScreenUtils.transformCoordinate(y, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step, 'x'), ScreenUtils.transformCoordinate(y - step, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 4, 'x'), ScreenUtils.transformCoordinate(y - step, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 4, 'x'), ScreenUtils.transformCoordinate(y - step, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step, 'x'), ScreenUtils.transformCoordinate(y, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 4, 'x'), ScreenUtils.transformCoordinate(y, 'y'), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 4), ScreenUtils.transformCoordinateY(y - step), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 4), ScreenUtils.transformCoordinateY(y - step), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 4), ScreenUtils.transformCoordinateY(y), 0.98f,
 
-                ScreenUtils.transformCoordinate(x - step * 4, 'x'), ScreenUtils.transformCoordinate(y - step, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 4, 'x'), ScreenUtils.transformCoordinate(y - step * 2, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 3, 'x'), ScreenUtils.transformCoordinate(y - step, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 4, 'x'), ScreenUtils.transformCoordinate(y - step * 2, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 3, 'x'), ScreenUtils.transformCoordinate(y - step, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 3, 'x'), ScreenUtils.transformCoordinate(y - step * 2, 'y'), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 4), ScreenUtils.transformCoordinateY(y - step), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 4), ScreenUtils.transformCoordinateY(y - step * 2), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 4), ScreenUtils.transformCoordinateY(y - step * 2), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step * 2), 0.98f,
 
-                ScreenUtils.transformCoordinate(x - step * 3, 'x'), ScreenUtils.transformCoordinate(y - step * 2, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 3, 'x'), ScreenUtils.transformCoordinate(y - step * 3, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 2, 'x'), ScreenUtils.transformCoordinate(y - step * 2, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 3, 'x'), ScreenUtils.transformCoordinate(y - step * 3, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 2, 'x'), ScreenUtils.transformCoordinate(y - step * 2, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 2, 'x'), ScreenUtils.transformCoordinate(y - step * 3, 'y'), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step * 2), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step * 3), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 2), ScreenUtils.transformCoordinateY(y - step * 2), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step * 3), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 2), ScreenUtils.transformCoordinateY(y - step * 2), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 2), ScreenUtils.transformCoordinateY(y - step * 3), 0.98f,
 
-                ScreenUtils.transformCoordinate(x - step * 2, 'x'), ScreenUtils.transformCoordinate(y - step * 3, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 2, 'x'), ScreenUtils.transformCoordinate(y - step * 4, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step, 'x'), ScreenUtils.transformCoordinate(y - step * 3, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 2, 'x'), ScreenUtils.transformCoordinate(y - step * 4, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step, 'x'), ScreenUtils.transformCoordinate(y - step * 3, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step, 'x'), ScreenUtils.transformCoordinate(y - step * 4, 'y'), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 2), ScreenUtils.transformCoordinateY(y - step * 3), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 2), ScreenUtils.transformCoordinateY(y - step * 4), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step * 3), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 2), ScreenUtils.transformCoordinateY(y - step * 4), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step * 3), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step * 4), 0.98f,
 
-                ScreenUtils.transformCoordinate(x - step, 'x'), ScreenUtils.transformCoordinate(y - step * 4, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x, 'x'), ScreenUtils.transformCoordinate(y - step * 4, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step, 'x'), ScreenUtils.transformCoordinate(y - step * 6, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x, 'x'), ScreenUtils.transformCoordinate(y - step * 4, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step, 'x'), ScreenUtils.transformCoordinate(y - step * 6, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x, 'x'), ScreenUtils.transformCoordinate(y - step * 6, 'y'), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step * 4), 0.98f,
+                ScreenUtils.transformCoordinateX(x), ScreenUtils.transformCoordinateY(y - step * 4), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step * 6), 0.98f,
+                ScreenUtils.transformCoordinateX(x), ScreenUtils.transformCoordinateY(y - step * 4), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step * 6), 0.98f,
+                ScreenUtils.transformCoordinateX(x), ScreenUtils.transformCoordinateY(y - step * 6), 0.98f,
 
-                ScreenUtils.transformCoordinate(x - step, 'x'), ScreenUtils.transformCoordinate(y - step * 6, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step, 'x'), ScreenUtils.transformCoordinate(y - step * 7, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 3, 'x'), ScreenUtils.transformCoordinate(y - step * 6, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step, 'x'), ScreenUtils.transformCoordinate(y - step * 7, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 3, 'x'), ScreenUtils.transformCoordinate(y - step * 6, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 3, 'x'), ScreenUtils.transformCoordinate(y - step * 7, 'y'), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step * 6), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step * 7), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step * 6), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step * 7), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step * 6), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step * 7), 0.98f,
 
-                ScreenUtils.transformCoordinate(x - step * 3, 'x'), ScreenUtils.transformCoordinate(y - step * 6, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 4, 'x'), ScreenUtils.transformCoordinate(y - step * 6, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 3, 'x'), ScreenUtils.transformCoordinate(y - step * 4, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 4, 'x'), ScreenUtils.transformCoordinate(y - step * 6, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 3, 'x'), ScreenUtils.transformCoordinate(y - step * 4, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 4, 'x'), ScreenUtils.transformCoordinate(y - step * 4, 'y'), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step * 6), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 4), ScreenUtils.transformCoordinateY(y - step * 6), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step * 4), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 4), ScreenUtils.transformCoordinateY(y - step * 6), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step * 4), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 4), ScreenUtils.transformCoordinateY(y - step * 4), 0.98f,
 
         };
         return rez;
@@ -134,54 +134,54 @@ public class ObjectTemplates {
 
     static float[] getDigit3(int x, int y, int step) {
         float[] rez = new float[]{
-                ScreenUtils.transformCoordinate(x - step, 'x'), ScreenUtils.transformCoordinate(y - step, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 3, 'x'), ScreenUtils.transformCoordinate(y - step, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step, 'x'), ScreenUtils.transformCoordinate(y, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step, 'x'), ScreenUtils.transformCoordinate(y, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 3, 'x'), ScreenUtils.transformCoordinate(y - step, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 3, 'x'), ScreenUtils.transformCoordinate(y, 'y'), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y), 0.98f,
 
-                ScreenUtils.transformCoordinate(x - step * 3, 'x'), ScreenUtils.transformCoordinate(y - step * 6, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 3, 'x'), ScreenUtils.transformCoordinate(y - step * 7, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step, 'x'), ScreenUtils.transformCoordinate(y - step * 7, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step, 'x'), ScreenUtils.transformCoordinate(y - step * 7, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 3, 'x'), ScreenUtils.transformCoordinate(y - step * 6, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step, 'x'), ScreenUtils.transformCoordinate(y - step * 6, 'y'), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step * 6), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step * 7), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step * 7), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step * 7), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step * 6), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step * 6), 0.98f,
 
-                ScreenUtils.transformCoordinate(x - step * 3, 'x'), ScreenUtils.transformCoordinate(y - step, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 3, 'x'), ScreenUtils.transformCoordinate(y - step * 2, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 4, 'x'), ScreenUtils.transformCoordinate(y - step * 2, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 4, 'x'), ScreenUtils.transformCoordinate(y - step * 2, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 3, 'x'), ScreenUtils.transformCoordinate(y - step, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 4, 'x'), ScreenUtils.transformCoordinate(y - step, 'y'), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step * 2), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 4), ScreenUtils.transformCoordinateY(y - step * 2), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 4), ScreenUtils.transformCoordinateY(y - step * 2), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 4), ScreenUtils.transformCoordinateY(y - step), 0.98f,
 
-                ScreenUtils.transformCoordinate(x - step, 'x'), ScreenUtils.transformCoordinate(y - step * 4, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x, 'x'), ScreenUtils.transformCoordinate(y - step * 4, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step, 'x'), ScreenUtils.transformCoordinate(y - step * 6, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x, 'x'), ScreenUtils.transformCoordinate(y - step * 4, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step, 'x'), ScreenUtils.transformCoordinate(y - step * 6, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x, 'x'), ScreenUtils.transformCoordinate(y - step * 6, 'y'), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step * 4), 0.98f,
+                ScreenUtils.transformCoordinateX(x), ScreenUtils.transformCoordinateY(y - step * 4), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step * 6), 0.98f,
+                ScreenUtils.transformCoordinateX(x), ScreenUtils.transformCoordinateY(y - step * 4), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step * 6), 0.98f,
+                ScreenUtils.transformCoordinateX(x), ScreenUtils.transformCoordinateY(y - step * 6), 0.98f,
 
-                ScreenUtils.transformCoordinate(x - step, 'x'), ScreenUtils.transformCoordinate(y - step, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x, 'x'), ScreenUtils.transformCoordinate(y - step, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step, 'x'), ScreenUtils.transformCoordinate(y - step * 3, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x, 'x'), ScreenUtils.transformCoordinate(y - step, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step, 'x'), ScreenUtils.transformCoordinate(y - step * 3, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x, 'x'), ScreenUtils.transformCoordinate(y - step * 3, 'y'), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step), 0.98f,
+                ScreenUtils.transformCoordinateX(x), ScreenUtils.transformCoordinateY(y - step), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step * 3), 0.98f,
+                ScreenUtils.transformCoordinateX(x), ScreenUtils.transformCoordinateY(y - step), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step * 3), 0.98f,
+                ScreenUtils.transformCoordinateX(x), ScreenUtils.transformCoordinateY(y - step * 3), 0.98f,
 
-                ScreenUtils.transformCoordinate(x - step * 2, 'x'), ScreenUtils.transformCoordinate(y - step * 3, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 2, 'x'), ScreenUtils.transformCoordinate(y - step * 4, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step, 'x'), ScreenUtils.transformCoordinate(y - step * 4, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step, 'x'), ScreenUtils.transformCoordinate(y - step * 4, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 2, 'x'), ScreenUtils.transformCoordinate(y - step * 3, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step, 'x'), ScreenUtils.transformCoordinate(y - step * 3, 'y'), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 2), ScreenUtils.transformCoordinateY(y - step * 3), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 2), ScreenUtils.transformCoordinateY(y - step * 4), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step * 4), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step * 4), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 2), ScreenUtils.transformCoordinateY(y - step * 3), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step * 3), 0.98f,
 
-                ScreenUtils.transformCoordinate(x - step * 3, 'x'), ScreenUtils.transformCoordinate(y - step * 6, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 4, 'x'), ScreenUtils.transformCoordinate(y - step * 6, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 3, 'x'), ScreenUtils.transformCoordinate(y - step * 5, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 4, 'x'), ScreenUtils.transformCoordinate(y - step * 6, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 3, 'x'), ScreenUtils.transformCoordinate(y - step * 5, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 4, 'x'), ScreenUtils.transformCoordinate(y - step * 5, 'y'), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step * 6), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 4), ScreenUtils.transformCoordinateY(y - step * 6), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step * 5), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 4), ScreenUtils.transformCoordinateY(y - step * 6), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step * 5), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 4), ScreenUtils.transformCoordinateY(y - step * 5), 0.98f,
 
         };
         return rez;
@@ -189,249 +189,249 @@ public class ObjectTemplates {
 
     static float[] getDigit4(int x, int y, int step) {
         float[] rez = new float[]{
-                ScreenUtils.transformCoordinate(x, 'x'), ScreenUtils.transformCoordinate(y, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x, 'x'), ScreenUtils.transformCoordinate(y - step, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 3, 'x'), ScreenUtils.transformCoordinate(y, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x, 'x'), ScreenUtils.transformCoordinate(y - step, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 3, 'x'), ScreenUtils.transformCoordinate(y, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 3, 'x'), ScreenUtils.transformCoordinate(y - step, 'y'), 0.98f,
+                ScreenUtils.transformCoordinateX(x), ScreenUtils.transformCoordinateY(y), 0.98f,
+                ScreenUtils.transformCoordinateX(x), ScreenUtils.transformCoordinateY(y - step), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y), 0.98f,
+                ScreenUtils.transformCoordinateX(x), ScreenUtils.transformCoordinateY(y - step), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step), 0.98f,
 
-                ScreenUtils.transformCoordinate(x - step * 2, 'x'), ScreenUtils.transformCoordinate(y - step, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step, 'x'), ScreenUtils.transformCoordinate(y - step, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step, 'x'), ScreenUtils.transformCoordinate(y - step * 7, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step, 'x'), ScreenUtils.transformCoordinate(y - step * 7, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 2, 'x'), ScreenUtils.transformCoordinate(y - step, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 2, 'x'), ScreenUtils.transformCoordinate(y - step * 7, 'y'), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 2), ScreenUtils.transformCoordinateY(y - step), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step * 7), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step * 7), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 2), ScreenUtils.transformCoordinateY(y - step), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 2), ScreenUtils.transformCoordinateY(y - step * 7), 0.98f,
 
-                ScreenUtils.transformCoordinate(x - step * 2, 'x'), ScreenUtils.transformCoordinate(y - step * 6, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 2, 'x'), ScreenUtils.transformCoordinate(y - step * 5, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 3, 'x'), ScreenUtils.transformCoordinate(y - step * 5, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 3, 'x'), ScreenUtils.transformCoordinate(y - step * 5, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 2, 'x'), ScreenUtils.transformCoordinate(y - step * 6, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 3, 'x'), ScreenUtils.transformCoordinate(y - step * 6, 'y'), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 2), ScreenUtils.transformCoordinateY(y - step * 6), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 2), ScreenUtils.transformCoordinateY(y - step * 5), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step * 5), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step * 5), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 2), ScreenUtils.transformCoordinateY(y - step * 6), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step * 6), 0.98f,
 
-                ScreenUtils.transformCoordinate(x - step * 3, 'x'), ScreenUtils.transformCoordinate(y - step * 5, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 4, 'x'), ScreenUtils.transformCoordinate(y - step * 5, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 3, 'x'), ScreenUtils.transformCoordinate(y - step * 4, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 4, 'x'), ScreenUtils.transformCoordinate(y - step * 5, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 3, 'x'), ScreenUtils.transformCoordinate(y - step * 4, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 4, 'x'), ScreenUtils.transformCoordinate(y - step * 4, 'y'), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step * 5), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 4), ScreenUtils.transformCoordinateY(y - step * 5), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step * 4), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 4), ScreenUtils.transformCoordinateY(y - step * 5), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step * 4), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 4), ScreenUtils.transformCoordinateY(y - step * 4), 0.98f,
 
-                ScreenUtils.transformCoordinate(x - step * 4, 'x'), ScreenUtils.transformCoordinate(y - step * 4, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 5, 'x'), ScreenUtils.transformCoordinate(y - step * 4, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 4, 'x'), ScreenUtils.transformCoordinate(y - step * 3, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 5, 'x'), ScreenUtils.transformCoordinate(y - step * 4, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 4, 'x'), ScreenUtils.transformCoordinate(y - step * 3, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 5, 'x'), ScreenUtils.transformCoordinate(y - step * 3, 'y'), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 4), ScreenUtils.transformCoordinateY(y - step * 4), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 5), ScreenUtils.transformCoordinateY(y - step * 4), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 4), ScreenUtils.transformCoordinateY(y - step * 3), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 5), ScreenUtils.transformCoordinateY(y - step * 4), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 4), ScreenUtils.transformCoordinateY(y - step * 3), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 5), ScreenUtils.transformCoordinateY(y - step * 3), 0.98f,
 
-                ScreenUtils.transformCoordinate(x, 'x'), ScreenUtils.transformCoordinate(y - step * 3, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 5, 'x'), ScreenUtils.transformCoordinate(y - step * 3, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x, 'x'), ScreenUtils.transformCoordinate(y - step * 2, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 5, 'x'), ScreenUtils.transformCoordinate(y - step * 3, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x, 'x'), ScreenUtils.transformCoordinate(y - step * 2, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 5, 'x'), ScreenUtils.transformCoordinate(y - step * 2, 'y'), 0.98f,
+                ScreenUtils.transformCoordinateX(x), ScreenUtils.transformCoordinateY(y - step * 3), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 5), ScreenUtils.transformCoordinateY(y - step * 3), 0.98f,
+                ScreenUtils.transformCoordinateX(x), ScreenUtils.transformCoordinateY(y - step * 2), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 5), ScreenUtils.transformCoordinateY(y - step * 3), 0.98f,
+                ScreenUtils.transformCoordinateX(x), ScreenUtils.transformCoordinateY(y - step * 2), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 5), ScreenUtils.transformCoordinateY(y - step * 2), 0.98f,
         };
         return rez;
     }
 
     static float[] getDigit5(int x, int y, int step) {
         float[] rez = new float[]{
-                ScreenUtils.transformCoordinate(x - step, 'x'), ScreenUtils.transformCoordinate(y - step, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 4, 'x'), ScreenUtils.transformCoordinate(y - step, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step, 'x'), ScreenUtils.transformCoordinate(y, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step, 'x'), ScreenUtils.transformCoordinate(y, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 4, 'x'), ScreenUtils.transformCoordinate(y - step, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 4, 'x'), ScreenUtils.transformCoordinate(y, 'y'), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 4), ScreenUtils.transformCoordinateY(y - step), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 4), ScreenUtils.transformCoordinateY(y - step), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 4), ScreenUtils.transformCoordinateY(y), 0.98f,
 
-                ScreenUtils.transformCoordinate(x - step * 4, 'x'), ScreenUtils.transformCoordinate(y - step * 6, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 4, 'x'), ScreenUtils.transformCoordinate(y - step * 7, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x, 'x'), ScreenUtils.transformCoordinate(y - step * 7, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x, 'x'), ScreenUtils.transformCoordinate(y - step * 7, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 4, 'x'), ScreenUtils.transformCoordinate(y - step * 6, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x, 'x'), ScreenUtils.transformCoordinate(y - step * 6, 'y'), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 4), ScreenUtils.transformCoordinateY(y - step * 6), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 4), ScreenUtils.transformCoordinateY(y - step * 7), 0.98f,
+                ScreenUtils.transformCoordinateX(x), ScreenUtils.transformCoordinateY(y - step * 7), 0.98f,
+                ScreenUtils.transformCoordinateX(x), ScreenUtils.transformCoordinateY(y - step * 7), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 4), ScreenUtils.transformCoordinateY(y - step * 6), 0.98f,
+                ScreenUtils.transformCoordinateX(x), ScreenUtils.transformCoordinateY(y - step * 6), 0.98f,
 
-                ScreenUtils.transformCoordinate(x, 'x'), ScreenUtils.transformCoordinate(y - step, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x, 'x'), ScreenUtils.transformCoordinate(y - step * 4, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step, 'x'), ScreenUtils.transformCoordinate(y - step * 4, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step, 'x'), ScreenUtils.transformCoordinate(y - step * 4, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x, 'x'), ScreenUtils.transformCoordinate(y - step, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step, 'x'), ScreenUtils.transformCoordinate(y - step, 'y'), 0.98f,
+                ScreenUtils.transformCoordinateX(x), ScreenUtils.transformCoordinateY(y - step), 0.98f,
+                ScreenUtils.transformCoordinateX(x), ScreenUtils.transformCoordinateY(y - step * 4), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step * 4), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step * 4), 0.98f,
+                ScreenUtils.transformCoordinateX(x), ScreenUtils.transformCoordinateY(y - step), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step), 0.98f,
 
-                ScreenUtils.transformCoordinate(x - step * 3, 'x'), ScreenUtils.transformCoordinate(y - step, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 3, 'x'), ScreenUtils.transformCoordinate(y - step * 2, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 4, 'x'), ScreenUtils.transformCoordinate(y - step * 2, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 4, 'x'), ScreenUtils.transformCoordinate(y - step * 2, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 3, 'x'), ScreenUtils.transformCoordinate(y - step, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 4, 'x'), ScreenUtils.transformCoordinate(y - step, 'y'), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step * 2), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 4), ScreenUtils.transformCoordinateY(y - step * 2), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 4), ScreenUtils.transformCoordinateY(y - step * 2), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 4), ScreenUtils.transformCoordinateY(y - step), 0.98f,
 
-                ScreenUtils.transformCoordinate(x - step * 3, 'x'), ScreenUtils.transformCoordinate(y - step * 4, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 3, 'x'), ScreenUtils.transformCoordinate(y - step * 6, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 4, 'x'), ScreenUtils.transformCoordinate(y - step * 6, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 4, 'x'), ScreenUtils.transformCoordinate(y - step * 6, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 3, 'x'), ScreenUtils.transformCoordinate(y - step * 4, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 4, 'x'), ScreenUtils.transformCoordinate(y - step * 4, 'y'), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step * 4), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step * 6), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 4), ScreenUtils.transformCoordinateY(y - step * 6), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 4), ScreenUtils.transformCoordinateY(y - step * 6), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step * 4), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 4), ScreenUtils.transformCoordinateY(y - step * 4), 0.98f,
 
-                ScreenUtils.transformCoordinate(x - step * 3, 'x'), ScreenUtils.transformCoordinate(y - step * 4, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 3, 'x'), ScreenUtils.transformCoordinate(y - step * 5, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step, 'x'), ScreenUtils.transformCoordinate(y - step * 5, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step, 'x'), ScreenUtils.transformCoordinate(y - step * 5, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 3, 'x'), ScreenUtils.transformCoordinate(y - step * 4, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step, 'x'), ScreenUtils.transformCoordinate(y - step * 4, 'y'), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step * 4), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step * 5), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step * 5), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step * 5), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step * 4), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step * 4), 0.98f,
         };
         return rez;
     }
 
     static float[] getDigit6(int x, int y, int step) {
         float[] rez = new float[]{
-                ScreenUtils.transformCoordinate(x - step, 'x'), ScreenUtils.transformCoordinate(y - step, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 3, 'x'), ScreenUtils.transformCoordinate(y - step, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step, 'x'), ScreenUtils.transformCoordinate(y, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step, 'x'), ScreenUtils.transformCoordinate(y, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 3, 'x'), ScreenUtils.transformCoordinate(y - step, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 3, 'x'), ScreenUtils.transformCoordinate(y, 'y'), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y), 0.98f,
 
-                ScreenUtils.transformCoordinate(x - step * 3, 'x'), ScreenUtils.transformCoordinate(y - step * 6, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 3, 'x'), ScreenUtils.transformCoordinate(y - step * 7, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step, 'x'), ScreenUtils.transformCoordinate(y - step * 7, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step, 'x'), ScreenUtils.transformCoordinate(y - step * 7, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 3, 'x'), ScreenUtils.transformCoordinate(y - step * 6, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step, 'x'), ScreenUtils.transformCoordinate(y - step * 6, 'y'), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step * 6), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step * 7), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step * 7), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step * 7), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step * 6), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step * 6), 0.98f,
 
-                ScreenUtils.transformCoordinate(x - step * 3, 'x'), ScreenUtils.transformCoordinate(y - step, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 3, 'x'), ScreenUtils.transformCoordinate(y - step * 6, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 4, 'x'), ScreenUtils.transformCoordinate(y - step * 6, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 4, 'x'), ScreenUtils.transformCoordinate(y - step * 6, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 3, 'x'), ScreenUtils.transformCoordinate(y - step, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 4, 'x'), ScreenUtils.transformCoordinate(y - step, 'y'), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step * 6), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 4), ScreenUtils.transformCoordinateY(y - step * 6), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 4), ScreenUtils.transformCoordinateY(y - step * 6), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 4), ScreenUtils.transformCoordinateY(y - step), 0.98f,
 
-                ScreenUtils.transformCoordinate(x - step, 'x'), ScreenUtils.transformCoordinate(y - step * 5, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x, 'x'), ScreenUtils.transformCoordinate(y - step * 5, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step, 'x'), ScreenUtils.transformCoordinate(y - step * 6, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x, 'x'), ScreenUtils.transformCoordinate(y - step * 5, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step, 'x'), ScreenUtils.transformCoordinate(y - step * 6, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x, 'x'), ScreenUtils.transformCoordinate(y - step * 6, 'y'), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step * 5), 0.98f,
+                ScreenUtils.transformCoordinateX(x), ScreenUtils.transformCoordinateY(y - step * 5), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step * 6), 0.98f,
+                ScreenUtils.transformCoordinateX(x), ScreenUtils.transformCoordinateY(y - step * 5), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step * 6), 0.98f,
+                ScreenUtils.transformCoordinateX(x), ScreenUtils.transformCoordinateY(y - step * 6), 0.98f,
 
-                ScreenUtils.transformCoordinate(x - step, 'x'), ScreenUtils.transformCoordinate(y - step, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x, 'x'), ScreenUtils.transformCoordinate(y - step, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step, 'x'), ScreenUtils.transformCoordinate(y - step * 3, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x, 'x'), ScreenUtils.transformCoordinate(y - step, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step, 'x'), ScreenUtils.transformCoordinate(y - step * 3, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x, 'x'), ScreenUtils.transformCoordinate(y - step * 3, 'y'), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step), 0.98f,
+                ScreenUtils.transformCoordinateX(x), ScreenUtils.transformCoordinateY(y - step), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step * 3), 0.98f,
+                ScreenUtils.transformCoordinateX(x), ScreenUtils.transformCoordinateY(y - step), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step * 3), 0.98f,
+                ScreenUtils.transformCoordinateX(x), ScreenUtils.transformCoordinateY(y - step * 3), 0.98f,
 
-                ScreenUtils.transformCoordinate(x - step * 3, 'x'), ScreenUtils.transformCoordinate(y - step * 3, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 3, 'x'), ScreenUtils.transformCoordinate(y - step * 4, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step, 'x'), ScreenUtils.transformCoordinate(y - step * 4, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step, 'x'), ScreenUtils.transformCoordinate(y - step * 4, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 3, 'x'), ScreenUtils.transformCoordinate(y - step * 3, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step, 'x'), ScreenUtils.transformCoordinate(y - step * 3, 'y'), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step * 3), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step * 4), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step * 4), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step * 4), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step * 3), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step * 3), 0.98f,
         };
         return rez;
     }
 
     static float[] getDigit7(int x, int y, int step) {
         float[] rez = new float[]{
-                ScreenUtils.transformCoordinate(x - step * 2, 'x'), ScreenUtils.transformCoordinate(y - step, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 4, 'x'), ScreenUtils.transformCoordinate(y - step, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 2, 'x'), ScreenUtils.transformCoordinate(y, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 2, 'x'), ScreenUtils.transformCoordinate(y, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 4, 'x'), ScreenUtils.transformCoordinate(y - step, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 4, 'x'), ScreenUtils.transformCoordinate(y, 'y'), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 2), ScreenUtils.transformCoordinateY(y - step), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 4), ScreenUtils.transformCoordinateY(y - step), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 2), ScreenUtils.transformCoordinateY(y), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 2), ScreenUtils.transformCoordinateY(y), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 4), ScreenUtils.transformCoordinateY(y - step), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 4), ScreenUtils.transformCoordinateY(y), 0.98f,
 
-                ScreenUtils.transformCoordinate(x - step * 4, 'x'), ScreenUtils.transformCoordinate(y - step * 6, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 4, 'x'), ScreenUtils.transformCoordinate(y - step * 7, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x, 'x'), ScreenUtils.transformCoordinate(y - step * 7, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x, 'x'), ScreenUtils.transformCoordinate(y - step * 7, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 4, 'x'), ScreenUtils.transformCoordinate(y - step * 6, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x, 'x'), ScreenUtils.transformCoordinate(y - step * 6, 'y'), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 4), ScreenUtils.transformCoordinateY(y - step * 6), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 4), ScreenUtils.transformCoordinateY(y - step * 7), 0.98f,
+                ScreenUtils.transformCoordinateX(x), ScreenUtils.transformCoordinateY(y - step * 7), 0.98f,
+                ScreenUtils.transformCoordinateX(x), ScreenUtils.transformCoordinateY(y - step * 7), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 4), ScreenUtils.transformCoordinateY(y - step * 6), 0.98f,
+                ScreenUtils.transformCoordinateX(x), ScreenUtils.transformCoordinateY(y - step * 6), 0.98f,
 
-                ScreenUtils.transformCoordinate(x - step, 'x'), ScreenUtils.transformCoordinate(y - step * 5, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x, 'x'), ScreenUtils.transformCoordinate(y - step * 5, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step, 'x'), ScreenUtils.transformCoordinate(y - step * 6, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x, 'x'), ScreenUtils.transformCoordinate(y - step * 5, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step, 'x'), ScreenUtils.transformCoordinate(y - step * 6, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x, 'x'), ScreenUtils.transformCoordinate(y - step * 6, 'y'), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step * 5), 0.98f,
+                ScreenUtils.transformCoordinateX(x), ScreenUtils.transformCoordinateY(y - step * 5), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step * 6), 0.98f,
+                ScreenUtils.transformCoordinateX(x), ScreenUtils.transformCoordinateY(y - step * 5), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step * 6), 0.98f,
+                ScreenUtils.transformCoordinateX(x), ScreenUtils.transformCoordinateY(y - step * 6), 0.98f,
 
-                ScreenUtils.transformCoordinate(x - step * 4, 'x'), ScreenUtils.transformCoordinate(y - step, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 3, 'x'), ScreenUtils.transformCoordinate(y - step, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 4, 'x'), ScreenUtils.transformCoordinate(y - step * 3, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 3, 'x'), ScreenUtils.transformCoordinate(y - step, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 4, 'x'), ScreenUtils.transformCoordinate(y - step * 3, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 3, 'x'), ScreenUtils.transformCoordinate(y - step * 3, 'y'), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 4), ScreenUtils.transformCoordinateY(y - step), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 4), ScreenUtils.transformCoordinateY(y - step * 3), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 4), ScreenUtils.transformCoordinateY(y - step * 3), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step * 3), 0.98f,
 
-                ScreenUtils.transformCoordinate(x - step * 3, 'x'), ScreenUtils.transformCoordinate(y - step * 3, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 3, 'x'), ScreenUtils.transformCoordinate(y - step * 4, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 2, 'x'), ScreenUtils.transformCoordinate(y - step * 4, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 2, 'x'), ScreenUtils.transformCoordinate(y - step * 4, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 3, 'x'), ScreenUtils.transformCoordinate(y - step * 3, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 2, 'x'), ScreenUtils.transformCoordinate(y - step * 3, 'y'), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step * 3), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step * 4), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 2), ScreenUtils.transformCoordinateY(y - step * 4), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 2), ScreenUtils.transformCoordinateY(y - step * 4), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step * 3), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 2), ScreenUtils.transformCoordinateY(y - step * 3), 0.98f,
 
-                ScreenUtils.transformCoordinate(x - step * 2, 'x'), ScreenUtils.transformCoordinate(y - step * 4, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 2, 'x'), ScreenUtils.transformCoordinate(y - step * 5, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step, 'x'), ScreenUtils.transformCoordinate(y - step * 5, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step, 'x'), ScreenUtils.transformCoordinate(y - step * 5, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 2, 'x'), ScreenUtils.transformCoordinate(y - step * 4, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step, 'x'), ScreenUtils.transformCoordinate(y - step * 4, 'y'), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 2), ScreenUtils.transformCoordinateY(y - step * 4), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 2), ScreenUtils.transformCoordinateY(y - step * 5), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step * 5), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step * 5), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 2), ScreenUtils.transformCoordinateY(y - step * 4), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step * 4), 0.98f,
 
-                ScreenUtils.transformCoordinate(x - step * 4, 'x'), ScreenUtils.transformCoordinate(y - step * 5, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 3, 'x'), ScreenUtils.transformCoordinate(y - step * 5, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 4, 'x'), ScreenUtils.transformCoordinate(y - step * 6, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 3, 'x'), ScreenUtils.transformCoordinate(y - step * 5, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 4, 'x'), ScreenUtils.transformCoordinate(y - step * 6, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 3, 'x'), ScreenUtils.transformCoordinate(y - step * 6, 'y'), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 4), ScreenUtils.transformCoordinateY(y - step * 5), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step * 5), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 4), ScreenUtils.transformCoordinateY(y - step * 6), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step * 5), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 4), ScreenUtils.transformCoordinateY(y - step * 6), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step * 6), 0.98f,
         };
         return rez;
     }
 
     static float[] getDigit8(int x, int y, int step) {
         float[] rez = new float[]{
-                ScreenUtils.transformCoordinate(x - step, 'x'), ScreenUtils.transformCoordinate(y - step, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 3, 'x'), ScreenUtils.transformCoordinate(y - step, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step, 'x'), ScreenUtils.transformCoordinate(y, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step, 'x'), ScreenUtils.transformCoordinate(y, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 3, 'x'), ScreenUtils.transformCoordinate(y - step, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 3, 'x'), ScreenUtils.transformCoordinate(y, 'y'), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y), 0.98f,
 
-                ScreenUtils.transformCoordinate(x - step * 3, 'x'), ScreenUtils.transformCoordinate(y - step * 6, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 3, 'x'), ScreenUtils.transformCoordinate(y - step * 7, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step, 'x'), ScreenUtils.transformCoordinate(y - step * 7, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step, 'x'), ScreenUtils.transformCoordinate(y - step * 7, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 3, 'x'), ScreenUtils.transformCoordinate(y - step * 6, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step, 'x'), ScreenUtils.transformCoordinate(y - step * 6, 'y'), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step * 6), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step * 7), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step * 7), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step * 7), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step * 6), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step * 6), 0.98f,
 
-                ScreenUtils.transformCoordinate(x - step * 3, 'x'), ScreenUtils.transformCoordinate(y - step * 3, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 3, 'x'), ScreenUtils.transformCoordinate(y - step * 4, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step, 'x'), ScreenUtils.transformCoordinate(y - step * 4, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step, 'x'), ScreenUtils.transformCoordinate(y - step * 4, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 3, 'x'), ScreenUtils.transformCoordinate(y - step * 3, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step, 'x'), ScreenUtils.transformCoordinate(y - step * 3, 'y'), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step * 3), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step * 4), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step * 4), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step * 4), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step * 3), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step * 3), 0.98f,
 
-                ScreenUtils.transformCoordinate(x - step, 'x'), ScreenUtils.transformCoordinate(y - step * 4, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x, 'x'), ScreenUtils.transformCoordinate(y - step * 4, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step, 'x'), ScreenUtils.transformCoordinate(y - step * 6, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x, 'x'), ScreenUtils.transformCoordinate(y - step * 4, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step, 'x'), ScreenUtils.transformCoordinate(y - step * 6, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x, 'x'), ScreenUtils.transformCoordinate(y - step * 6, 'y'), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step * 4), 0.98f,
+                ScreenUtils.transformCoordinateX(x), ScreenUtils.transformCoordinateY(y - step * 4), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step * 6), 0.98f,
+                ScreenUtils.transformCoordinateX(x), ScreenUtils.transformCoordinateY(y - step * 4), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step * 6), 0.98f,
+                ScreenUtils.transformCoordinateX(x), ScreenUtils.transformCoordinateY(y - step * 6), 0.98f,
 
-                ScreenUtils.transformCoordinate(x - step, 'x'), ScreenUtils.transformCoordinate(y - step, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x, 'x'), ScreenUtils.transformCoordinate(y - step, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step, 'x'), ScreenUtils.transformCoordinate(y - step * 3, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x, 'x'), ScreenUtils.transformCoordinate(y - step, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step, 'x'), ScreenUtils.transformCoordinate(y - step * 3, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x, 'x'), ScreenUtils.transformCoordinate(y - step * 3, 'y'), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step), 0.98f,
+                ScreenUtils.transformCoordinateX(x), ScreenUtils.transformCoordinateY(y - step), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step * 3), 0.98f,
+                ScreenUtils.transformCoordinateX(x), ScreenUtils.transformCoordinateY(y - step), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step * 3), 0.98f,
+                ScreenUtils.transformCoordinateX(x), ScreenUtils.transformCoordinateY(y - step * 3), 0.98f,
 
-                ScreenUtils.transformCoordinate(x - step * 4, 'x'), ScreenUtils.transformCoordinate(y - step, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 3, 'x'), ScreenUtils.transformCoordinate(y - step, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 4, 'x'), ScreenUtils.transformCoordinate(y - step * 3, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 3, 'x'), ScreenUtils.transformCoordinate(y - step, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 4, 'x'), ScreenUtils.transformCoordinate(y - step * 3, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 3, 'x'), ScreenUtils.transformCoordinate(y - step * 3, 'y'), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 4), ScreenUtils.transformCoordinateY(y - step), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 4), ScreenUtils.transformCoordinateY(y - step * 3), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 4), ScreenUtils.transformCoordinateY(y - step * 3), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step * 3), 0.98f,
 
-                ScreenUtils.transformCoordinate(x - step * 4, 'x'), ScreenUtils.transformCoordinate(y - step * 4, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 3, 'x'), ScreenUtils.transformCoordinate(y - step * 4, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 4, 'x'), ScreenUtils.transformCoordinate(y - step * 6, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 3, 'x'), ScreenUtils.transformCoordinate(y - step * 4, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 4, 'x'), ScreenUtils.transformCoordinate(y - step * 6, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 3, 'x'), ScreenUtils.transformCoordinate(y - step * 6, 'y'), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 4), ScreenUtils.transformCoordinateY(y - step * 4), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step * 4), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 4), ScreenUtils.transformCoordinateY(y - step * 6), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step * 4), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 4), ScreenUtils.transformCoordinateY(y - step * 6), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step * 6), 0.98f,
 
         };
         return rez;
@@ -439,47 +439,47 @@ public class ObjectTemplates {
 
     static float[] getDigit9(int x, int y, int step) {
         float[] rez = new float[]{
-                ScreenUtils.transformCoordinate(x, 'x'), ScreenUtils.transformCoordinate(y - step, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x, 'x'), ScreenUtils.transformCoordinate(y - step * 6, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step, 'x'), ScreenUtils.transformCoordinate(y - step * 6, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step, 'x'), ScreenUtils.transformCoordinate(y - step * 6, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x, 'x'), ScreenUtils.transformCoordinate(y - step, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step, 'x'), ScreenUtils.transformCoordinate(y - step, 'y'), 0.98f,
+                ScreenUtils.transformCoordinateX(x), ScreenUtils.transformCoordinateY(y - step), 0.98f,
+                ScreenUtils.transformCoordinateX(x), ScreenUtils.transformCoordinateY(y - step * 6), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step * 6), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step * 6), 0.98f,
+                ScreenUtils.transformCoordinateX(x), ScreenUtils.transformCoordinateY(y - step), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step), 0.98f,
 
-                ScreenUtils.transformCoordinate(x - step, 'x'), ScreenUtils.transformCoordinate(y - step, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 3, 'x'), ScreenUtils.transformCoordinate(y - step, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step, 'x'), ScreenUtils.transformCoordinate(y, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step, 'x'), ScreenUtils.transformCoordinate(y, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 3, 'x'), ScreenUtils.transformCoordinate(y - step, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 3, 'x'), ScreenUtils.transformCoordinate(y, 'y'), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y), 0.98f,
 
-                ScreenUtils.transformCoordinate(x - step * 3, 'x'), ScreenUtils.transformCoordinate(y - step * 6, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 3, 'x'), ScreenUtils.transformCoordinate(y - step * 7, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step, 'x'), ScreenUtils.transformCoordinate(y - step * 7, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step, 'x'), ScreenUtils.transformCoordinate(y - step * 7, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 3, 'x'), ScreenUtils.transformCoordinate(y - step * 6, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step, 'x'), ScreenUtils.transformCoordinate(y - step * 6, 'y'), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step * 6), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step * 7), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step * 7), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step * 7), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step * 6), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step * 6), 0.98f,
 
-                ScreenUtils.transformCoordinate(x - step * 3, 'x'), ScreenUtils.transformCoordinate(y - step * 3, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 3, 'x'), ScreenUtils.transformCoordinate(y - step * 4, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step, 'x'), ScreenUtils.transformCoordinate(y - step * 4, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step, 'x'), ScreenUtils.transformCoordinate(y - step * 4, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 3, 'x'), ScreenUtils.transformCoordinate(y - step * 3, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step, 'x'), ScreenUtils.transformCoordinate(y - step * 3, 'y'), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step * 3), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step * 4), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step * 4), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step * 4), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step * 3), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step * 3), 0.98f,
 
-                ScreenUtils.transformCoordinate(x - step * 3, 'x'), ScreenUtils.transformCoordinate(y - step, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 3, 'x'), ScreenUtils.transformCoordinate(y - step * 2, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 4, 'x'), ScreenUtils.transformCoordinate(y - step * 2, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 4, 'x'), ScreenUtils.transformCoordinate(y - step * 2, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 3, 'x'), ScreenUtils.transformCoordinate(y - step, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 4, 'x'), ScreenUtils.transformCoordinate(y - step, 'y'), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step * 2), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 4), ScreenUtils.transformCoordinateY(y - step * 2), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 4), ScreenUtils.transformCoordinateY(y - step * 2), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 4), ScreenUtils.transformCoordinateY(y - step), 0.98f,
 
-                ScreenUtils.transformCoordinate(x - step * 3, 'x'), ScreenUtils.transformCoordinate(y - step * 4, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 3, 'x'), ScreenUtils.transformCoordinate(y - step * 6, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 4, 'x'), ScreenUtils.transformCoordinate(y - step * 6, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 4, 'x'), ScreenUtils.transformCoordinate(y - step * 6, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 3, 'x'), ScreenUtils.transformCoordinate(y - step * 4, 'y'), 0.98f,
-                ScreenUtils.transformCoordinate(x - step * 4, 'x'), ScreenUtils.transformCoordinate(y - step * 4, 'y'), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step * 4), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step * 6), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 4), ScreenUtils.transformCoordinateY(y - step * 6), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 4), ScreenUtils.transformCoordinateY(y - step * 6), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step * 4), 0.98f,
+                ScreenUtils.transformCoordinateX(x - step * 4), ScreenUtils.transformCoordinateY(y - step * 4), 0.98f,
         };
         return rez;
     }
@@ -631,7 +631,7 @@ public class ObjectTemplates {
             float j = 0;
             for (int i = 3; i <= 2165; i += 3, j += 0.5f) {
                 a = j / 180.0f * 3.1415f;
-                ret[i + 1] = y - radius * (float) Math.sin(a) / ScreenUtils.aspectRatio;
+                ret[i + 1] = y - radius * (float) Math.sin(a) / ScreenUtils.getAspectRatio();
                 ret[i] = x + radius * (float) Math.cos(a);
                 ret[i + 2] = 0.98f;
 
@@ -686,27 +686,27 @@ public class ObjectTemplates {
                     x += 20;
                 }
 //            o.vertices = new float[]{
-//                    ScreenUtils.transformCoordinate(x, 'x'), ScreenUtils.transformCoordinate(y+30, 'y'), 0.95f,
-//                    ScreenUtils.transformCoordinate(x-15, 'x'), ScreenUtils.transformCoordinate(y, 'y'), 0.95f,
-//                    ScreenUtils.transformCoordinate(x, 'x'), ScreenUtils.transformCoordinate(y-30, 'y'), 0.95f,
-//                    ScreenUtils.transformCoordinate(x+15, 'x'), ScreenUtils.transformCoordinate(y, 'y'), 0.95f,
+//                    ScreenUtils.transformCoordinateX(x), ScreenUtils.transformCoordinateY(y+30), 0.95f,
+//                    ScreenUtils.transformCoordinateX(x-15), ScreenUtils.transformCoordinateY(y), 0.95f,
+//                    ScreenUtils.transformCoordinateX(x), ScreenUtils.transformCoordinateY(y-30), 0.95f,
+//                    ScreenUtils.transformCoordinateX(x+15), ScreenUtils.transformCoordinateY(y), 0.95f,
 //
 //            };
-                o.setVertices(getEllipse(ScreenUtils.transformCoordinate(x, 'x'), ScreenUtils.transformCoordinate(y, 'y'), ScreenUtils.transformDistance(22.5f, 'x'), ScreenUtils.transformDistance(45, 'y')));
-                //float sdvig = ScreenUtils.transformCoordinate(x, 'x');
+                o.setVertices(getEllipse(ScreenUtils.transformCoordinateX(x), ScreenUtils.transformCoordinateY(y), ScreenUtils.transformDistanceX(22.5f), ScreenUtils.transformDistanceY(45)));
+                //float sdvig = ScreenUtils.transformCoordinateX(x);
                 o.setDrawed(true);
                 o.setAnimated(true);
                 o.setName("bullet");
-                o.setMinX(ScreenUtils.transformDistance(22.5f, 'x'));
-                o.setMinY(ScreenUtils.transformDistance(45, 'y'));
+                o.setMinX(ScreenUtils.transformDistanceX(22.5f));
+                o.setMinY(ScreenUtils.transformDistanceY(45));
                 //touchedBullet = o;
                 a = new AnimationContainer();
-                a.setDuration(10000);
+                a.setDurationMillis(10000);
                 //e.waitTime = (int)(rand*(750-500))+500;
                 //rand = Math.random();
-                a.setDistanceX(ScreenUtils.transformDistance(x - 10, 'x'));
+                a.setDistanceX(ScreenUtils.transformDistanceX(x - 10));
                 //rand = Math.random();
-                a.setDistanceY(ScreenUtils.transformDistance(1320 - y, 'y'));
+                a.setDistanceY(ScreenUtils.transformDistanceY(1320 - y));
 
                 //obj.get(3).anim.get(0).isInfinite = true;
                 a.setDirectionX(false);
@@ -729,27 +729,27 @@ public class ObjectTemplates {
 
                 } else y = -31;
 //                o.vertices = new float[]{
-//                        ScreenUtils.transformCoordinate(x, 'x'), ScreenUtils.transformCoordinate(y+30, 'y'), 0.95f,
-//                        ScreenUtils.transformCoordinate(x-15, 'x'), ScreenUtils.transformCoordinate(y, 'y'), 0.95f,
-//                        ScreenUtils.transformCoordinate(x, 'x'), ScreenUtils.transformCoordinate(y-30, 'y'), 0.95f,
-//                        ScreenUtils.transformCoordinate(x+15, 'x'), ScreenUtils.transformCoordinate(y, 'y'), 0.95f,
+//                        ScreenUtils.transformCoordinateX(x), ScreenUtils.transformCoordinateY(y+30), 0.95f,
+//                        ScreenUtils.transformCoordinateX(x-15), ScreenUtils.transformCoordinateY(y), 0.95f,
+//                        ScreenUtils.transformCoordinateX(x), ScreenUtils.transformCoordinateY(y-30), 0.95f,
+//                        ScreenUtils.transformCoordinateX(x+15), ScreenUtils.transformCoordinateY(y), 0.95f,
 //
 //                };
-                o.setVertices(getEllipse(ScreenUtils.transformCoordinate(x, 'x'), ScreenUtils.transformCoordinate(y, 'y'), ScreenUtils.transformDistance(15, 'x'), ScreenUtils.transformDistance(30, 'y')));
-                //float sdvig = ScreenUtils.transformCoordinate(x, 'x');
+                o.setVertices(getEllipse(ScreenUtils.transformCoordinateX(x), ScreenUtils.transformCoordinateY(y), ScreenUtils.transformDistanceX(15), ScreenUtils.transformDistanceY(30)));
+                //float sdvig = ScreenUtils.transformCoordinateX(.x, );
                 o.setDrawed(true);
                 o.setAnimated(true);
                 o.setName("bullet");
-                o.setMinX(ScreenUtils.transformDistance(22.5f, 'x'));
-                o.setMinY(ScreenUtils.transformDistance(45, 'y'));
+                o.setMinX(ScreenUtils.transformDistanceX(22.5f));
+                o.setMinY(ScreenUtils.transformDistanceY(45));
                 //touchedBullet = o;
                 a = new AnimationContainer();
-                a.setDuration(10000);
+                a.setDurationMillis(10000);
                 //e.waitTime = (int)(rand*(750-500))+500;
                 //rand = Math.random();
-                a.setDistanceX(ScreenUtils.transformDistance(710 - x, 'x'));
+                a.setDistanceX(ScreenUtils.transformDistanceX(710 - x));
                 //rand = Math.random();
-                a.setDistanceY(ScreenUtils.transformDistance(1320 - y, 'y'));
+                a.setDistanceY(ScreenUtils.transformDistanceY(1320 - y));
 
                 //obj.get(3).anim.get(0).isInfinite = true;
                 a.setDirectionX(true);

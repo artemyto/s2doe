@@ -45,7 +45,7 @@ class AnimationContainer {
         newA.startCenterY = oldA.startCenterY;
         newA.isRedrawable = oldA.isRedrawable;
         newA.lastTime = oldA.lastTime;
-        newA.lastTime = oldA.lastTime;
+        newA.startTime = oldA.startTime;
         return newA;
     }
 
@@ -68,107 +68,107 @@ class AnimationContainer {
         return newA;
     }
 
-    public long getDuration() {
+    long getDurationMillis() {
         return duration;
     }
 
-    public void setDuration(long duration) {
+    void setDurationMillis(long duration) {
         this.duration = duration;
     }
 
-    public float getDistanceX() {
+    float getDistanceX() {
         return distanceX;
     }
 
-    public void setDistanceX(float distanceX) {
+    void setDistanceX(float distanceX) {
         this.distanceX = distanceX;
     }
 
-    public float getDistanceY() {
+    float getDistanceY() {
         return distanceY;
     }
 
-    public void setDistanceY(float distanceY) {
+    void setDistanceY(float distanceY) {
         this.distanceY = distanceY;
     }
 
-    public long getStartTime() {
+    long getStartTime() {
         return startTime;
     }
 
-    public void setStartTime(long startTime) {
+    void setStartTime(long startTime) {
         this.startTime = startTime;
     }
 
-    public long getLastTime() {
+    long getLastTime() {
         return lastTime;
     }
 
-    public void setLastTime(long lastTime) {
+    void setLastTime(long lastTime) {
         this.lastTime = lastTime;
     }
 
-    public float getStartCenterX() {
+    float getStartCenterX() {
         return startCenterX;
     }
 
-    public void setStartCenterX(float startCenterX) {
+    void setStartCenterX(float startCenterX) {
         this.startCenterX = startCenterX;
     }
 
-    public float getStartCenterY() {
+    float getStartCenterY() {
         return startCenterY;
     }
 
-    public void setStartCenterY(float startCenterY) {
+    void setStartCenterY(float startCenterY) {
         this.startCenterY = startCenterY;
     }
 
-    public boolean isDirectionX() {
+    boolean isDirectionX() {
         return directionX;
     }
 
-    public void setDirectionX(boolean directionX) {
+    void setDirectionX(boolean directionX) {
         this.directionX = directionX;
     }
 
-    public boolean isDirectionY() {
+    boolean isDirectionY() {
         return directionY;
     }
 
-    public void setDirectionY(boolean directionY) {
+    void setDirectionY(boolean directionY) {
         this.directionY = directionY;
     }
 
-    public boolean isStarted() {
+    boolean isStarted() {
         return isStarted;
     }
 
-    public void setStarted(boolean started) {
+    void setStarted(boolean started) {
         isStarted = started;
     }
 
-    public boolean isInfinite() {
+    boolean isInfinite() {
         return isInfinite;
     }
 
-    public void setInfinite(boolean infinite) {
+    void setInfinite(boolean infinite) {
         isInfinite = infinite;
     }
 
-    public boolean isWantStop() {
+    boolean isWantStop() {
         return wantStop;
     }
 
-    public void setWantStop(boolean wantStop) {
+    void setWantStop(boolean wantStop) {
         this.wantStop = wantStop;
     }
 
-    public boolean isRedrawable() {
+    boolean isRedrawable() {
         return isRedrawable;
     }
 
-    public void setRedrawable(boolean redrawable) {
+    void setRedrawable(boolean redrawable) {
         isRedrawable = redrawable;
     }
     //TODO добавить зацикленность isCycled - когда повторяется не одно действие, а весь список
