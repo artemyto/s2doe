@@ -47,9 +47,9 @@ class Level1 extends Level {
         GameObjects.eraseObjects();
         objectContainer = new ObjectContainer();
         objectContainer.setVertices(new float[]{ScreenUtils.transformCoordinateX(0), ScreenUtils.transformCoordinateY(0), 0.99f,
-                ScreenUtils.transformCoordinateX(720), ScreenUtils.transformCoordinateY(0), 0.99f,
-                ScreenUtils.transformCoordinateX(720), ScreenUtils.transformCoordinateY(1280), 0.99f,
-                ScreenUtils.transformCoordinateX(0), ScreenUtils.transformCoordinateY(1280), 0.99f});
+                                                ScreenUtils.transformCoordinateX(720), ScreenUtils.transformCoordinateY(0), 0.99f,
+                                                ScreenUtils.transformCoordinateX(720), ScreenUtils.transformCoordinateY(1280), 0.99f,
+                                                ScreenUtils.transformCoordinateX(0), ScreenUtils.transformCoordinateY(1280), 0.99f});
         objectContainer.setColorR(0.50f);
         objectContainer.setColorG(0.50f);
         objectContainer.setColorB(0.50f);
