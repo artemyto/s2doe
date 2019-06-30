@@ -50,6 +50,16 @@ class GameObjects {
         GameObjects.objectsChanged = true;
     }
 
+    static synchronized void changeObject(String name, ObjectContainer newObject) {
+        for (int i = 0; i < obj.size(); ++i) {
+            if (name.equals(obj.get(i).getName())) {
+                ObjectContainer.copy(obj.get(i), newObject);
+                break;
+            }
+        }
+        objectsChanged = true;
+    }
+
     static synchronized void removeObject(String s) {
         for (int i = 0; i < obj.size(); ++i) {
             if (obj.get(i).getName().equals(s)) {
@@ -96,16 +106,6 @@ class GameObjects {
             }
         }
         return ret;
-    }
-
-    static synchronized void changeObject(String name, ObjectContainer newObject) {
-        for (int i = 0; i < obj.size(); ++i) {
-            if (name.equals(obj.get(i).getName())) {
-                ObjectContainer.copy(obj.get(i), newObject);
-                break;
-            }
-        }
-        objectsChanged = true;
     }
 
     static void setObjectsChanged() {

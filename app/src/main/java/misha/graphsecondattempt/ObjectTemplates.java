@@ -1,6 +1,7 @@
 package misha.graphsecondattempt;
 
 import static android.opengl.GLES20.GL_TRIANGLES;
+import static android.opengl.GLES20.GL_TRIANGLE_FAN;
 
 class ObjectTemplates {
     private ObjectTemplates() {
@@ -758,5 +759,47 @@ class ObjectTemplates {
                 break;
         }
         return o;
+    }
+
+    static float[] getLine(float startX, float startY, float endX, float endY) {
+        //GL_TRIANGLE_FAN
+        float[] ret = new float[4*3];
+        //                            \\
+//                             \\
+        //x+5,y-5   x-5,y+5
+        if ((startX - endX)*(startY - endY) > 0.0f) {
+            ret[0] = ScreenUtils.transformCoordinateX(startX + 5);
+            ret[1] = ScreenUtils.transformCoordinateY(startY - 5);
+            ret[2] = 0.97f;
+            ret[3] = ScreenUtils.transformCoordinateX(startX - 5);
+            ret[4] = ScreenUtils.transformCoordinateY(startY + 5);
+            ret[5] = 0.97f;
+
+            ret[6] = ScreenUtils.transformCoordinateX(endX - 5);
+            ret[7] = ScreenUtils.transformCoordinateY(endY + 5);
+            ret[8] = 0.97f;
+            ret[9] = ScreenUtils.transformCoordinateX(endX + 5);
+            ret[10] = ScreenUtils.transformCoordinateY(endY - 5);
+            ret[11] = 0.97f;
+        }
+//                             //
+//                            //
+        //x+5,y+5   x-5,y-5
+        else {
+            ret[0] = ScreenUtils.transformCoordinateX(startX + 5);
+            ret[1] = ScreenUtils.transformCoordinateY(startY + 5);
+            ret[2] = 0.97f;
+            ret[3] = ScreenUtils.transformCoordinateX(startX - 5);
+            ret[4] = ScreenUtils.transformCoordinateY(startY - 5);
+            ret[5] = 0.97f;
+
+            ret[6] = ScreenUtils.transformCoordinateX(endX - 5);
+            ret[7] = ScreenUtils.transformCoordinateY(endY - 5);
+            ret[8] = 0.97f;
+            ret[9] = ScreenUtils.transformCoordinateX(endX + 5);
+            ret[10] = ScreenUtils.transformCoordinateY(endY + 5);
+            ret[11] = 0.97f;
+        }
+        return  ret;
     }
 }
