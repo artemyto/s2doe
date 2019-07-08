@@ -13,9 +13,9 @@ import static android.opengl.GLES20.GL_TRIANGLE_FAN;
 
 class Level1 extends Level {
     private boolean isRunning = false;
-    private EventContainer eventContainer;
-    private ObjectContainer objectContainer;
-    private AnimationContainer animationContainer;
+    private GameObjectEvent gameObjectEvent;
+    private GameObject gameObject;
+    private GameObjectAnimation gameObjectAnimation;
 
 
     private float clDist, clSin, clCos;
@@ -37,7 +37,7 @@ class Level1 extends Level {
     private boolean creatingEdge = false;
 
     @Override
-    void isClosely(ObjectContainer o) {
+    void isClosely(GameObject o) {
 
     }
 
@@ -45,22 +45,22 @@ class Level1 extends Level {
     void start() {
         isRunning = true;
         GameObjects.eraseObjects();
-        objectContainer = new ObjectContainer();
-        objectContainer.setVertices(new float[]{ScreenUtils.transformCoordinateX(0), ScreenUtils.transformCoordinateY(0), 0.99f,
-                                                ScreenUtils.transformCoordinateX(720), ScreenUtils.transformCoordinateY(0), 0.99f,
-                                                ScreenUtils.transformCoordinateX(720), ScreenUtils.transformCoordinateY(1280), 0.99f,
-                                                ScreenUtils.transformCoordinateX(0), ScreenUtils.transformCoordinateY(1280), 0.99f});
-        objectContainer.setColorR(0.50f);
-        objectContainer.setColorG(0.50f);
-        objectContainer.setColorB(0.50f);
-        objectContainer.setStartPoint(0);
-        objectContainer.setNumberOfPoints(4);
-        objectContainer.setName("background");
-        objectContainer.setDrawed(true);
-        objectContainer.setInOpenglCache(true);
-        objectContainer.setMinX(-1);
-        objectContainer.setMinY(-1);
-        GameObjects.addObject(objectContainer);
+        gameObject = new GameObject();
+        gameObject.setVertices(new float[]{ScreenUtils.transformXCoordinateScreenToOpengl(0), ScreenUtils.transformYCoordinateScreenToOpengl(0), 0.99f,
+                                                ScreenUtils.transformXCoordinateScreenToOpengl(720), ScreenUtils.transformYCoordinateScreenToOpengl(0), 0.99f,
+                                                ScreenUtils.transformXCoordinateScreenToOpengl(720), ScreenUtils.transformYCoordinateScreenToOpengl(1280), 0.99f,
+                                                ScreenUtils.transformXCoordinateScreenToOpengl(0), ScreenUtils.transformYCoordinateScreenToOpengl(1280), 0.99f});
+        gameObject.setColorR(0.50f);
+        gameObject.setColorG(0.50f);
+        gameObject.setColorB(0.50f);
+        gameObject.setStartPoint(0);
+        gameObject.setNumberOfPoints(4);
+        gameObject.setName("background");
+        gameObject.setDrawed(true);
+        gameObject.setInOpenglCache(true);
+        gameObject.setMinX(-1);
+        gameObject.setMinY(-1);
+        GameObjects.addObject(gameObject);
     }
 
     @Override
@@ -76,60 +76,60 @@ class Level1 extends Level {
                 doubleTouch = curTime - lastTouchTime <= 500;
 
                 lastTouchTime = curTime;
-                touchedObjectName = GameObjects.getTouchedBulletName(ScreenUtils.transformCoordinateX(x), ScreenUtils.transformCoordinateY(y));
+                touchedObjectName = GameObjects.getTouchedBulletName(ScreenUtils.transformXCoordinateScreenToOpengl(x), ScreenUtils.transformYCoordinateScreenToOpengl(y));
                 if (touchedObjectName.equals("")) {
 
-                    objectContainer = new ObjectContainer();
-                    objectContainer.setVertices(ObjectTemplates.getCircle(ScreenUtils.transformCoordinateX(x), ScreenUtils.transformCoordinateY(y), ScreenUtils.transformDistanceX(50), 'x'));
-                    objectContainer.setColorR(0.10f);
-                    objectContainer.setColorG(0.50f);
-                    objectContainer.setColorB(0.90f);
-                    objectContainer.setStartPoint(0);
-                    objectContainer.setNumberOfPoints(4);
-                    objectContainer.setName("bullet" + count);
-                    objectContainer.setDrawed(true);
-                    objectContainer.setInOpenglCache(true);
-                    objectContainer.setMinX(-1);
-                    objectContainer.setMinY(-1);
-                    objectContainer.setCenterX(GameObjects.evaluateCenterX(objectContainer.getVertices()));
-                    objectContainer.setCenterY(GameObjects.evaluateCenterY(objectContainer.getVertices()));
+                    gameObject = new GameObject();
+                    gameObject.setVertices(ObjectTemplates.getCircle(ScreenUtils.transformXCoordinateScreenToOpengl(x), ScreenUtils.transformYCoordinateScreenToOpengl(y), ScreenUtils.transformDistanceX(50), 'x'));
+                    gameObject.setColorR(0.10f);
+                    gameObject.setColorG(0.50f);
+                    gameObject.setColorB(0.90f);
+                    gameObject.setStartPoint(0);
+                    gameObject.setNumberOfPoints(4);
+                    gameObject.setName("bullet" + count);
+                    gameObject.setDrawed(true);
+                    gameObject.setInOpenglCache(true);
+                    gameObject.setMinX(-1);
+                    gameObject.setMinY(-1);
+                    gameObject.setCenterX(GameObjects.evaluateCenterX(gameObject.getVertices()));
+                    gameObject.setCenterY(GameObjects.evaluateCenterY(gameObject.getVertices()));
 
-                    animationContainer = new AnimationContainer();
-                    animationContainer.setRedrawable(true);
-                    animationContainer.setDistanceX(ScreenUtils.transformDistanceX(100));
-                    animationContainer.setDistanceY(ScreenUtils.transformDistanceY(100));
-                    animationContainer.setDurationMillis(2000);
+                    gameObjectAnimation = new GameObjectAnimation();
+                    gameObjectAnimation.setRedrawable(true);
+                    gameObjectAnimation.setDistanceX(ScreenUtils.transformDistanceX(100));
+                    gameObjectAnimation.setDistanceY(ScreenUtils.transformDistanceY(100));
+                    gameObjectAnimation.setDurationMillis(2000);
 
-//                    objectContainer.addAnimation(animationContainer);
-//                    objectContainer.setAnimated(true);
+//                    gameObject.addAnimation(gameObjectAnimation);
+//                    gameObject.setAnimated(true);
 
-                    eventContainer = new EventContainer();
-                    eventContainer.setRandomizedTime(false);
-                    eventContainer.setWaitTime(0);
-                    eventContainer.setCycled(false);
-                    eventContainer.setKindOfEvent('a');
-                    eventContainer.setNeedToRebindData();
+                    gameObjectEvent = new GameObjectEvent();
+                    gameObjectEvent.setRandomizedTime(false);
+                    gameObjectEvent.setWaitTime(0);
+                    gameObjectEvent.setCycled(false);
+                    gameObjectEvent.setKindOfEvent('a');
+                    gameObjectEvent.setNeedToRebindData();
 
-                    eventContainer.setObject(objectContainer);
-                    eventContainer.setName("bullet" + count);
+                    gameObjectEvent.setObject(gameObject);
+                    gameObjectEvent.setName("bullet" + count);
                     count++;
-//                    GameEvents.addEvent(eventContainer);
+                    GameEvents.addEvent(gameObjectEvent);
                     if (eventMaker == null || !eventMaker.isRunning())
                         eventMaker = new EventMaker();
                     if (animationMaker == null || !animationMaker.isRunning())
                         animationMaker = new AnimationMaker();
 
-                    GameObjects.addOrReplaceObject(objectContainer);
+//                    GameObjects.addOrReplaceObject(gameObject);
                 } else if (touchedObjectName.contains("bullet")){
                     touchBeginX = x;
                     touchBeginY = y;
-                    if (!(doubleTouch && Math.abs(ScreenUtils.transformCoordinateX(x) - ScreenUtils.transformCoordinateX(touchLastX)) < ScreenUtils.transformDistanceX(40) && Math.abs(ScreenUtils.transformCoordinateY(y) - ScreenUtils.transformCoordinateY(touchLastY)) < ScreenUtils.transformDistanceY(40))) {
+                    if (!(doubleTouch && Math.abs(ScreenUtils.transformXCoordinateScreenToOpengl(x) - ScreenUtils.transformXCoordinateScreenToOpengl(touchLastX)) < ScreenUtils.transformDistanceX(40) && Math.abs(ScreenUtils.transformYCoordinateScreenToOpengl(y) - ScreenUtils.transformYCoordinateScreenToOpengl(touchLastY)) < ScreenUtils.transformDistanceY(40))) {
                         doubleTouch = false;
                     }
                     if (doubleTouch) {
-                        ObjectContainer touchedObject = GameObjects.getObject(touchedObjectName);
-                        touchBeginX = touchedObject.getCenterX();
-                        touchBeginY = touchedObject.getCenterY();
+                        GameObject touchedObject = GameObjects.getObject(touchedObjectName);
+                        touchBeginX = ScreenUtils.transformXCoordinateOpenglToScreen(touchedObject.getCenterX());
+                        touchBeginY = ScreenUtils.transformYCoordinateOpenglToScreen(touchedObject.getCenterY());
                     }
                     touchCurX = touchLastX = touchBeginX;
                     touchCurY = touchLastY = touchBeginY;
@@ -141,38 +141,38 @@ class Level1 extends Level {
             case ACTION_MOVE:
                 touchCurY = y;
                 touchCurX = x;
-
+//                doubleTouch = false;
                 if (touchedObjectName.contains("bullet")) {
                     if (doubleTouch) {
                         if (!creatingEdge) {
                             creatingEdgeName = "edgev" + touchedObjectName.substring(6);
-                            objectContainer = new ObjectContainer();
-                            objectContainer.setVertices(ObjectTemplates.getCircle(ScreenUtils.transformCoordinateX(touchBeginX), ScreenUtils.transformCoordinateY(touchBeginY), ScreenUtils.transformDistanceX(50), 'x'));
+                            gameObject = new GameObject();
+                            gameObject.setVertices(ObjectTemplates.getCircle(ScreenUtils.transformXCoordinateScreenToOpengl(touchBeginX), ScreenUtils.transformYCoordinateScreenToOpengl(touchBeginY), ScreenUtils.transformDistanceX(50), 'x'));
 
-                            objectContainer.setColorR(0.90f);
-                            objectContainer.setColorG(0.50f);
-                            objectContainer.setColorB(0.10f);
-                            objectContainer.setStartPoint(0);
-                            objectContainer.setNumberOfPoints(4);
-                            objectContainer.setName(creatingEdgeName);
-                            objectContainer.setDrawed(true);
-                            objectContainer.setInOpenglCache(true);
-                            objectContainer.setMinX(-1);
-                            objectContainer.setMinY(-1);
-                            objectContainer.setCenterX(GameObjects.evaluateCenterX(objectContainer.getVertices()));
-                            objectContainer.setCenterY(GameObjects.evaluateCenterY(objectContainer.getVertices()));
+                            gameObject.setColorR(0.90f);
+                            gameObject.setColorG(0.50f);
+                            gameObject.setColorB(0.10f);
+                            gameObject.setStartPoint(0);
+                            gameObject.setNumberOfPoints(4);
+                            gameObject.setName(creatingEdgeName);
+                            gameObject.setDrawed(true);
+                            gameObject.setInOpenglCache(true);
+                            gameObject.setMinX(-1);
+                            gameObject.setMinY(-1);
+                            gameObject.setCenterX(GameObjects.evaluateCenterX(gameObject.getVertices()));
+                            gameObject.setCenterY(GameObjects.evaluateCenterY(gameObject.getVertices()));
                             creatingEdge = true;
                         }
                         else {
-                            objectContainer = GameObjects.getObject(creatingEdgeName);
+                            gameObject = GameObjects.getObject(creatingEdgeName);
                         }
-                        objectContainer.setFanOrStrip(GL_TRIANGLE_FAN);
-                        objectContainer.setVertices(ObjectTemplates.getLine(touchBeginX, touchBeginY, touchCurX, touchCurY));
-//                        objectContainer.setVertices();
-                        GameObjects.addOrReplaceObject(objectContainer);
+                        gameObject.setFanOrStrip(GL_TRIANGLE_FAN);
+                        gameObject.setVertices(ObjectTemplates.getLine(touchBeginX, touchBeginY, touchCurX, touchCurY));
+//                        gameObject.setVertices();
+                        GameObjects.addOrReplaceObject(gameObject);
                     }
                     else {
-                        ObjectContainer touchedObject = GameObjects.getObject(touchedObjectName);
+                        GameObject touchedObject = GameObjects.getObject(touchedObjectName);
                         if (touchedObject != null) {
                             float[] v = touchedObject.getVertices();
                             for (int i = 0; i < v.length; i += 3) {
@@ -195,7 +195,7 @@ class Level1 extends Level {
 
                 touchedObjectName = "";
 //                if (lastTouchAction == ACTION_MOVE && doubleTouch) {
-//                    touchedObjectName = GameObjects.getTouchedBulletName(ScreenUtils.transformCoordinateX(x), ScreenUtils.transformCoordinateY(y));
+//                    touchedObjectName = GameObjects.getTouchedBulletName(ScreenUtils.transformXCoordinateScreenToOpengl(x), ScreenUtils.transformYCoordinateScreenToOpengl(y));
 //
 //                    doubleTouch = false;
 //                }

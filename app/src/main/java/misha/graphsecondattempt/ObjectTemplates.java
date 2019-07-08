@@ -1,7 +1,6 @@
 package misha.graphsecondattempt;
 
 import static android.opengl.GLES20.GL_TRIANGLES;
-import static android.opengl.GLES20.GL_TRIANGLE_FAN;
 
 class ObjectTemplates {
     private ObjectTemplates() {
@@ -10,33 +9,33 @@ class ObjectTemplates {
 
     static float[] getDigit0(int x, int y, int step) {
         float[] rez = new float[]{
-                ScreenUtils.transformCoordinateX(x), ScreenUtils.transformCoordinateY(y - step), 0.98f,
-                ScreenUtils.transformCoordinateX(x), ScreenUtils.transformCoordinateY(y - step * 6), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step * 6), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step * 6), 0.98f,
-                ScreenUtils.transformCoordinateX(x), ScreenUtils.transformCoordinateY(y - step), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x), ScreenUtils.transformYCoordinateScreenToOpengl(y - step), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 6), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 6), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 6), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x), ScreenUtils.transformYCoordinateScreenToOpengl(y - step), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step), ScreenUtils.transformYCoordinateScreenToOpengl(y - step), 0.98f,
 
-                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step), ScreenUtils.transformYCoordinateScreenToOpengl(y - step), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 3), ScreenUtils.transformYCoordinateScreenToOpengl(y - step), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step), ScreenUtils.transformYCoordinateScreenToOpengl(y), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step), ScreenUtils.transformYCoordinateScreenToOpengl(y), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 3), ScreenUtils.transformYCoordinateScreenToOpengl(y - step), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 3), ScreenUtils.transformYCoordinateScreenToOpengl(y), 0.98f,
 
-                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step * 6), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 4), ScreenUtils.transformCoordinateY(y - step * 6), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 4), ScreenUtils.transformCoordinateY(y - step * 6), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 4), ScreenUtils.transformCoordinateY(y - step), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 3), ScreenUtils.transformYCoordinateScreenToOpengl(y - step), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 3), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 6), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 4), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 6), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 4), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 6), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 3), ScreenUtils.transformYCoordinateScreenToOpengl(y - step), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 4), ScreenUtils.transformYCoordinateScreenToOpengl(y - step), 0.98f,
 
-                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step * 6), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step * 7), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step * 7), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step * 7), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step * 6), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step * 6), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 3), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 6), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 3), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 7), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 7), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 7), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 3), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 6), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 6), 0.98f,
 
 
         };
@@ -45,26 +44,26 @@ class ObjectTemplates {
 
     static float[] getDigit1(int x, int y, int step) {
         float[] rez = new float[]{
-                ScreenUtils.transformCoordinateX(x), ScreenUtils.transformCoordinateY(y), 0.98f,
-                ScreenUtils.transformCoordinateX(x), ScreenUtils.transformCoordinateY(y - step), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y), 0.98f,
-                ScreenUtils.transformCoordinateX(x), ScreenUtils.transformCoordinateY(y - step), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x), ScreenUtils.transformYCoordinateScreenToOpengl(y), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x), ScreenUtils.transformYCoordinateScreenToOpengl(y - step), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 3), ScreenUtils.transformYCoordinateScreenToOpengl(y), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x), ScreenUtils.transformYCoordinateScreenToOpengl(y - step), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 3), ScreenUtils.transformYCoordinateScreenToOpengl(y), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 3), ScreenUtils.transformYCoordinateScreenToOpengl(y - step), 0.98f,
 
-                ScreenUtils.transformCoordinateX(x - step * 2), ScreenUtils.transformCoordinateY(y - step), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step * 7), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step * 7), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 2), ScreenUtils.transformCoordinateY(y - step), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 2), ScreenUtils.transformCoordinateY(y - step * 7), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 2), ScreenUtils.transformYCoordinateScreenToOpengl(y - step), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step), ScreenUtils.transformYCoordinateScreenToOpengl(y - step), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 7), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 7), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 2), ScreenUtils.transformYCoordinateScreenToOpengl(y - step), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 2), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 7), 0.98f,
 
-                ScreenUtils.transformCoordinateX(x - step * 2), ScreenUtils.transformCoordinateY(y - step * 6), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 2), ScreenUtils.transformCoordinateY(y - step * 5), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step * 5), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step * 5), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 2), ScreenUtils.transformCoordinateY(y - step * 6), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step * 6), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 2), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 6), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 2), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 5), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 3), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 5), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 3), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 5), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 2), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 6), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 3), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 6), 0.98f,
 
         };
 
@@ -73,61 +72,61 @@ class ObjectTemplates {
 
     static float[] getDigit2(int x, int y, int step) {
         float[] rez = new float[]{
-                ScreenUtils.transformCoordinateX(x), ScreenUtils.transformCoordinateY(y), 0.98f,
-                ScreenUtils.transformCoordinateX(x), ScreenUtils.transformCoordinateY(y - step * 2), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step * 2), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step * 2), 0.98f,
-                ScreenUtils.transformCoordinateX(x), ScreenUtils.transformCoordinateY(y), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x), ScreenUtils.transformYCoordinateScreenToOpengl(y), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 2), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 2), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 2), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x), ScreenUtils.transformYCoordinateScreenToOpengl(y), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step), ScreenUtils.transformYCoordinateScreenToOpengl(y), 0.98f,
 
-                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 4), ScreenUtils.transformCoordinateY(y - step), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 4), ScreenUtils.transformCoordinateY(y - step), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 4), ScreenUtils.transformCoordinateY(y), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step), ScreenUtils.transformYCoordinateScreenToOpengl(y), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step), ScreenUtils.transformYCoordinateScreenToOpengl(y - step), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 4), ScreenUtils.transformYCoordinateScreenToOpengl(y - step), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 4), ScreenUtils.transformYCoordinateScreenToOpengl(y - step), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step), ScreenUtils.transformYCoordinateScreenToOpengl(y), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 4), ScreenUtils.transformYCoordinateScreenToOpengl(y), 0.98f,
 
-                ScreenUtils.transformCoordinateX(x - step * 4), ScreenUtils.transformCoordinateY(y - step), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 4), ScreenUtils.transformCoordinateY(y - step * 2), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 4), ScreenUtils.transformCoordinateY(y - step * 2), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step * 2), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 4), ScreenUtils.transformYCoordinateScreenToOpengl(y - step), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 4), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 2), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 3), ScreenUtils.transformYCoordinateScreenToOpengl(y - step), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 4), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 2), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 3), ScreenUtils.transformYCoordinateScreenToOpengl(y - step), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 3), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 2), 0.98f,
 
-                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step * 2), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step * 3), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 2), ScreenUtils.transformCoordinateY(y - step * 2), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step * 3), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 2), ScreenUtils.transformCoordinateY(y - step * 2), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 2), ScreenUtils.transformCoordinateY(y - step * 3), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 3), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 2), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 3), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 3), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 2), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 2), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 3), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 3), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 2), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 2), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 2), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 3), 0.98f,
 
-                ScreenUtils.transformCoordinateX(x - step * 2), ScreenUtils.transformCoordinateY(y - step * 3), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 2), ScreenUtils.transformCoordinateY(y - step * 4), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step * 3), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 2), ScreenUtils.transformCoordinateY(y - step * 4), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step * 3), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step * 4), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 2), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 3), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 2), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 4), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 3), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 2), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 4), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 3), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 4), 0.98f,
 
-                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step * 4), 0.98f,
-                ScreenUtils.transformCoordinateX(x), ScreenUtils.transformCoordinateY(y - step * 4), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step * 6), 0.98f,
-                ScreenUtils.transformCoordinateX(x), ScreenUtils.transformCoordinateY(y - step * 4), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step * 6), 0.98f,
-                ScreenUtils.transformCoordinateX(x), ScreenUtils.transformCoordinateY(y - step * 6), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 4), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 4), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 6), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 4), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 6), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 6), 0.98f,
 
-                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step * 6), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step * 7), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step * 6), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step * 7), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step * 6), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step * 7), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 6), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 7), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 3), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 6), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 7), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 3), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 6), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 3), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 7), 0.98f,
 
-                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step * 6), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 4), ScreenUtils.transformCoordinateY(y - step * 6), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step * 4), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 4), ScreenUtils.transformCoordinateY(y - step * 6), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step * 4), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 4), ScreenUtils.transformCoordinateY(y - step * 4), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 3), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 6), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 4), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 6), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 3), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 4), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 4), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 6), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 3), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 4), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 4), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 4), 0.98f,
 
         };
         return rez;
@@ -135,54 +134,54 @@ class ObjectTemplates {
 
     static float[] getDigit3(int x, int y, int step) {
         float[] rez = new float[]{
-                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step), ScreenUtils.transformYCoordinateScreenToOpengl(y - step), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 3), ScreenUtils.transformYCoordinateScreenToOpengl(y - step), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step), ScreenUtils.transformYCoordinateScreenToOpengl(y), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step), ScreenUtils.transformYCoordinateScreenToOpengl(y), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 3), ScreenUtils.transformYCoordinateScreenToOpengl(y - step), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 3), ScreenUtils.transformYCoordinateScreenToOpengl(y), 0.98f,
 
-                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step * 6), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step * 7), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step * 7), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step * 7), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step * 6), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step * 6), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 3), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 6), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 3), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 7), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 7), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 7), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 3), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 6), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 6), 0.98f,
 
-                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step * 2), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 4), ScreenUtils.transformCoordinateY(y - step * 2), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 4), ScreenUtils.transformCoordinateY(y - step * 2), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 4), ScreenUtils.transformCoordinateY(y - step), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 3), ScreenUtils.transformYCoordinateScreenToOpengl(y - step), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 3), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 2), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 4), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 2), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 4), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 2), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 3), ScreenUtils.transformYCoordinateScreenToOpengl(y - step), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 4), ScreenUtils.transformYCoordinateScreenToOpengl(y - step), 0.98f,
 
-                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step * 4), 0.98f,
-                ScreenUtils.transformCoordinateX(x), ScreenUtils.transformCoordinateY(y - step * 4), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step * 6), 0.98f,
-                ScreenUtils.transformCoordinateX(x), ScreenUtils.transformCoordinateY(y - step * 4), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step * 6), 0.98f,
-                ScreenUtils.transformCoordinateX(x), ScreenUtils.transformCoordinateY(y - step * 6), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 4), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 4), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 6), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 4), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 6), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 6), 0.98f,
 
-                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step), 0.98f,
-                ScreenUtils.transformCoordinateX(x), ScreenUtils.transformCoordinateY(y - step), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step * 3), 0.98f,
-                ScreenUtils.transformCoordinateX(x), ScreenUtils.transformCoordinateY(y - step), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step * 3), 0.98f,
-                ScreenUtils.transformCoordinateX(x), ScreenUtils.transformCoordinateY(y - step * 3), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step), ScreenUtils.transformYCoordinateScreenToOpengl(y - step), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x), ScreenUtils.transformYCoordinateScreenToOpengl(y - step), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 3), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x), ScreenUtils.transformYCoordinateScreenToOpengl(y - step), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 3), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 3), 0.98f,
 
-                ScreenUtils.transformCoordinateX(x - step * 2), ScreenUtils.transformCoordinateY(y - step * 3), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 2), ScreenUtils.transformCoordinateY(y - step * 4), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step * 4), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step * 4), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 2), ScreenUtils.transformCoordinateY(y - step * 3), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step * 3), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 2), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 3), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 2), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 4), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 4), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 4), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 2), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 3), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 3), 0.98f,
 
-                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step * 6), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 4), ScreenUtils.transformCoordinateY(y - step * 6), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step * 5), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 4), ScreenUtils.transformCoordinateY(y - step * 6), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step * 5), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 4), ScreenUtils.transformCoordinateY(y - step * 5), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 3), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 6), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 4), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 6), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 3), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 5), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 4), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 6), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 3), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 5), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 4), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 5), 0.98f,
 
         };
         return rez;
@@ -190,249 +189,249 @@ class ObjectTemplates {
 
     static float[] getDigit4(int x, int y, int step) {
         float[] rez = new float[]{
-                ScreenUtils.transformCoordinateX(x), ScreenUtils.transformCoordinateY(y), 0.98f,
-                ScreenUtils.transformCoordinateX(x), ScreenUtils.transformCoordinateY(y - step), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y), 0.98f,
-                ScreenUtils.transformCoordinateX(x), ScreenUtils.transformCoordinateY(y - step), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x), ScreenUtils.transformYCoordinateScreenToOpengl(y), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x), ScreenUtils.transformYCoordinateScreenToOpengl(y - step), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 3), ScreenUtils.transformYCoordinateScreenToOpengl(y), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x), ScreenUtils.transformYCoordinateScreenToOpengl(y - step), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 3), ScreenUtils.transformYCoordinateScreenToOpengl(y), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 3), ScreenUtils.transformYCoordinateScreenToOpengl(y - step), 0.98f,
 
-                ScreenUtils.transformCoordinateX(x - step * 2), ScreenUtils.transformCoordinateY(y - step), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step * 7), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step * 7), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 2), ScreenUtils.transformCoordinateY(y - step), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 2), ScreenUtils.transformCoordinateY(y - step * 7), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 2), ScreenUtils.transformYCoordinateScreenToOpengl(y - step), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step), ScreenUtils.transformYCoordinateScreenToOpengl(y - step), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 7), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 7), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 2), ScreenUtils.transformYCoordinateScreenToOpengl(y - step), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 2), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 7), 0.98f,
 
-                ScreenUtils.transformCoordinateX(x - step * 2), ScreenUtils.transformCoordinateY(y - step * 6), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 2), ScreenUtils.transformCoordinateY(y - step * 5), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step * 5), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step * 5), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 2), ScreenUtils.transformCoordinateY(y - step * 6), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step * 6), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 2), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 6), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 2), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 5), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 3), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 5), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 3), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 5), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 2), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 6), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 3), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 6), 0.98f,
 
-                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step * 5), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 4), ScreenUtils.transformCoordinateY(y - step * 5), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step * 4), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 4), ScreenUtils.transformCoordinateY(y - step * 5), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step * 4), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 4), ScreenUtils.transformCoordinateY(y - step * 4), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 3), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 5), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 4), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 5), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 3), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 4), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 4), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 5), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 3), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 4), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 4), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 4), 0.98f,
 
-                ScreenUtils.transformCoordinateX(x - step * 4), ScreenUtils.transformCoordinateY(y - step * 4), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 5), ScreenUtils.transformCoordinateY(y - step * 4), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 4), ScreenUtils.transformCoordinateY(y - step * 3), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 5), ScreenUtils.transformCoordinateY(y - step * 4), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 4), ScreenUtils.transformCoordinateY(y - step * 3), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 5), ScreenUtils.transformCoordinateY(y - step * 3), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 4), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 4), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 5), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 4), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 4), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 3), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 5), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 4), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 4), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 3), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 5), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 3), 0.98f,
 
-                ScreenUtils.transformCoordinateX(x), ScreenUtils.transformCoordinateY(y - step * 3), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 5), ScreenUtils.transformCoordinateY(y - step * 3), 0.98f,
-                ScreenUtils.transformCoordinateX(x), ScreenUtils.transformCoordinateY(y - step * 2), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 5), ScreenUtils.transformCoordinateY(y - step * 3), 0.98f,
-                ScreenUtils.transformCoordinateX(x), ScreenUtils.transformCoordinateY(y - step * 2), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 5), ScreenUtils.transformCoordinateY(y - step * 2), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 3), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 5), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 3), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 2), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 5), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 3), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 2), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 5), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 2), 0.98f,
         };
         return rez;
     }
 
     static float[] getDigit5(int x, int y, int step) {
         float[] rez = new float[]{
-                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 4), ScreenUtils.transformCoordinateY(y - step), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 4), ScreenUtils.transformCoordinateY(y - step), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 4), ScreenUtils.transformCoordinateY(y), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step), ScreenUtils.transformYCoordinateScreenToOpengl(y - step), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 4), ScreenUtils.transformYCoordinateScreenToOpengl(y - step), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step), ScreenUtils.transformYCoordinateScreenToOpengl(y), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step), ScreenUtils.transformYCoordinateScreenToOpengl(y), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 4), ScreenUtils.transformYCoordinateScreenToOpengl(y - step), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 4), ScreenUtils.transformYCoordinateScreenToOpengl(y), 0.98f,
 
-                ScreenUtils.transformCoordinateX(x - step * 4), ScreenUtils.transformCoordinateY(y - step * 6), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 4), ScreenUtils.transformCoordinateY(y - step * 7), 0.98f,
-                ScreenUtils.transformCoordinateX(x), ScreenUtils.transformCoordinateY(y - step * 7), 0.98f,
-                ScreenUtils.transformCoordinateX(x), ScreenUtils.transformCoordinateY(y - step * 7), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 4), ScreenUtils.transformCoordinateY(y - step * 6), 0.98f,
-                ScreenUtils.transformCoordinateX(x), ScreenUtils.transformCoordinateY(y - step * 6), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 4), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 6), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 4), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 7), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 7), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 7), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 4), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 6), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 6), 0.98f,
 
-                ScreenUtils.transformCoordinateX(x), ScreenUtils.transformCoordinateY(y - step), 0.98f,
-                ScreenUtils.transformCoordinateX(x), ScreenUtils.transformCoordinateY(y - step * 4), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step * 4), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step * 4), 0.98f,
-                ScreenUtils.transformCoordinateX(x), ScreenUtils.transformCoordinateY(y - step), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x), ScreenUtils.transformYCoordinateScreenToOpengl(y - step), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 4), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 4), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 4), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x), ScreenUtils.transformYCoordinateScreenToOpengl(y - step), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step), ScreenUtils.transformYCoordinateScreenToOpengl(y - step), 0.98f,
 
-                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step * 2), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 4), ScreenUtils.transformCoordinateY(y - step * 2), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 4), ScreenUtils.transformCoordinateY(y - step * 2), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 4), ScreenUtils.transformCoordinateY(y - step), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 3), ScreenUtils.transformYCoordinateScreenToOpengl(y - step), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 3), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 2), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 4), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 2), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 4), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 2), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 3), ScreenUtils.transformYCoordinateScreenToOpengl(y - step), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 4), ScreenUtils.transformYCoordinateScreenToOpengl(y - step), 0.98f,
 
-                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step * 4), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step * 6), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 4), ScreenUtils.transformCoordinateY(y - step * 6), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 4), ScreenUtils.transformCoordinateY(y - step * 6), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step * 4), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 4), ScreenUtils.transformCoordinateY(y - step * 4), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 3), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 4), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 3), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 6), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 4), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 6), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 4), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 6), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 3), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 4), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 4), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 4), 0.98f,
 
-                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step * 4), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step * 5), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step * 5), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step * 5), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step * 4), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step * 4), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 3), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 4), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 3), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 5), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 5), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 5), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 3), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 4), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 4), 0.98f,
         };
         return rez;
     }
 
     static float[] getDigit6(int x, int y, int step) {
         float[] rez = new float[]{
-                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step), ScreenUtils.transformYCoordinateScreenToOpengl(y - step), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 3), ScreenUtils.transformYCoordinateScreenToOpengl(y - step), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step), ScreenUtils.transformYCoordinateScreenToOpengl(y), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step), ScreenUtils.transformYCoordinateScreenToOpengl(y), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 3), ScreenUtils.transformYCoordinateScreenToOpengl(y - step), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 3), ScreenUtils.transformYCoordinateScreenToOpengl(y), 0.98f,
 
-                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step * 6), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step * 7), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step * 7), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step * 7), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step * 6), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step * 6), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 3), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 6), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 3), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 7), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 7), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 7), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 3), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 6), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 6), 0.98f,
 
-                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step * 6), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 4), ScreenUtils.transformCoordinateY(y - step * 6), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 4), ScreenUtils.transformCoordinateY(y - step * 6), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 4), ScreenUtils.transformCoordinateY(y - step), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 3), ScreenUtils.transformYCoordinateScreenToOpengl(y - step), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 3), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 6), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 4), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 6), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 4), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 6), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 3), ScreenUtils.transformYCoordinateScreenToOpengl(y - step), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 4), ScreenUtils.transformYCoordinateScreenToOpengl(y - step), 0.98f,
 
-                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step * 5), 0.98f,
-                ScreenUtils.transformCoordinateX(x), ScreenUtils.transformCoordinateY(y - step * 5), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step * 6), 0.98f,
-                ScreenUtils.transformCoordinateX(x), ScreenUtils.transformCoordinateY(y - step * 5), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step * 6), 0.98f,
-                ScreenUtils.transformCoordinateX(x), ScreenUtils.transformCoordinateY(y - step * 6), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 5), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 5), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 6), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 5), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 6), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 6), 0.98f,
 
-                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step), 0.98f,
-                ScreenUtils.transformCoordinateX(x), ScreenUtils.transformCoordinateY(y - step), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step * 3), 0.98f,
-                ScreenUtils.transformCoordinateX(x), ScreenUtils.transformCoordinateY(y - step), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step * 3), 0.98f,
-                ScreenUtils.transformCoordinateX(x), ScreenUtils.transformCoordinateY(y - step * 3), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step), ScreenUtils.transformYCoordinateScreenToOpengl(y - step), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x), ScreenUtils.transformYCoordinateScreenToOpengl(y - step), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 3), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x), ScreenUtils.transformYCoordinateScreenToOpengl(y - step), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 3), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 3), 0.98f,
 
-                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step * 3), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step * 4), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step * 4), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step * 4), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step * 3), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step * 3), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 3), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 3), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 3), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 4), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 4), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 4), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 3), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 3), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 3), 0.98f,
         };
         return rez;
     }
 
     static float[] getDigit7(int x, int y, int step) {
         float[] rez = new float[]{
-                ScreenUtils.transformCoordinateX(x - step * 2), ScreenUtils.transformCoordinateY(y - step), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 4), ScreenUtils.transformCoordinateY(y - step), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 2), ScreenUtils.transformCoordinateY(y), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 2), ScreenUtils.transformCoordinateY(y), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 4), ScreenUtils.transformCoordinateY(y - step), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 4), ScreenUtils.transformCoordinateY(y), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 2), ScreenUtils.transformYCoordinateScreenToOpengl(y - step), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 4), ScreenUtils.transformYCoordinateScreenToOpengl(y - step), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 2), ScreenUtils.transformYCoordinateScreenToOpengl(y), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 2), ScreenUtils.transformYCoordinateScreenToOpengl(y), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 4), ScreenUtils.transformYCoordinateScreenToOpengl(y - step), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 4), ScreenUtils.transformYCoordinateScreenToOpengl(y), 0.98f,
 
-                ScreenUtils.transformCoordinateX(x - step * 4), ScreenUtils.transformCoordinateY(y - step * 6), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 4), ScreenUtils.transformCoordinateY(y - step * 7), 0.98f,
-                ScreenUtils.transformCoordinateX(x), ScreenUtils.transformCoordinateY(y - step * 7), 0.98f,
-                ScreenUtils.transformCoordinateX(x), ScreenUtils.transformCoordinateY(y - step * 7), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 4), ScreenUtils.transformCoordinateY(y - step * 6), 0.98f,
-                ScreenUtils.transformCoordinateX(x), ScreenUtils.transformCoordinateY(y - step * 6), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 4), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 6), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 4), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 7), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 7), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 7), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 4), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 6), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 6), 0.98f,
 
-                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step * 5), 0.98f,
-                ScreenUtils.transformCoordinateX(x), ScreenUtils.transformCoordinateY(y - step * 5), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step * 6), 0.98f,
-                ScreenUtils.transformCoordinateX(x), ScreenUtils.transformCoordinateY(y - step * 5), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step * 6), 0.98f,
-                ScreenUtils.transformCoordinateX(x), ScreenUtils.transformCoordinateY(y - step * 6), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 5), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 5), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 6), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 5), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 6), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 6), 0.98f,
 
-                ScreenUtils.transformCoordinateX(x - step * 4), ScreenUtils.transformCoordinateY(y - step), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 4), ScreenUtils.transformCoordinateY(y - step * 3), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 4), ScreenUtils.transformCoordinateY(y - step * 3), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step * 3), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 4), ScreenUtils.transformYCoordinateScreenToOpengl(y - step), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 3), ScreenUtils.transformYCoordinateScreenToOpengl(y - step), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 4), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 3), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 3), ScreenUtils.transformYCoordinateScreenToOpengl(y - step), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 4), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 3), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 3), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 3), 0.98f,
 
-                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step * 3), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step * 4), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 2), ScreenUtils.transformCoordinateY(y - step * 4), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 2), ScreenUtils.transformCoordinateY(y - step * 4), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step * 3), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 2), ScreenUtils.transformCoordinateY(y - step * 3), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 3), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 3), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 3), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 4), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 2), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 4), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 2), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 4), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 3), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 3), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 2), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 3), 0.98f,
 
-                ScreenUtils.transformCoordinateX(x - step * 2), ScreenUtils.transformCoordinateY(y - step * 4), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 2), ScreenUtils.transformCoordinateY(y - step * 5), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step * 5), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step * 5), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 2), ScreenUtils.transformCoordinateY(y - step * 4), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step * 4), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 2), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 4), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 2), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 5), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 5), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 5), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 2), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 4), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 4), 0.98f,
 
-                ScreenUtils.transformCoordinateX(x - step * 4), ScreenUtils.transformCoordinateY(y - step * 5), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step * 5), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 4), ScreenUtils.transformCoordinateY(y - step * 6), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step * 5), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 4), ScreenUtils.transformCoordinateY(y - step * 6), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step * 6), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 4), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 5), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 3), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 5), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 4), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 6), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 3), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 5), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 4), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 6), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 3), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 6), 0.98f,
         };
         return rez;
     }
 
     static float[] getDigit8(int x, int y, int step) {
         float[] rez = new float[]{
-                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step), ScreenUtils.transformYCoordinateScreenToOpengl(y - step), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 3), ScreenUtils.transformYCoordinateScreenToOpengl(y - step), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step), ScreenUtils.transformYCoordinateScreenToOpengl(y), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step), ScreenUtils.transformYCoordinateScreenToOpengl(y), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 3), ScreenUtils.transformYCoordinateScreenToOpengl(y - step), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 3), ScreenUtils.transformYCoordinateScreenToOpengl(y), 0.98f,
 
-                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step * 6), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step * 7), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step * 7), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step * 7), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step * 6), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step * 6), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 3), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 6), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 3), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 7), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 7), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 7), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 3), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 6), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 6), 0.98f,
 
-                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step * 3), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step * 4), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step * 4), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step * 4), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step * 3), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step * 3), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 3), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 3), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 3), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 4), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 4), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 4), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 3), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 3), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 3), 0.98f,
 
-                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step * 4), 0.98f,
-                ScreenUtils.transformCoordinateX(x), ScreenUtils.transformCoordinateY(y - step * 4), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step * 6), 0.98f,
-                ScreenUtils.transformCoordinateX(x), ScreenUtils.transformCoordinateY(y - step * 4), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step * 6), 0.98f,
-                ScreenUtils.transformCoordinateX(x), ScreenUtils.transformCoordinateY(y - step * 6), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 4), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 4), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 6), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 4), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 6), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 6), 0.98f,
 
-                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step), 0.98f,
-                ScreenUtils.transformCoordinateX(x), ScreenUtils.transformCoordinateY(y - step), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step * 3), 0.98f,
-                ScreenUtils.transformCoordinateX(x), ScreenUtils.transformCoordinateY(y - step), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step * 3), 0.98f,
-                ScreenUtils.transformCoordinateX(x), ScreenUtils.transformCoordinateY(y - step * 3), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step), ScreenUtils.transformYCoordinateScreenToOpengl(y - step), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x), ScreenUtils.transformYCoordinateScreenToOpengl(y - step), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 3), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x), ScreenUtils.transformYCoordinateScreenToOpengl(y - step), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 3), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 3), 0.98f,
 
-                ScreenUtils.transformCoordinateX(x - step * 4), ScreenUtils.transformCoordinateY(y - step), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 4), ScreenUtils.transformCoordinateY(y - step * 3), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 4), ScreenUtils.transformCoordinateY(y - step * 3), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step * 3), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 4), ScreenUtils.transformYCoordinateScreenToOpengl(y - step), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 3), ScreenUtils.transformYCoordinateScreenToOpengl(y - step), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 4), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 3), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 3), ScreenUtils.transformYCoordinateScreenToOpengl(y - step), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 4), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 3), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 3), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 3), 0.98f,
 
-                ScreenUtils.transformCoordinateX(x - step * 4), ScreenUtils.transformCoordinateY(y - step * 4), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step * 4), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 4), ScreenUtils.transformCoordinateY(y - step * 6), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step * 4), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 4), ScreenUtils.transformCoordinateY(y - step * 6), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step * 6), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 4), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 4), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 3), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 4), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 4), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 6), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 3), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 4), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 4), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 6), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 3), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 6), 0.98f,
 
         };
         return rez;
@@ -440,53 +439,53 @@ class ObjectTemplates {
 
     static float[] getDigit9(int x, int y, int step) {
         float[] rez = new float[]{
-                ScreenUtils.transformCoordinateX(x), ScreenUtils.transformCoordinateY(y - step), 0.98f,
-                ScreenUtils.transformCoordinateX(x), ScreenUtils.transformCoordinateY(y - step * 6), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step * 6), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step * 6), 0.98f,
-                ScreenUtils.transformCoordinateX(x), ScreenUtils.transformCoordinateY(y - step), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x), ScreenUtils.transformYCoordinateScreenToOpengl(y - step), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 6), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 6), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 6), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x), ScreenUtils.transformYCoordinateScreenToOpengl(y - step), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step), ScreenUtils.transformYCoordinateScreenToOpengl(y - step), 0.98f,
 
-                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step), ScreenUtils.transformYCoordinateScreenToOpengl(y - step), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 3), ScreenUtils.transformYCoordinateScreenToOpengl(y - step), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step), ScreenUtils.transformYCoordinateScreenToOpengl(y), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step), ScreenUtils.transformYCoordinateScreenToOpengl(y), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 3), ScreenUtils.transformYCoordinateScreenToOpengl(y - step), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 3), ScreenUtils.transformYCoordinateScreenToOpengl(y), 0.98f,
 
-                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step * 6), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step * 7), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step * 7), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step * 7), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step * 6), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step * 6), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 3), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 6), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 3), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 7), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 7), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 7), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 3), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 6), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 6), 0.98f,
 
-                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step * 3), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step * 4), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step * 4), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step * 4), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step * 3), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step), ScreenUtils.transformCoordinateY(y - step * 3), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 3), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 3), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 3), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 4), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 4), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 4), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 3), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 3), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 3), 0.98f,
 
-                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step * 2), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 4), ScreenUtils.transformCoordinateY(y - step * 2), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 4), ScreenUtils.transformCoordinateY(y - step * 2), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 4), ScreenUtils.transformCoordinateY(y - step), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 3), ScreenUtils.transformYCoordinateScreenToOpengl(y - step), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 3), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 2), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 4), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 2), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 4), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 2), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 3), ScreenUtils.transformYCoordinateScreenToOpengl(y - step), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 4), ScreenUtils.transformYCoordinateScreenToOpengl(y - step), 0.98f,
 
-                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step * 4), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step * 6), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 4), ScreenUtils.transformCoordinateY(y - step * 6), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 4), ScreenUtils.transformCoordinateY(y - step * 6), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 3), ScreenUtils.transformCoordinateY(y - step * 4), 0.98f,
-                ScreenUtils.transformCoordinateX(x - step * 4), ScreenUtils.transformCoordinateY(y - step * 4), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 3), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 4), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 3), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 6), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 4), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 6), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 4), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 6), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 3), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 4), 0.98f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 4), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 4), 0.98f,
         };
         return rez;
     }
 
-    static ObjectContainer getDigitObject(int x, int y, int step, int digit) {
-        ObjectContainer rez = new ObjectContainer();// = new float[0];
+    static GameObject getDigitObject(int x, int y, int step, int digit) {
+        GameObject rez = new GameObject();// = new float[0];
         //float[] f;
         rez.setColorR(0f);
         rez.setColorG(0f);
@@ -663,10 +662,10 @@ class ObjectTemplates {
         return ret;
     }
 
-    static ObjectContainer generateBullet() {
-        ObjectContainer o = new ObjectContainer();
+    static GameObject generateBullet() {
+        GameObject o = new GameObject();
         double rand;
-        AnimationContainer a;
+        GameObjectAnimation a;
         int x, y;
         switch (GameUtils.game.level()) {
             case 1:
@@ -687,21 +686,21 @@ class ObjectTemplates {
                     x += 20;
                 }
 //            o.vertices = new float[]{
-//                    ScreenUtils.transformCoordinateX(x), ScreenUtils.transformCoordinateY(y+30), 0.95f,
-//                    ScreenUtils.transformCoordinateX(x-15), ScreenUtils.transformCoordinateY(y), 0.95f,
-//                    ScreenUtils.transformCoordinateX(x), ScreenUtils.transformCoordinateY(y-30), 0.95f,
-//                    ScreenUtils.transformCoordinateX(x+15), ScreenUtils.transformCoordinateY(y), 0.95f,
+//                    ScreenUtils.transformXCoordinateScreenToOpengl(x), ScreenUtils.transformYCoordinateScreenToOpengl(y+30), 0.95f,
+//                    ScreenUtils.transformXCoordinateScreenToOpengl(x-15), ScreenUtils.transformYCoordinateScreenToOpengl(y), 0.95f,
+//                    ScreenUtils.transformXCoordinateScreenToOpengl(x), ScreenUtils.transformYCoordinateScreenToOpengl(y-30), 0.95f,
+//                    ScreenUtils.transformXCoordinateScreenToOpengl(x+15), ScreenUtils.transformYCoordinateScreenToOpengl(y), 0.95f,
 //
 //            };
-                o.setVertices(getEllipse(ScreenUtils.transformCoordinateX(x), ScreenUtils.transformCoordinateY(y), ScreenUtils.transformDistanceX(22.5f), ScreenUtils.transformDistanceY(45)));
-                //float sdvig = ScreenUtils.transformCoordinateX(x);
+                o.setVertices(getEllipse(ScreenUtils.transformXCoordinateScreenToOpengl(x), ScreenUtils.transformYCoordinateScreenToOpengl(y), ScreenUtils.transformDistanceX(22.5f), ScreenUtils.transformDistanceY(45)));
+                //float sdvig = ScreenUtils.transformXCoordinateScreenToOpengl(x);
                 o.setDrawed(true);
                 o.setAnimated(true);
                 o.setName("bullet");
                 o.setMinX(ScreenUtils.transformDistanceX(22.5f));
                 o.setMinY(ScreenUtils.transformDistanceY(45));
                 //touchedBullet = o;
-                a = new AnimationContainer();
+                a = new GameObjectAnimation();
                 a.setDurationMillis(10000);
                 //e.waitTime = (int)(rand*(750-500))+500;
                 //rand = Math.random();
@@ -714,7 +713,7 @@ class ObjectTemplates {
                 a.setDirectionY(false);
                 a.setRedrawable(true);
                 o.getAnim().add(a);
-                //o2 = ObjectContainer.copy(o);
+                //o2 = GameObject.copy(o);
                 break;
             case 2:
                 //rand;// = Math.random();
@@ -730,21 +729,21 @@ class ObjectTemplates {
 
                 } else y = -31;
 //                o.vertices = new float[]{
-//                        ScreenUtils.transformCoordinateX(x), ScreenUtils.transformCoordinateY(y+30), 0.95f,
-//                        ScreenUtils.transformCoordinateX(x-15), ScreenUtils.transformCoordinateY(y), 0.95f,
-//                        ScreenUtils.transformCoordinateX(x), ScreenUtils.transformCoordinateY(y-30), 0.95f,
-//                        ScreenUtils.transformCoordinateX(x+15), ScreenUtils.transformCoordinateY(y), 0.95f,
+//                        ScreenUtils.transformXCoordinateScreenToOpengl(x), ScreenUtils.transformYCoordinateScreenToOpengl(y+30), 0.95f,
+//                        ScreenUtils.transformXCoordinateScreenToOpengl(x-15), ScreenUtils.transformYCoordinateScreenToOpengl(y), 0.95f,
+//                        ScreenUtils.transformXCoordinateScreenToOpengl(x), ScreenUtils.transformYCoordinateScreenToOpengl(y-30), 0.95f,
+//                        ScreenUtils.transformXCoordinateScreenToOpengl(x+15), ScreenUtils.transformYCoordinateScreenToOpengl(y), 0.95f,
 //
 //                };
-                o.setVertices(getEllipse(ScreenUtils.transformCoordinateX(x), ScreenUtils.transformCoordinateY(y), ScreenUtils.transformDistanceX(15), ScreenUtils.transformDistanceY(30)));
-                //float sdvig = ScreenUtils.transformCoordinateX(.x, );
+                o.setVertices(getEllipse(ScreenUtils.transformXCoordinateScreenToOpengl(x), ScreenUtils.transformYCoordinateScreenToOpengl(y), ScreenUtils.transformDistanceX(15), ScreenUtils.transformDistanceY(30)));
+                //float sdvig = ScreenUtils.transformXCoordinateScreenToOpengl(.x, );
                 o.setDrawed(true);
                 o.setAnimated(true);
                 o.setName("bullet");
                 o.setMinX(ScreenUtils.transformDistanceX(22.5f));
                 o.setMinY(ScreenUtils.transformDistanceY(45));
                 //touchedBullet = o;
-                a = new AnimationContainer();
+                a = new GameObjectAnimation();
                 a.setDurationMillis(10000);
                 //e.waitTime = (int)(rand*(750-500))+500;
                 //rand = Math.random();
@@ -768,36 +767,36 @@ class ObjectTemplates {
 //                             \\
         //x+5,y-5   x-5,y+5
         if ((startX - endX)*(startY - endY) > 0.0f) {
-            ret[0] = ScreenUtils.transformCoordinateX(startX + 5);
-            ret[1] = ScreenUtils.transformCoordinateY(startY - 5);
+            ret[0] = ScreenUtils.transformXCoordinateScreenToOpengl(startX + 5);
+            ret[1] = ScreenUtils.transformYCoordinateScreenToOpengl(startY - 5);
             ret[2] = 0.97f;
-            ret[3] = ScreenUtils.transformCoordinateX(startX - 5);
-            ret[4] = ScreenUtils.transformCoordinateY(startY + 5);
+            ret[3] = ScreenUtils.transformXCoordinateScreenToOpengl(startX - 5);
+            ret[4] = ScreenUtils.transformYCoordinateScreenToOpengl(startY + 5);
             ret[5] = 0.97f;
 
-            ret[6] = ScreenUtils.transformCoordinateX(endX - 5);
-            ret[7] = ScreenUtils.transformCoordinateY(endY + 5);
+            ret[6] = ScreenUtils.transformXCoordinateScreenToOpengl(endX - 5);
+            ret[7] = ScreenUtils.transformYCoordinateScreenToOpengl(endY + 5);
             ret[8] = 0.97f;
-            ret[9] = ScreenUtils.transformCoordinateX(endX + 5);
-            ret[10] = ScreenUtils.transformCoordinateY(endY - 5);
+            ret[9] = ScreenUtils.transformXCoordinateScreenToOpengl(endX + 5);
+            ret[10] = ScreenUtils.transformYCoordinateScreenToOpengl(endY - 5);
             ret[11] = 0.97f;
         }
 //                             //
 //                            //
         //x+5,y+5   x-5,y-5
         else {
-            ret[0] = ScreenUtils.transformCoordinateX(startX + 5);
-            ret[1] = ScreenUtils.transformCoordinateY(startY + 5);
+            ret[0] = ScreenUtils.transformXCoordinateScreenToOpengl(startX + 5);
+            ret[1] = ScreenUtils.transformYCoordinateScreenToOpengl(startY + 5);
             ret[2] = 0.97f;
-            ret[3] = ScreenUtils.transformCoordinateX(startX - 5);
-            ret[4] = ScreenUtils.transformCoordinateY(startY - 5);
+            ret[3] = ScreenUtils.transformXCoordinateScreenToOpengl(startX - 5);
+            ret[4] = ScreenUtils.transformYCoordinateScreenToOpengl(startY - 5);
             ret[5] = 0.97f;
 
-            ret[6] = ScreenUtils.transformCoordinateX(endX - 5);
-            ret[7] = ScreenUtils.transformCoordinateY(endY - 5);
+            ret[6] = ScreenUtils.transformXCoordinateScreenToOpengl(endX - 5);
+            ret[7] = ScreenUtils.transformYCoordinateScreenToOpengl(endY - 5);
             ret[8] = 0.97f;
-            ret[9] = ScreenUtils.transformCoordinateX(endX + 5);
-            ret[10] = ScreenUtils.transformCoordinateY(endY + 5);
+            ret[9] = ScreenUtils.transformXCoordinateScreenToOpengl(endX + 5);
+            ret[10] = ScreenUtils.transformYCoordinateScreenToOpengl(endY + 5);
             ret[11] = 0.97f;
         }
         return  ret;

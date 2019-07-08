@@ -15,13 +15,13 @@ class EventMaker implements Runnable {
     @Override
     public void run() {
         boolean continueCycle = true;
-        ArrayList<EventContainer> events;
+        ArrayList<GameObjectEvent> events;
         while (continueCycle) {
             events = GameEvents.getEvents();
             //совершение событий, которые должны были произойти к этому моменту, но еще не произошли
             long curTime = SystemClock.uptimeMillis();
             for (int i = 0; i < events.size(); ++i) {
-                EventContainer e = events.get(i);
+                GameObjectEvent e = events.get(i);
                 if (!e.isPass()) {
 
                     if (e.getPrevTime() < 0) {
@@ -38,11 +38,11 @@ class EventMaker implements Runnable {
                                 //new object
                                 //e.o -> SomeUtils.obj
 
-                                ObjectContainer newO;
+                                GameObject newO;
                                 if (e.getNeedToGenerateObject() == 1)
                                     newO = ObjectTemplates.generateBullet();
                                 else
-                                    newO = ObjectContainer.copy(e.getO());
+                                    newO = GameObject.copy(e.getO());
 //                                    SomeUtils.obj.add(newO);
                                 GameObjects.addObject(newO);
                                 GameObjects.setObjectsChanged();
@@ -66,7 +66,7 @@ class EventMaker implements Runnable {
                                 //e.newAnimX
                                 //e.newAnimY
                                 //e.o
-                                AnimationContainer an = e.getO().getAnim().get(0);
+                                GameObjectAnimation an = e.getO().getAnim().get(0);
                                 // float speedX = an.distanceX/an.duration;
 //                            float speedY = an.distanceY/an.duration;
 //                            float distance = (float)Math.sqrt(an.distanceX*an.distanceX+an.distanceY*an.distanceY);
