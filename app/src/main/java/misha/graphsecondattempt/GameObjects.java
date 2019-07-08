@@ -134,7 +134,7 @@ class GameObjects {
 
     static float evaluateCenterY(float[] f) {
         float sum = 0;
-        for (int i = 0; i < f.length; i += 3) {
+        for (int i = 1; i < f.length; i += 3) {
             sum += f[i];
         }
         return sum / (f.length / 3.0f);
