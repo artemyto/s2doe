@@ -3,7 +3,6 @@ package misha.graphsecondattempt;
 import android.content.Context;
 import android.opengl.GLSurfaceView;
 import android.opengl.Matrix;
-import android.os.SystemClock;
 
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
@@ -31,16 +30,14 @@ import static android.opengl.GLES20.glUniformMatrix4fv;
 import static android.opengl.GLES20.glUseProgram;
 import static android.opengl.GLES20.glVertexAttribPointer;
 import static android.opengl.GLES20.glViewport;
-import static java.lang.Boolean.FALSE;
-import static java.lang.Boolean.TRUE;
 
 /**
  * Created by master22 on 4/24/2018.
  * Package: ${PACKAGE_NAME}, project: TriforcePower.
  */
 
-public class OpenGLRenderer implements GLSurfaceView.Renderer {
-    private Context context;
+class OpenGLRenderer implements GLSurfaceView.Renderer {
+    private final Context context;
     private int programId;
     private FloatBuffer vertexData;
     private int uColorLocation;
@@ -48,9 +45,9 @@ public class OpenGLRenderer implements GLSurfaceView.Renderer {
     private int uMatrixLocation;
     private boolean needToBindData = false;
 
-    private static ArrayList<ObjectContainer> obj;
+    private static ArrayList<GameObject> obj;
 
-    private float[] mModelMatrix = new float[16];
+    private final float[] mModelMatrix = new float[16];
 
     OpenGLRenderer(Context context) {
         this.context = context;
@@ -79,7 +76,7 @@ public class OpenGLRenderer implements GLSurfaceView.Renderer {
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         Matrix.setIdentityM(mModelMatrix, 0);
         bindMatrix();
-        for (ObjectContainer o:obj) {
+        for (GameObject o:obj) {
 
             glUniform4f(uColorLocation, o.getColorR(), o.getColorG(), o.getColorB(), 0f);
             glDrawArrays(o.getFanOrStrip(), o.getStartPoint(), o.getNumberOfPoints());
@@ -100,7 +97,7 @@ public class OpenGLRenderer implements GLSurfaceView.Renderer {
         }
         vertexData = ByteBuffer.allocateDirect(sizeOfVertexData * 4).order(ByteOrder.nativeOrder()).asFloatBuffer();
         int pos = 0;
-        for (ObjectContainer o : obj) {
+        for (GameObject o : obj) {
             vertexData.put(o.getVertices());
             o.setInOpenglCache(true);
             o.setStartPoint(pos);

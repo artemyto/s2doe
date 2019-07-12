@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity implements Level.MyCallback 
     private GLSurfaceView glSurfaceView;
     private Level game;
     private OpenGLRenderer oGlRend;
-    boolean mode = false;
+    private boolean mode = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity implements Level.MyCallback 
         int uiOptions = View.SYSTEM_UI_FLAG_FULLSCREEN;
         decorView.setSystemUiVisibility(uiOptions);
         ActionBar actionBar = getSupportActionBar();
-        actionBar.hide();
+        if (actionBar != null) actionBar.hide();
 //        setContentView(R.layout.activity_main);
 
 
@@ -56,13 +56,13 @@ public class MainActivity extends AppCompatActivity implements Level.MyCallback 
         GameUtils.setGame(game);
 
     }
-    View.OnClickListener onClick = new View.OnClickListener() {
+    private final View.OnClickListener onClick = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
 
         }
     };
-    View.OnTouchListener onTouch = new View.OnTouchListener() {
+    private final View.OnTouchListener onTouch = new View.OnTouchListener() {
         @Override
         public boolean onTouch(View v, MotionEvent event) {
             if (game.isRunning()){
@@ -86,15 +86,13 @@ public class MainActivity extends AppCompatActivity implements Level.MyCallback 
     @Override
     protected void onPause() {
         super.onPause();
-        if (mode)
-            glSurfaceView.onPause();
+        if (mode) glSurfaceView.onPause();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        if (mode)
-            glSurfaceView.onResume();
+        if (mode) glSurfaceView.onResume();
     }
 
     private boolean supportES2() {

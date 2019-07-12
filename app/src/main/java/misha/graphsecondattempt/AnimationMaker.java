@@ -5,7 +5,7 @@ import android.os.SystemClock;
 import java.util.ArrayList;
 
 class AnimationMaker implements Runnable {
-    private Thread thread;
+    private final Thread thread;
 
     AnimationMaker() {
         thread = new Thread(this);
@@ -15,10 +15,10 @@ class AnimationMaker implements Runnable {
     @Override
     public void run() {
         boolean continueCycle = true;
-        ArrayList<ObjectContainer> objects;
+        ArrayList<GameObject> objects;
         while (continueCycle) {
             objects = GameObjects.getObjects();
-            ObjectContainer o;
+            GameObject o;
             boolean animationExists = false;
             boolean notRemoved = true;
 
@@ -28,7 +28,7 @@ class AnimationMaker implements Runnable {
                 if (o.isAnimated() && !o.getAnim().isEmpty() && o.getAnim().get(0).isRedrawable()) {
                     notRemoved = true;
                     animationExists = true;
-                    AnimationContainer a = o.getAnim().get(0);
+                    GameObjectAnimation a = o.getAnim().get(0);
                     long duration = a.getDurationMillis();
                     float distanceX = a.getDistanceX();
                     float distanceY = a.getDistanceY();

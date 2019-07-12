@@ -8,30 +8,51 @@ class ScreenUtils {
     private static int screenWidthHalf = 1;
     private static int screenHeightHalf = 1;
 
-    static float transformCoordinateX(float coord) {
-        float rez = -2f;
+    static float transformXCoordinateScreenToOpengl(float coord) {
+        float result;
         if (coord > screenWidthHalf) {
             coord -= screenWidthHalf;
-            rez = coord / screenWidthHalf;
+            result = coord / screenWidthHalf;
 
         } else {
-            rez = -1 + coord / screenWidthHalf;
+            result = -1 + coord / screenWidthHalf;
 
         }
-        return rez;
+        return result;
     }
 
-    static float transformCoordinateY(float coord) {
-        float rez = -2f;
+    static float transformYCoordinateScreenToOpengl(float coord) {
+        float result;
         if (coord > screenHeightHalf) {
             coord -= screenHeightHalf;
-            rez = -coord / screenHeightHalf;
+            result = -coord / screenHeightHalf;
 
         } else {
-            rez = 1 - coord / screenHeightHalf;
+            result = 1 - coord / screenHeightHalf;
 
         }
-        return rez;
+        return result;
+    }
+
+    static float transformXCoordinateOpenglToScreen(float coord) {
+        float result;
+        if (coord > 0) {
+            result = screenWidthHalf + coord*screenWidthHalf;
+        } else {
+            result = (1 + coord)*screenWidthHalf;
+        }
+        return result;
+    }
+
+    static float transformYCoordinateOpenglToScreen(float coord) {
+        float result;
+        if (coord > 0) {
+            result = (1 - coord)*screenHeightHalf;
+
+        } else {
+            result = screenHeightHalf + (-coord)*screenHeightHalf;
+        }
+        return result;
     }
 
     static float transformDistanceX(float a) {

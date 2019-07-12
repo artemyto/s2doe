@@ -5,10 +5,10 @@ package misha.graphsecondattempt;
  * Package: bg.fallingbullets, project: FallingBullets.
  */
 
-public abstract class Level {
+abstract class Level {
     abstract void start();
 
-    abstract void isClosely(ObjectContainer o);
+    abstract void isClosely(GameObject o);
 
     abstract void wasTouched(float x, float y, int type);
 

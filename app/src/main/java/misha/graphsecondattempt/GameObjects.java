@@ -1,43 +1,44 @@
 package misha.graphsecondattempt;
 
 import java.util.ArrayList;
+import java.util.List;
 
 class GameObjects {
-    private static ArrayList<ObjectContainer> obj = new ArrayList<>();
+    private static ArrayList<GameObject> obj = new ArrayList<>();
     private static volatile boolean objectsChanged = false;
 
     private GameObjects() {
 
     }
 
-    static synchronized ArrayList<ObjectContainer> getObjects() {
-        ArrayList<ObjectContainer> arrayList = new ArrayList<>();
-        for (ObjectContainer o : obj) {
+    static synchronized ArrayList<GameObject> getObjects() {
+        ArrayList<GameObject> arrayList = new ArrayList<>();
+        for (GameObject o : obj) {
             arrayList.add(o.getCopy());
         }
         return arrayList;
     }
 
-    static synchronized ObjectContainer getObject(String name) {
-        ObjectContainer ret = null;
-        for (ObjectContainer o : obj) {
+    static synchronized GameObject getObject(String name) {
+        GameObject ret = null;
+        for (GameObject o : obj) {
             if (name.equals(o.getName())) ret = o.getCopy();
         }
         return ret;
     }
 
-    static synchronized void setObjects(ArrayList<ObjectContainer> objects) {
+    static synchronized void setObjects(ArrayList<GameObject> objects) {
         obj = new ArrayList<>();
-        for (ObjectContainer o : objects)
+        for (GameObject o : objects)
             obj.add(o.getCopy());
         objectsChanged = true;
     }
     
-    static synchronized void addObject(ObjectContainer o) {
+    static synchronized void addObject(GameObject o) {
         obj.add(o);
     }
 
-    static synchronized void addOrReplaceObject(ObjectContainer o) {
+    static synchronized void addOrReplaceObject(GameObject o) {
         boolean notReplaced = true;
         for (int i = 0; i < obj.size(); ++i) {
             if (obj.get(i).getName().equals(o.getName())) {
@@ -48,6 +49,16 @@ class GameObjects {
         }
         if (notReplaced) obj.add(o.getCopy());
         GameObjects.objectsChanged = true;
+    }
+
+    static synchronized void changeObject(String name, GameObject newObject) {
+        for (int i = 0; i < obj.size(); ++i) {
+            if (name.equals(obj.get(i).getName())) {
+                GameObject.copy(obj.get(i), newObject);
+                break;
+            }
+        }
+        objectsChanged = true;
     }
 
     static synchronized void removeObject(String s) {
@@ -70,9 +81,9 @@ class GameObjects {
         objectsChanged = true;
     }
 
-    static synchronized ObjectContainer getTouchedBullet(float x, float y) {
-        ObjectContainer ret = null;
-        for (ObjectContainer o : obj) {
+    static synchronized GameObject getTouchedBullet(float x, float y) {
+        GameObject ret = null;
+        for (GameObject o : obj) {
             if (o.getName().contains("bullet") && Math.abs(x - o.getCenterX()) < ScreenUtils.transformDistanceX(100) && Math.abs(y - o.getCenterY()) < ScreenUtils.transformDistanceX(100) / ScreenUtils.getAspectRatio()) {
                 ret = o.getCopy();
                 break;
@@ -80,11 +91,51 @@ class GameObjects {
         }
         return ret;
     }
+    //TODO нужен другой метод: посылаем классу запрос: коснулись ли объекта с именем таким-то в координатах таких-то. Ответ тот же - имя того, кого коснулись.
+    static synchronized String getTouchedObjectName(float x, float y, String containedString, String notContainedString) {
+        String ret = "";
+        String name;
+        for (GameObject o : obj) {
+            name = o.getName();
+            if (name.contains(containedString) && (notContainedString.equals("") || !name.contains(notContainedString))) {
+                if ((x - o.getCenterX()) * (x - o.getCenterX()) + (y - o.getCenterY()) * ScreenUtils.getAspectRatio() * (y - o.getCenterY()) * ScreenUtils.getAspectRatio() < ScreenUtils.transformDistanceX(70) * ScreenUtils.transformDistanceX(70)) {
+                    ret = name;
+                    break;
+                } else if ((x - o.getCenterX()) * (x - o.getCenterX()) + (y - o.getCenterY()) * ScreenUtils.getAspectRatio() * (y - o.getCenterY()) * ScreenUtils.getAspectRatio() < ScreenUtils.transformDistanceX(100) * ScreenUtils.transformDistanceX(100)) {
+                    ret = "no!!!";
+                    break;
+                }
+            }
+        }
+        return ret;
+    }
+
+    static synchronized List<GameObject> getObjectsContainingString(String pattern) {
+        List<GameObject> list = new ArrayList<>();
+        for (GameObject o : obj) {
+            if (o.getName().contains(pattern)) {
+                list.add(o.getCopy());
+            }
+        }
+        return list;
+    }
+
+    static synchronized List<GameObject> getObjectsContainingString(String[] pattern) {
+        List<GameObject> list = new ArrayList<>();
+        for (GameObject o : obj) {
+            boolean contains = true;
+            for (String s : pattern) {
+                if (!o.getName().contains(s)) contains = false;
+            }
+            if (contains) list.add(o.getCopy());
+        }
+        return list;
+    }
 
     static synchronized String getTouchedBulletName(float x, float y) {
         String ret = "";
 
-        for (ObjectContainer o : obj) {
+        for (GameObject o : obj) {
             if (o.getName().contains("bullet")) {
                 if ((x - o.getCenterX()) * (x - o.getCenterX()) + (y - o.getCenterY()) * ScreenUtils.getAspectRatio() * (y - o.getCenterY()) * ScreenUtils.getAspectRatio() < ScreenUtils.transformDistanceX(70) * ScreenUtils.transformDistanceX(70)) {
                     ret = o.getName();
@@ -96,16 +147,6 @@ class GameObjects {
             }
         }
         return ret;
-    }
-
-    static synchronized void changeObject(String name, ObjectContainer newObject) {
-        for (int i = 0; i < obj.size(); ++i) {
-            if (name.equals(obj.get(i).getName())) {
-                ObjectContainer.copy(obj.get(i), newObject);
-                break;
-            }
-        }
-        objectsChanged = true;
     }
 
     static void setObjectsChanged() {
