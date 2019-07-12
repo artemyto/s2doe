@@ -8,7 +8,7 @@ import org.junit.runners.JUnit4;
 @RunWith(JUnit4.class)
 public class GameObjectsTest{
     @Test
-    public void testGetTouchedBulletName() throws Exception{
+    public void testGetTouchedBulletName() {
 
         float x = 240;
         float y = 480;

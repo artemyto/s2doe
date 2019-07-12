@@ -2,13 +2,15 @@ package misha.graphsecondattempt;
 
 import android.os.SystemClock;
 
+import java.util.List;
+
 import static android.opengl.GLES20.GL_TRIANGLE_FAN;
 
 //import android.widget.Toast;
 
 /**
  * Created by master22 on 5/1/2018.
- * Package: bg.fallingbullets, project: FallingBullets.
+ * Package: bg.fallingvertices, project: FallingBullets.
  */
 
 class Level1 extends Level {
@@ -47,9 +49,9 @@ class Level1 extends Level {
         GameObjects.eraseObjects();
         gameObject = new GameObject();
         gameObject.setVertices(new float[]{ScreenUtils.transformXCoordinateScreenToOpengl(0), ScreenUtils.transformYCoordinateScreenToOpengl(0), 0.99f,
-                                                ScreenUtils.transformXCoordinateScreenToOpengl(720), ScreenUtils.transformYCoordinateScreenToOpengl(0), 0.99f,
-                                                ScreenUtils.transformXCoordinateScreenToOpengl(720), ScreenUtils.transformYCoordinateScreenToOpengl(1280), 0.99f,
-                                                ScreenUtils.transformXCoordinateScreenToOpengl(0), ScreenUtils.transformYCoordinateScreenToOpengl(1280), 0.99f});
+                ScreenUtils.transformXCoordinateScreenToOpengl(720), ScreenUtils.transformYCoordinateScreenToOpengl(0), 0.99f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(720), ScreenUtils.transformYCoordinateScreenToOpengl(1280), 0.99f,
+                ScreenUtils.transformXCoordinateScreenToOpengl(0), ScreenUtils.transformYCoordinateScreenToOpengl(1280), 0.99f});
         gameObject.setColorR(0.50f);
         gameObject.setColorG(0.50f);
         gameObject.setColorB(0.50f);
@@ -76,7 +78,7 @@ class Level1 extends Level {
                 doubleTouch = curTime - lastTouchTime <= 500;
 
                 lastTouchTime = curTime;
-                touchedObjectName = GameObjects.getTouchedBulletName(ScreenUtils.transformXCoordinateScreenToOpengl(x), ScreenUtils.transformYCoordinateScreenToOpengl(y));
+                touchedObjectName = GameObjects.getTouchedObjectName(ScreenUtils.transformXCoordinateScreenToOpengl(x), ScreenUtils.transformYCoordinateScreenToOpengl(y), "vertice", "edge");
                 if (touchedObjectName.equals("")) {
 
                     gameObject = new GameObject();
@@ -86,7 +88,7 @@ class Level1 extends Level {
                     gameObject.setColorB(0.90f);
                     gameObject.setStartPoint(0);
                     gameObject.setNumberOfPoints(4);
-                    gameObject.setName("bullet" + count);
+                    gameObject.setName("vertice" + count);
                     gameObject.setDrawed(true);
                     gameObject.setInOpenglCache(true);
                     gameObject.setMinX(-1);
@@ -111,7 +113,7 @@ class Level1 extends Level {
                     gameObjectEvent.setNeedToRebindData();
 
                     gameObjectEvent.setObject(gameObject);
-                    gameObjectEvent.setName("bullet" + count);
+                    gameObjectEvent.setName("vertice" + count);
                     count++;
                     GameEvents.addEvent(gameObjectEvent);
                     if (eventMaker == null || !eventMaker.isRunning())
@@ -120,7 +122,7 @@ class Level1 extends Level {
                         animationMaker = new AnimationMaker();
 
 //                    GameObjects.addOrReplaceObject(gameObject);
-                } else if (touchedObjectName.contains("bullet")){
+                } else if (touchedObjectName.contains("vertice")) {
                     touchBeginX = x;
                     touchBeginY = y;
                     if (!(doubleTouch && Math.abs(ScreenUtils.transformXCoordinateScreenToOpengl(x) - ScreenUtils.transformXCoordinateScreenToOpengl(touchLastX)) < ScreenUtils.transformDistanceX(40) && Math.abs(ScreenUtils.transformYCoordinateScreenToOpengl(y) - ScreenUtils.transformYCoordinateScreenToOpengl(touchLastY)) < ScreenUtils.transformDistanceY(40))) {
@@ -141,11 +143,10 @@ class Level1 extends Level {
             case ACTION_MOVE:
                 touchCurY = y;
                 touchCurX = x;
-//                doubleTouch = false;
-                if (touchedObjectName.contains("bullet")) {
+                if (touchedObjectName.contains("vertice")) {
                     if (doubleTouch) {
                         if (!creatingEdge) {
-                            creatingEdgeName = "edgev" + touchedObjectName.substring(6);
+                            creatingEdgeName = "edge" + touchedObjectName;
                             gameObject = new GameObject();
                             gameObject.setVertices(ObjectTemplates.getCircle(ScreenUtils.transformXCoordinateScreenToOpengl(touchBeginX), ScreenUtils.transformYCoordinateScreenToOpengl(touchBeginY), ScreenUtils.transformDistanceX(50), 'x'));
 
@@ -162,44 +163,63 @@ class Level1 extends Level {
                             gameObject.setCenterX(GameObjects.evaluateCenterX(gameObject.getVertices()));
                             gameObject.setCenterY(GameObjects.evaluateCenterY(gameObject.getVertices()));
                             creatingEdge = true;
-                        }
-                        else {
+                        } else {
                             gameObject = GameObjects.getObject(creatingEdgeName);
                         }
                         gameObject.setFanOrStrip(GL_TRIANGLE_FAN);
                         gameObject.setVertices(ObjectTemplates.getLine(touchBeginX, touchBeginY, touchCurX, touchCurY));
-//                        gameObject.setVertices();
                         GameObjects.addOrReplaceObject(gameObject);
-                    }
-                    else {
+                    } else {
                         GameObject touchedObject = GameObjects.getObject(touchedObjectName);
                         if (touchedObject != null) {
                             float[] v = touchedObject.getVertices();
                             for (int i = 0; i < v.length; i += 3) {
-                                v[i] = v[i] + ScreenUtils.transformDistanceX(touchCurX - touchLastX);
-                                v[i + 1] = v[i + 1] - ScreenUtils.transformDistanceY(touchCurY - touchLastY);
+                                v[i] += ScreenUtils.transformDistanceX(touchCurX - touchLastX);
+                                v[i + 1] -= ScreenUtils.transformDistanceY(touchCurY - touchLastY);
                             }
                             touchedObject.setCenterX(GameObjects.evaluateCenterX(v));
                             touchedObject.setCenterY(GameObjects.evaluateCenterY(v));
                             GameObjects.changeObject(touchedObjectName, touchedObject);
+
+                            String[] pattern = new String[]{"edge", touchedObjectName};
+                            List<GameObject> list = GameObjects.getObjectsContainingString(pattern);
+                            for (GameObject o : list) {
+                                //0, 1 - start point, 2, 3 - end point
+                                float[] edgePoints = ObjectTemplates.getLinePoints(o.getVertices());
+                                if (o.getName().indexOf(touchedObjectName) == "edge".length())
+                                    o.setVertices(ObjectTemplates.getLine(edgePoints[0] + touchCurX - touchLastX, edgePoints[1] + touchCurY - touchLastY, edgePoints[2], edgePoints[3]));
+                                else o.setVertices(ObjectTemplates.getLine(edgePoints[0], edgePoints[1], edgePoints[2] + touchCurX - touchLastX, edgePoints[3] + touchCurY - touchLastY));
+                                o.setCenterX(GameObjects.evaluateCenterX(v));
+                                o.setCenterY(GameObjects.evaluateCenterY(v));
+                                GameObjects.changeObject(o.getName(), o);
+                            }
                             touchLastX = touchCurX;
                             touchLastY = touchCurY;
                         }
                     }
-                }
-                else doubleTouch = false;
+                } else doubleTouch = false;
                 lastTouchAction = ACTION_MOVE;
                 break;
 
             case ACTION_UP:
+                if (creatingEdge) {
+                    touchedObjectName = GameObjects.getTouchedObjectName(ScreenUtils.transformXCoordinateScreenToOpengl(x), ScreenUtils.transformYCoordinateScreenToOpengl(y), "vertice", "edge");
+                    if (touchedObjectName.contains("vertice")) {
+                        gameObject = GameObjects.getObject(touchedObjectName);
+                        touchCurX = ScreenUtils.transformXCoordinateOpenglToScreen(gameObject.getCenterX());
+                        touchCurY = ScreenUtils.transformYCoordinateOpenglToScreen(gameObject.getCenterY());
+                        gameObject = GameObjects.getObject(creatingEdgeName);
+                        gameObject.setName(creatingEdgeName + touchedObjectName);
+                        gameObject.setVertices(ObjectTemplates.getLine(touchBeginX, touchBeginY, touchCurX, touchCurY));
+                        GameObjects.removeObject(creatingEdgeName);
+                        GameObjects.addOrReplaceObject(gameObject);
+                    }
+                    else GameObjects.removeObject(creatingEdgeName);
+                    creatingEdgeName = "";
+                    creatingEdge = false;
+                }
 
                 touchedObjectName = "";
-//                if (lastTouchAction == ACTION_MOVE && doubleTouch) {
-//                    touchedObjectName = GameObjects.getTouchedBulletName(ScreenUtils.transformXCoordinateScreenToOpengl(x), ScreenUtils.transformYCoordinateScreenToOpengl(y));
-//
-//                    doubleTouch = false;
-//                }
-                creatingEdge = false;
 
                 break;
         }

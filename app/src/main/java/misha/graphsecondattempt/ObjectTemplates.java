@@ -8,7 +8,7 @@ class ObjectTemplates {
     }
 
     static float[] getDigit0(int x, int y, int step) {
-        float[] rez = new float[]{
+        return new float[]{
                 ScreenUtils.transformXCoordinateScreenToOpengl(x), ScreenUtils.transformYCoordinateScreenToOpengl(y - step), 0.98f,
                 ScreenUtils.transformXCoordinateScreenToOpengl(x), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 6), 0.98f,
                 ScreenUtils.transformXCoordinateScreenToOpengl(x - step), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 6), 0.98f,
@@ -39,11 +39,11 @@ class ObjectTemplates {
 
 
         };
-        return rez;
     }
 
     static float[] getDigit1(int x, int y, int step) {
-        float[] rez = new float[]{
+
+        return new float[]{
                 ScreenUtils.transformXCoordinateScreenToOpengl(x), ScreenUtils.transformYCoordinateScreenToOpengl(y), 0.98f,
                 ScreenUtils.transformXCoordinateScreenToOpengl(x), ScreenUtils.transformYCoordinateScreenToOpengl(y - step), 0.98f,
                 ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 3), ScreenUtils.transformYCoordinateScreenToOpengl(y), 0.98f,
@@ -66,12 +66,10 @@ class ObjectTemplates {
                 ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 3), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 6), 0.98f,
 
         };
-
-        return rez;
     }
 
     static float[] getDigit2(int x, int y, int step) {
-        float[] rez = new float[]{
+        return new float[]{
                 ScreenUtils.transformXCoordinateScreenToOpengl(x), ScreenUtils.transformYCoordinateScreenToOpengl(y), 0.98f,
                 ScreenUtils.transformXCoordinateScreenToOpengl(x), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 2), 0.98f,
                 ScreenUtils.transformXCoordinateScreenToOpengl(x - step), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 2), 0.98f,
@@ -129,11 +127,10 @@ class ObjectTemplates {
                 ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 4), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 4), 0.98f,
 
         };
-        return rez;
     }
 
     static float[] getDigit3(int x, int y, int step) {
-        float[] rez = new float[]{
+        return new float[]{
                 ScreenUtils.transformXCoordinateScreenToOpengl(x - step), ScreenUtils.transformYCoordinateScreenToOpengl(y - step), 0.98f,
                 ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 3), ScreenUtils.transformYCoordinateScreenToOpengl(y - step), 0.98f,
                 ScreenUtils.transformXCoordinateScreenToOpengl(x - step), ScreenUtils.transformYCoordinateScreenToOpengl(y), 0.98f,
@@ -184,11 +181,10 @@ class ObjectTemplates {
                 ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 4), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 5), 0.98f,
 
         };
-        return rez;
     }
 
     static float[] getDigit4(int x, int y, int step) {
-        float[] rez = new float[]{
+        return new float[]{
                 ScreenUtils.transformXCoordinateScreenToOpengl(x), ScreenUtils.transformYCoordinateScreenToOpengl(y), 0.98f,
                 ScreenUtils.transformXCoordinateScreenToOpengl(x), ScreenUtils.transformYCoordinateScreenToOpengl(y - step), 0.98f,
                 ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 3), ScreenUtils.transformYCoordinateScreenToOpengl(y), 0.98f,
@@ -231,11 +227,10 @@ class ObjectTemplates {
                 ScreenUtils.transformXCoordinateScreenToOpengl(x), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 2), 0.98f,
                 ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 5), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 2), 0.98f,
         };
-        return rez;
     }
 
     static float[] getDigit5(int x, int y, int step) {
-        float[] rez = new float[]{
+        return new float[]{
                 ScreenUtils.transformXCoordinateScreenToOpengl(x - step), ScreenUtils.transformYCoordinateScreenToOpengl(y - step), 0.98f,
                 ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 4), ScreenUtils.transformYCoordinateScreenToOpengl(y - step), 0.98f,
                 ScreenUtils.transformXCoordinateScreenToOpengl(x - step), ScreenUtils.transformYCoordinateScreenToOpengl(y), 0.98f,
@@ -278,11 +273,10 @@ class ObjectTemplates {
                 ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 3), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 4), 0.98f,
                 ScreenUtils.transformXCoordinateScreenToOpengl(x - step), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 4), 0.98f,
         };
-        return rez;
     }
 
     static float[] getDigit6(int x, int y, int step) {
-        float[] rez = new float[]{
+        return new float[]{
                 ScreenUtils.transformXCoordinateScreenToOpengl(x - step), ScreenUtils.transformYCoordinateScreenToOpengl(y - step), 0.98f,
                 ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 3), ScreenUtils.transformYCoordinateScreenToOpengl(y - step), 0.98f,
                 ScreenUtils.transformXCoordinateScreenToOpengl(x - step), ScreenUtils.transformYCoordinateScreenToOpengl(y), 0.98f,
@@ -325,11 +319,10 @@ class ObjectTemplates {
                 ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 3), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 3), 0.98f,
                 ScreenUtils.transformXCoordinateScreenToOpengl(x - step), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 3), 0.98f,
         };
-        return rez;
     }
 
     static float[] getDigit7(int x, int y, int step) {
-        float[] rez = new float[]{
+        return new float[]{
                 ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 2), ScreenUtils.transformYCoordinateScreenToOpengl(y - step), 0.98f,
                 ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 4), ScreenUtils.transformYCoordinateScreenToOpengl(y - step), 0.98f,
                 ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 2), ScreenUtils.transformYCoordinateScreenToOpengl(y), 0.98f,
@@ -379,11 +372,10 @@ class ObjectTemplates {
                 ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 4), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 6), 0.98f,
                 ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 3), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 6), 0.98f,
         };
-        return rez;
     }
 
     static float[] getDigit8(int x, int y, int step) {
-        float[] rez = new float[]{
+        return new float[]{
                 ScreenUtils.transformXCoordinateScreenToOpengl(x - step), ScreenUtils.transformYCoordinateScreenToOpengl(y - step), 0.98f,
                 ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 3), ScreenUtils.transformYCoordinateScreenToOpengl(y - step), 0.98f,
                 ScreenUtils.transformXCoordinateScreenToOpengl(x - step), ScreenUtils.transformYCoordinateScreenToOpengl(y), 0.98f,
@@ -434,11 +426,10 @@ class ObjectTemplates {
                 ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 3), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 6), 0.98f,
 
         };
-        return rez;
     }
 
     static float[] getDigit9(int x, int y, int step) {
-        float[] rez = new float[]{
+        return new float[]{
                 ScreenUtils.transformXCoordinateScreenToOpengl(x), ScreenUtils.transformYCoordinateScreenToOpengl(y - step), 0.98f,
                 ScreenUtils.transformXCoordinateScreenToOpengl(x), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 6), 0.98f,
                 ScreenUtils.transformXCoordinateScreenToOpengl(x - step), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 6), 0.98f,
@@ -481,7 +472,6 @@ class ObjectTemplates {
                 ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 3), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 4), 0.98f,
                 ScreenUtils.transformXCoordinateScreenToOpengl(x - step * 4), ScreenUtils.transformYCoordinateScreenToOpengl(y - step * 4), 0.98f,
         };
-        return rez;
     }
 
     static GameObject getDigitObject(int x, int y, int step, int digit) {
@@ -579,45 +569,45 @@ class ObjectTemplates {
     }
 
     static float[] getDigitArray(int x, int y, int step, int digit) {
-        float rez[];
+        float[] result;
         //float[] f;
         switch (digit) {
             case 0:
-                rez = getDigit0(x, y, step);
+                result = getDigit0(x, y, step);
                 break;
             case 1:
-                rez = getDigit1(x, y, step);
+                result = getDigit1(x, y, step);
                 break;
             case 2:
-                rez = getDigit2(x, y, step);
+                result = getDigit2(x, y, step);
                 break;
             case 3:
-                rez = getDigit3(x, y, step);
+                result = getDigit3(x, y, step);
                 break;
             case 4:
-                rez = getDigit4(x, y, step);
+                result = getDigit4(x, y, step);
                 break;
             case 5:
-                rez = getDigit5(x, y, step);
+                result = getDigit5(x, y, step);
                 break;
             case 6:
-                rez = getDigit6(x, y, step);
+                result = getDigit6(x, y, step);
                 break;
             case 7:
-                rez = getDigit7(x, y, step);
+                result = getDigit7(x, y, step);
                 break;
             case 8:
-                rez = getDigit8(x, y, step);
+                result = getDigit8(x, y, step);
                 break;
             case 9:
-                rez = getDigit9(x, y, step);
+                result = getDigit9(x, y, step);
                 break;
             default:
-                rez = new float[1];
+                result = new float[1];
                 break;
 
         }
-        return rez;
+        return result;
     }
 
     static float[] getCircle(float x, float y, float radius, char radiusAxis) {//fan
@@ -651,7 +641,7 @@ class ObjectTemplates {
         ret[2] = 0.98f;
         float j = 0;
         for (int i = 3; i < n; i += 3, j += 1f) {//  1..((n-6)/3)
-            a = j / ((n - 6) / 3) * 2 * 3.1415f;
+            a = j / ((n - 6f) / 3f) * 2f * 3.1415f;
             ret[i + 1] = y - rX * (float) Math.sin(a);
             ret[i] = x + rY * (float) Math.cos(a);
             ret[i + 2] = 0.98f;
@@ -800,5 +790,18 @@ class ObjectTemplates {
             ret[11] = 0.97f;
         }
         return  ret;
+    }
+
+    static float[] getLinePoints(float[] v) {
+        float[] result = new float[4];
+        //start x
+        result[0] = ScreenUtils.transformXCoordinateOpenglToScreen((v[0] + v[3])/2.0f);
+        //start y
+        result[1] = ScreenUtils.transformYCoordinateOpenglToScreen((v[1] + v[4])/2.0f);
+        //end x
+        result[2] = ScreenUtils.transformXCoordinateOpenglToScreen((v[6] + v[9])/2.0f);
+        //end y
+        result[3] = ScreenUtils.transformYCoordinateOpenglToScreen((v[7] + v[10])/2.0f);
+        return result;
     }
 }

@@ -30,7 +30,7 @@ class GameObject {
     private int fanOrStrip = GL_TRIANGLE_FAN;
     //int typeOfTriangles = Trianngles_Striip;
     private String name;
-    private ArrayList<GameObjectAnimation> anim = new ArrayList<GameObjectAnimation>();
+    private final ArrayList<GameObjectAnimation> anim = new ArrayList<>();
     GameObject() {
         this.vertices = new float[]{0,0,0,0};
 

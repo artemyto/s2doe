@@ -9,7 +9,7 @@ class ScreenUtils {
     private static int screenHeightHalf = 1;
 
     static float transformXCoordinateScreenToOpengl(float coord) {
-        float result = -2f;
+        float result;
         if (coord > screenWidthHalf) {
             coord -= screenWidthHalf;
             result = coord / screenWidthHalf;
@@ -22,7 +22,7 @@ class ScreenUtils {
     }
 
     static float transformYCoordinateScreenToOpengl(float coord) {
-        float result = -2f;
+        float result;
         if (coord > screenHeightHalf) {
             coord -= screenHeightHalf;
             result = -coord / screenHeightHalf;
@@ -35,7 +35,7 @@ class ScreenUtils {
     }
 
     static float transformXCoordinateOpenglToScreen(float coord) {
-        float result = -2f;
+        float result;
         if (coord > 0) {
             result = screenWidthHalf + coord*screenWidthHalf;
         } else {
@@ -45,7 +45,7 @@ class ScreenUtils {
     }
 
     static float transformYCoordinateOpenglToScreen(float coord) {
-        float result = -2f;
+        float result;
         if (coord > 0) {
             result = (1 - coord)*screenHeightHalf;
 

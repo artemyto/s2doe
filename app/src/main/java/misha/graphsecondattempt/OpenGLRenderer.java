@@ -36,8 +36,8 @@ import static android.opengl.GLES20.glViewport;
  * Package: ${PACKAGE_NAME}, project: TriforcePower.
  */
 
-public class OpenGLRenderer implements GLSurfaceView.Renderer {
-    private Context context;
+class OpenGLRenderer implements GLSurfaceView.Renderer {
+    private final Context context;
     private int programId;
     private FloatBuffer vertexData;
     private int uColorLocation;
@@ -47,7 +47,7 @@ public class OpenGLRenderer implements GLSurfaceView.Renderer {
 
     private static ArrayList<GameObject> obj;
 
-    private float[] mModelMatrix = new float[16];
+    private final float[] mModelMatrix = new float[16];
 
     OpenGLRenderer(Context context) {
         this.context = context;

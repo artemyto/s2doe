@@ -1,6 +1,7 @@
 package misha.graphsecondattempt;
 
 import java.util.ArrayList;
+import java.util.List;
 
 class GameObjects {
     private static ArrayList<GameObject> obj = new ArrayList<>();
@@ -89,6 +90,46 @@ class GameObjects {
             }
         }
         return ret;
+    }
+    //TODO нужен другой метод: посылаем классу запрос: коснулись ли объекта с именем таким-то в координатах таких-то. Ответ тот же - имя того, кого коснулись.
+    static synchronized String getTouchedObjectName(float x, float y, String containedString, String notContainedString) {
+        String ret = "";
+        String name;
+        for (GameObject o : obj) {
+            name = o.getName();
+            if (name.contains(containedString) && (notContainedString.equals("") || !name.contains(notContainedString))) {
+                if ((x - o.getCenterX()) * (x - o.getCenterX()) + (y - o.getCenterY()) * ScreenUtils.getAspectRatio() * (y - o.getCenterY()) * ScreenUtils.getAspectRatio() < ScreenUtils.transformDistanceX(70) * ScreenUtils.transformDistanceX(70)) {
+                    ret = name;
+                    break;
+                } else if ((x - o.getCenterX()) * (x - o.getCenterX()) + (y - o.getCenterY()) * ScreenUtils.getAspectRatio() * (y - o.getCenterY()) * ScreenUtils.getAspectRatio() < ScreenUtils.transformDistanceX(100) * ScreenUtils.transformDistanceX(100)) {
+                    ret = "no!!!";
+                    break;
+                }
+            }
+        }
+        return ret;
+    }
+
+    static synchronized List<GameObject> getObjectsContainingString(String pattern) {
+        List<GameObject> list = new ArrayList<>();
+        for (GameObject o : obj) {
+            if (o.getName().contains(pattern)) {
+                list.add(o.getCopy());
+            }
+        }
+        return list;
+    }
+
+    static synchronized List<GameObject> getObjectsContainingString(String[] pattern) {
+        List<GameObject> list = new ArrayList<>();
+        for (GameObject o : obj) {
+            boolean contains = true;
+            for (String s : pattern) {
+                if (!o.getName().contains(s)) contains = false;
+            }
+            if (contains) list.add(o.getCopy());
+        }
+        return list;
     }
 
     static synchronized String getTouchedBulletName(float x, float y) {

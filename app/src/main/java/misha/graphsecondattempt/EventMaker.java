@@ -5,7 +5,7 @@ import android.os.SystemClock;
 import java.util.ArrayList;
 
 class EventMaker implements Runnable {
-    private Thread thread;
+    private final Thread thread;
 
     EventMaker() {
         thread = new Thread(this);

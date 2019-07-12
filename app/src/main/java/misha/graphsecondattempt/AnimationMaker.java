@@ -5,7 +5,7 @@ import android.os.SystemClock;
 import java.util.ArrayList;
 
 class AnimationMaker implements Runnable {
-    private Thread thread;
+    private final Thread thread;
 
     AnimationMaker() {
         thread = new Thread(this);

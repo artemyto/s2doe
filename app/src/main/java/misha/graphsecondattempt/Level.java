@@ -5,7 +5,7 @@ package misha.graphsecondattempt;
  * Package: bg.fallingbullets, project: FallingBullets.
  */
 
-public abstract class Level {
+abstract class Level {
     abstract void start();
 
     abstract void isClosely(GameObject o);
