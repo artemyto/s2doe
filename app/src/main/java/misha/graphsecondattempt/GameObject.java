@@ -2,145 +2,206 @@ package misha.graphsecondattempt;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import static android.opengl.GLES20.GL_TRIANGLE_FAN;
 
-/**
- * Created by master22 on 4/24/2018.
- Package: ${PACKAGE_NAME}, project: TriforcePower.
- */
-
 class GameObject {
-//    float[] vertices;
-    private float[] vertices;
-    private float[] GLvertices = new float[]{0,0,0,0};
-    private boolean isDrawed = false;
-    private boolean isInOpenglCache;
-    private boolean isAnimated = false;
-    private float colorR;
-    private float colorG;
-    private float colorB;
-    private int numberOfPoints;
-    private int startPoint;
+    private List<GameObjectAnimation> anim;
+    private boolean animated = false;
     private float centerX;
     private float centerY;
+    private float colorB;
+    private float colorG;
+    private float colorR;
+    private boolean drawn = false;
     private float minX;
     private float minY;
-    private boolean needToDelete= false;
-    private int fanOrStrip = GL_TRIANGLE_FAN;
-    //int typeOfTriangles = Trianngles_Striip;
     private String name;
-    private final ArrayList<GameObjectAnimation> anim = new ArrayList<>();
+    private int numberOfPoints;
+    private int openglDrawingMode = GL_TRIANGLE_FAN;
+    private int startPoint;
+    private float[] vertices;
+
     GameObject() {
-        this.vertices = new float[]{0,0,0,0};
 
     }
+
+    private GameObject(Builder builder) {
+        anim = builder.anim;
+        animated = builder.animated;
+        centerX = builder.centerX;
+        centerY = builder.centerY;
+        colorB = builder.colorB;
+        colorG = builder.colorG;
+        colorR = builder.colorR;
+        drawn = builder.drawn;
+        minX = builder.minX;
+        minY = builder.minY;
+        name = builder.name;
+        numberOfPoints = builder.numberOfPoints;
+        openglDrawingMode = builder.openglDrawingMode;
+        startPoint = builder.startPoint;
+        vertices = builder.vertices;
+    }
+
+    static class Builder {
+        private List<GameObjectAnimation> anim;
+        private boolean animated = false;
+        private float centerX;
+        private float centerY;
+        private float colorB;
+        private float colorG;
+        private float colorR;
+        private boolean drawn = false;
+        private float minX = -1f;
+        private float minY = -1f;
+        private String name;
+        private int numberOfPoints;
+        private int openglDrawingMode = GL_TRIANGLE_FAN;
+        private int startPoint = 0;
+        private float[] vertices;
+
+        GameObject build() {
+            return new GameObject(this);
+        }
+
+        Builder animation(List<GameObjectAnimation> anim) {
+            this.anim = anim;
+            this.animated = true;
+            return this;
+        }
+
+        Builder color(float blue, float green, float red) {
+            colorB = blue;
+            colorG = green;
+            colorR = red;
+            return this;
+        }
+
+        Builder drawn() {
+            this.drawn = true;
+            return this;
+        }
+
+        Builder minXY(float x, float y) {
+            minX = x;
+            minY = y;
+            return this;
+        }
+
+        Builder name(String name) {
+            this.name = name;
+            return this;
+        }
+
+        Builder openglDrawingMode(int mode) {
+            openglDrawingMode = mode;
+            return this;
+        }
+
+        Builder vertices(float[] vertices) {
+            this.vertices = vertices;
+            numberOfPoints = vertices.length / 3;
+            centerX = GameObjects.evaluateCenterX(vertices);
+            centerY = GameObjects.evaluateCenterY(vertices);
+            return this;
+        }
+    }
+
     static GameObject copy (GameObject oldO) {
         GameObject newO = new GameObject();
-        for (GameObjectAnimation a:oldO.anim) {
-            newO.anim.add(GameObjectAnimation.copy(a));
+        if (oldO.anim != null) {
+            newO.anim = new ArrayList<>();
+            for (GameObjectAnimation a : oldO.anim) {
+                newO.anim.add(GameObjectAnimation.copy(a));
+            }
         }
         newO.centerX = oldO.centerX;
         newO.centerY = oldO.centerY;
         newO.colorR = oldO.colorR;
         newO.colorB = oldO.colorB;
         newO.colorG = oldO.colorG;
-        newO.GLvertices = Arrays.copyOf(oldO.GLvertices, oldO.GLvertices.length);
         newO.vertices = Arrays.copyOf(oldO.vertices, oldO.vertices.length);
-        newO.isDrawed = oldO.isDrawed;
-        newO.isAnimated = oldO.isAnimated;
+        newO.drawn = oldO.drawn;
+        newO.animated = oldO.animated;
         newO.minX = oldO.minX;
         newO.minY = oldO.minY;
         newO.numberOfPoints = oldO.numberOfPoints;
         newO.startPoint = oldO.startPoint;
-        newO.isInOpenglCache = oldO.isInOpenglCache;
-        newO.needToDelete = oldO.needToDelete;
         newO.name = oldO.name;
-        newO.fanOrStrip = oldO.fanOrStrip;
-//        newO.GLvertices = oldO.GLvertices;
+        newO.openglDrawingMode = oldO.openglDrawingMode;
 
         return newO;
     }
 
     GameObject getCopy () {
         GameObject newO = new GameObject();
-        for (GameObjectAnimation a:anim) {
-            newO.anim.add(a.getCopy());
+        if (anim != null) {
+            newO.anim = new ArrayList<>();
+            for (GameObjectAnimation a : anim) {
+                newO.anim.add(a.getCopy());
+            }
         }
         newO.centerX = centerX;
         newO.centerY = centerY;
         newO.colorR = colorR;
         newO.colorB = colorB;
         newO.colorG = colorG;
-        newO.GLvertices = Arrays.copyOf(GLvertices, GLvertices.length);
         newO.vertices = Arrays.copyOf(vertices, vertices.length);
-        newO.isDrawed = isDrawed;
-        newO.isAnimated = isAnimated;
+        newO.drawn = drawn;
+        newO.animated = animated;
         newO.minX = minX;
         newO.minY = minY;
         newO.numberOfPoints = numberOfPoints;
         newO.startPoint = startPoint;
-        newO.isInOpenglCache = isInOpenglCache;
-        newO.needToDelete = needToDelete;
         newO.name = name;
-        newO.fanOrStrip = fanOrStrip;
+        newO.openglDrawingMode = openglDrawingMode;
 
         return newO;
     }
 
     static void copy (GameObject where, GameObject what) {
-        for (GameObjectAnimation a:what.anim) {
-            where.anim.add(a.getCopy());
+        if (what.anim != null) {
+            where.anim = new ArrayList<>();
+            for (GameObjectAnimation a : what.anim) {
+                where.anim.add(a.getCopy());
+            }
         }
         where.centerX = what.centerX;
         where.centerY = what.centerY;
         where.colorR = what.colorR;
         where.colorB = what.colorB;
         where.colorG = what.colorG;
-        where.GLvertices = Arrays.copyOf(what.GLvertices, what.GLvertices.length);
         where.vertices = Arrays.copyOf(what.vertices, what.vertices.length);
-        where.isDrawed = what.isDrawed;
-        where.isAnimated = what.isAnimated;
+        where.drawn = what.drawn;
+        where.animated = what.animated;
         where.minX = what.minX;
         where.minY = what.minY;
         where.numberOfPoints = what.numberOfPoints;
         where.startPoint = what.startPoint;
-        where.isInOpenglCache = what.isInOpenglCache;
-        where.needToDelete = what.needToDelete;
         where.name = what.name;
-        where.fanOrStrip = what.fanOrStrip;
+        where.openglDrawingMode = what.openglDrawingMode;
     }
 
     void setVertices(float[] vertices) {
         this.vertices = vertices;
     }
 
-    void setGLvertices(float[] GLvertices) {
-        this.GLvertices = GLvertices;
+    boolean isDrawn() {
+        return drawn;
     }
 
-    boolean isDrawed() {
-        return isDrawed;
-    }
-
-    void setDrawed(boolean drawed) {
-        isDrawed = drawed;
-    }
-
-    boolean isInOpenglCache() {
-        return isInOpenglCache;
-    }
-
-    void setInOpenglCache(boolean inOpenglCache) {
-        isInOpenglCache = inOpenglCache;
+    void setDrawn(boolean drawn) {
+        this.drawn = drawn;
     }
 
     boolean isAnimated() {
-        return isAnimated;
+        return animated;
     }
 
     void setAnimated(boolean animated) {
-        isAnimated = animated;
+        this.animated = animated;
     }
 
     float getColorB() {
@@ -215,20 +276,12 @@ class GameObject {
         this.minY = minY;
     }
 
-    boolean isNeedToDelete() {
-        return needToDelete;
+    int getOpenglDrawingMode() {
+        return openglDrawingMode;
     }
 
-    void setNeedToDelete(boolean needToDelete) {
-        this.needToDelete = needToDelete;
-    }
-
-    int getFanOrStrip() {
-        return fanOrStrip;
-    }
-
-    void setFanOrStrip(int fanOrStrip) {
-        this.fanOrStrip = fanOrStrip;
+    void setOpenglDrawingMode(int openglDrawingMode) {
+        this.openglDrawingMode = openglDrawingMode;
     }
 
     String getName() {
@@ -239,7 +292,7 @@ class GameObject {
         this.name = name;
     }
 
-    ArrayList<GameObjectAnimation> getAnim() {
+    List<GameObjectAnimation> getAnim() {
         return anim;
     }
 
@@ -251,10 +304,10 @@ class GameObject {
         return vertices;
     }
 
-    void increaseCenterX(float f) {
+    void changeCenterX(float f) {
         this.centerX += f;
     }
-    void increaseCenterY(float f) {
+    void changeCenterY(float f) {
         this.centerY += f;
     }
 }

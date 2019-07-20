@@ -18,7 +18,6 @@ class EventMaker implements Runnable {
         ArrayList<GameObjectEvent> events;
         while (continueCycle) {
             events = GameEvents.getEvents();
-            //совершение событий, которые должны были произойти к этому моменту, но еще не произошли
             long curTime = SystemClock.uptimeMillis();
             for (int i = 0; i < events.size(); ++i) {
                 GameObjectEvent e = events.get(i);
@@ -28,18 +27,18 @@ class EventMaker implements Runnable {
                         e.setPrevTime(curTime);
                     }
 
-                    if (e.isRandomizedTime() && e.getWaitTime() < 0) {
+                    if (e.isRandomizedTime() && e.getDelay() < 0) {
                         double rand = Math.random();
-                        e.setWaitTime((int) (rand * (e.getRandomTop() - e.getRandomBottom())) + e.getRandomBottom());
+                        e.setDelay((int) (rand * (e.getRandomTop() - e.getRandomBottom())) + e.getRandomBottom());
                     }
-                    if (e.getWaitTime() <= curTime - e.getPrevTime()) {
-                        switch (e.getKindOfEvent()) {
-                            case 'a':
+                    if (e.getDelay() <= curTime - e.getPrevTime()) {
+                        switch (e.getEventType()) {
+                            case GameObjectEvent.EVENT_TYPE_ADD_OBJECT:
                                 //new object
                                 //e.o -> SomeUtils.obj
 
                                 GameObject newO;
-                                if (e.getNeedToGenerateObject() == 1)
+                                if (e.getNeedToGenerateObject() == GameObjectEvent.GENERATE_BULLET)
                                     newO = ObjectTemplates.generateBullet();
                                 else
                                     newO = GameObject.copy(e.getO());
@@ -48,18 +47,15 @@ class EventMaker implements Runnable {
                                 GameObjects.setObjectsChanged();
 
                                 break;
-                            case 'b':
+                            case GameObjectEvent.EVENT_TYPE_DESTROY_OBJECT:
                                 GameObjects.removeObject(e.getName());
-//                                if (!GameObjects.isWantDeleteContains(e.getName()))
-//
-//                                    GameObjects.wantDelete.add(e.getName());
                                 break;
-                            case 'c':
+                            case GameObjectEvent.EVENT_TYPE_ADD_ANIMATION:
                                 //add animation
 
 
                                 break;
-                            case 'd':
+                            case GameObjectEvent.EVENT_TYPE_CHANGE_ANIMATION:
                                 //change animation
                                 //ссылка на объект записана в событии
                                 //тупо делаем уже описанное! ничего сверхестественного!
@@ -72,12 +68,12 @@ class EventMaker implements Runnable {
 //                            float distance = (float)Math.sqrt(an.distanceX*an.distanceX+an.distanceY*an.distanceY);
                                 float canonDist1 = (float) Math.sqrt(an.getDistanceX() * an.getDistanceX() + an.getDistanceY() / ScreenUtils.getAspectRatio() * an.getDistanceY() / ScreenUtils.getAspectRatio());
 //                            float speed = distance/an.duration;
-                                an.setDistanceX(e.getNewAnimX() - e.getO().getCenterX());
+//                                an.setDistanceX(e.getNewAnimX() - e.getO().getCenterX());
                                 if (an.getDistanceX() < 0) {
                                     an.setDistanceX(-an.getDistanceX());
                                     an.setDirectionX(false);
                                 } else an.setDirectionX(true);
-                                an.setDistanceY(e.getNewAnimY() - e.getO().getCenterY());
+//                                an.setDistanceY(e.getNewAnimY() - e.getO().getCenterY());
                                 if (an.getDistanceY() < 0) {
                                     an.setDistanceY(-an.getDistanceY());
                                     an.setDirectionY(false);
@@ -114,7 +110,7 @@ class EventMaker implements Runnable {
                         e.setPrevTime(curTime);
                         if (e.isRandomizedTime()) {
                             //double rand = Math.random();
-                            e.setWaitTime(-1);
+                            e.setDelay(-1);
                         }
                     }
 

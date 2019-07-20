@@ -23,7 +23,7 @@ public class GameObjectsTest{
         gameObject.setStartPoint(0);
         gameObject.setNumberOfPoints(4);
         gameObject.setName("bullet");
-        gameObject.setDrawed(true);
+        gameObject.setDrawn(true);
         gameObject.setInOpenglCache(true);
         gameObject.setMinX(-1);
         gameObject.setMinY(-1);

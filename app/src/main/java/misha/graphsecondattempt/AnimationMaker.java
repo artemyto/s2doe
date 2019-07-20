@@ -2,7 +2,7 @@ package misha.graphsecondattempt;
 
 import android.os.SystemClock;
 
-import java.util.ArrayList;
+import java.util.List;
 
 class AnimationMaker implements Runnable {
     private final Thread thread;
@@ -15,7 +15,7 @@ class AnimationMaker implements Runnable {
     @Override
     public void run() {
         boolean continueCycle = true;
-        ArrayList<GameObject> objects;
+        List<GameObject> objects;
         while (continueCycle) {
             objects = GameObjects.getObjects();
             GameObject o;
@@ -40,7 +40,6 @@ class AnimationMaker implements Runnable {
                         a.setStartCenterX(GameObjects.evaluateCenterX(o.getVertices()));
                         a.setStartCenterY(GameObjects.evaluateCenterY(o.getVertices()));
                     } else {
-                        //TODO is passed a right word?
                         long timePassed = curTime - a.getLastTime();
                         if (curTime - a.getStartTime() >= duration) {
                             if (a.isInfinite()) {
@@ -49,7 +48,6 @@ class AnimationMaker implements Runnable {
                                 o.getAnim().remove(0);
                                 if (o.getAnim().size() == 0) {
                                     o.setAnimated(false);
-                                    //TODO outOfRange for all anims, not only ended. If centerX/Y is outOfRAnge, then we can check are all vertices outOfRange. But object may not want to be deleted, when it moves besides the screen!
                                     boolean outOfRange = true;
                                     for (int x = 0, y = 1; x < o.getVertices().length; x += 3, y += 3) {
                                         outOfRange = outOfRange && (o.getVertices()[x] < -1 || o.getVertices()[x] > 1) && (o.getVertices()[y] < -1 || o.getVertices()[y] > 1);

@@ -7,29 +7,86 @@ package misha.graphsecondattempt;
 
 class GameObjectAnimation {
 
-//    private boolean directionY;
-    private long duration;
+    private boolean directionX = true;
+    private boolean directionY = true;
     private float distanceX = 0;
     private float distanceY = 0;
-    private long startTime = 0;
+    private long duration = 0;
+    private boolean isInfinite = false;
+    private boolean isRedrawable = false;
+    private boolean isStarted = false;
     private long lastTime = 0;
     private float startCenterX = 0;
     private float startCenterY = 0;
-    private boolean directionX = true;
-    private boolean directionY = true;
-    private boolean isStarted = false;
-    private boolean isInfinite = false;
+    private long startTime = 0;
     private boolean wantStop = false;
-    private boolean isRedrawable = false;
+
+
     GameObjectAnimation() {
-        distanceX = 0;
-        distanceY = 0;
-        directionX = true;
-        directionY = true;
-        isStarted = false;
-        isInfinite = false;
-        wantStop = false;
     }
+
+    GameObjectAnimation(Builder builder) {
+        directionX = builder.directionX;
+        directionY = builder.directionY;
+        distanceX = builder.distanceX;
+        distanceY = builder.distanceY;
+        duration = builder.duration;
+        isInfinite = builder.isInfinite;
+        isRedrawable = builder.isRedrawable;
+        isStarted = builder.isStarted;
+        lastTime = builder.lastTime;
+        startCenterX = builder.startCenterX;
+        startCenterY = builder.startCenterY;
+        startTime = builder.startTime;
+        wantStop = builder.wantStop;
+    }
+
+    static class Builder {
+        private boolean directionX = true;
+        private boolean directionY = true;
+        private float distanceX = 0;
+        private float distanceY = 0;
+        private long duration = 0;
+        private boolean isInfinite = false;
+        private boolean isRedrawable = false;
+        private boolean isStarted = false;
+        private long lastTime = 0;
+        private float startCenterX = 0;
+        private float startCenterY = 0;
+        private long startTime = 0;
+        private boolean wantStop = false;
+
+        Builder infinite() {
+            isInfinite = true;
+            return this;
+        }
+
+        Builder trajectory(float x, float y) {
+            if (x < 0) {
+                distanceX = -x;
+                directionX = false;
+            }
+            else distanceX = x;
+            if (y < 0) {
+                distanceY = -y;
+                directionY = false;
+            }
+            else distanceY = y;
+            return this;
+        }
+
+        Builder time(long time) {
+            duration = time;
+            return this;
+        }
+
+
+
+        GameObjectAnimation build() {
+            return new GameObjectAnimation(this);
+        }
+    }
+
     static GameObjectAnimation copy (GameObjectAnimation oldA) {
         GameObjectAnimation newA = new GameObjectAnimation();
         newA.duration = oldA.duration;
@@ -171,5 +228,4 @@ class GameObjectAnimation {
     void setRedrawable(boolean redrawable) {
         isRedrawable = redrawable;
     }
-    //TODO добавить зацикленность isCycled - когда повторяется не одно действие, а весь список
 }

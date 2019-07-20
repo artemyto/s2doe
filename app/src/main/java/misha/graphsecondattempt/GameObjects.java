@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 class GameObjects {
-    private static ArrayList<GameObject> obj = new ArrayList<>();
+    private static List<GameObject> obj = new ArrayList<>();
     private static volatile boolean objectsChanged = false;
 
     private GameObjects() {
@@ -27,7 +27,7 @@ class GameObjects {
         return ret;
     }
 
-    static synchronized void setObjects(ArrayList<GameObject> objects) {
+    static synchronized void setObjects(List<GameObject> objects) {
         obj = new ArrayList<>();
         for (GameObject o : objects)
             obj.add(o.getCopy());
@@ -91,7 +91,6 @@ class GameObjects {
         }
         return ret;
     }
-    //TODO нужен другой метод: посылаем классу запрос: коснулись ли объекта с именем таким-то в координатах таких-то. Ответ тот же - имя того, кого коснулись.
     static synchronized String getTouchedObjectName(float x, float y, String containedString, String notContainedString) {
         String ret = "";
         String name;

@@ -7,7 +7,7 @@ import android.opengl.Matrix;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.FloatBuffer;
-import java.util.ArrayList;
+import java.util.List;
 
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
@@ -45,7 +45,7 @@ class OpenGLRenderer implements GLSurfaceView.Renderer {
     private int uMatrixLocation;
     private boolean needToBindData = false;
 
-    private static ArrayList<GameObject> obj;
+    private static List<GameObject> obj;
 
     private final float[] mModelMatrix = new float[16];
 
@@ -79,7 +79,7 @@ class OpenGLRenderer implements GLSurfaceView.Renderer {
         for (GameObject o:obj) {
 
             glUniform4f(uColorLocation, o.getColorR(), o.getColorG(), o.getColorB(), 0f);
-            glDrawArrays(o.getFanOrStrip(), o.getStartPoint(), o.getNumberOfPoints());
+            glDrawArrays(o.getOpenglDrawingMode(), o.getStartPoint(), o.getNumberOfPoints());
         }
         if (this.needToBindData  || GameObjects.isObjectsChanged()) {
             prepareData();
@@ -99,7 +99,6 @@ class OpenGLRenderer implements GLSurfaceView.Renderer {
         int pos = 0;
         for (GameObject o : obj) {
             vertexData.put(o.getVertices());
-            o.setInOpenglCache(true);
             o.setStartPoint(pos);
             o.setNumberOfPoints(o.getVertices().length / 3);
             pos += o.getNumberOfPoints();

@@ -480,8 +480,8 @@ class ObjectTemplates {
         rez.setColorR(0f);
         rez.setColorG(0f);
         rez.setColorB(0f);
-        rez.setFanOrStrip(GL_TRIANGLES);
-        rez.setDrawed(true);
+        rez.setOpenglDrawingMode(GL_TRIANGLES);
+        rez.setDrawn(true);
 
 
         switch (digit) {
@@ -684,7 +684,7 @@ class ObjectTemplates {
 //            };
                 o.setVertices(getEllipse(ScreenUtils.transformXCoordinateScreenToOpengl(x), ScreenUtils.transformYCoordinateScreenToOpengl(y), ScreenUtils.transformDistanceX(22.5f), ScreenUtils.transformDistanceY(45)));
                 //float sdvig = ScreenUtils.transformXCoordinateScreenToOpengl(x);
-                o.setDrawed(true);
+                o.setDrawn(true);
                 o.setAnimated(true);
                 o.setName("bullet");
                 o.setMinX(ScreenUtils.transformDistanceX(22.5f));
@@ -727,7 +727,7 @@ class ObjectTemplates {
 //                };
                 o.setVertices(getEllipse(ScreenUtils.transformXCoordinateScreenToOpengl(x), ScreenUtils.transformYCoordinateScreenToOpengl(y), ScreenUtils.transformDistanceX(15), ScreenUtils.transformDistanceY(30)));
                 //float sdvig = ScreenUtils.transformXCoordinateScreenToOpengl(.x, );
-                o.setDrawed(true);
+                o.setDrawn(true);
                 o.setAnimated(true);
                 o.setName("bullet");
                 o.setMinX(ScreenUtils.transformDistanceX(22.5f));

@@ -1,44 +1,127 @@
 package misha.graphsecondattempt;
 
-/**
- * Created by master22 on 4/24/2018.
- Package: ${PACKAGE_NAME}, project: TriforcePower.
- */
 class GameObjectEvent {
-    private char kindOfEvent=' ';
+    static final int EVENT_TYPE_ADD_ANIMATION = 3;
+    static final int EVENT_TYPE_ADD_OBJECT = 1;
+    static final int EVENT_TYPE_CHANGE_ANIMATION = 7;
+    static final int EVENT_TYPE_DESTROY_OBJECT = 2;
+    static final int EVENT_TYPE_REBIND_DATA = 8;
+    static final int EVENT_TYPE_REPLACE_ANIMATION = 4;
+    static final int EVENT_TYPE_RESUME_ANIMATION = 6;
+    static final int EVENT_TYPE_STOP_ANIMATION = 5;
+    static final int GENERATE_BULLET = 1;
 
-//        a=появление нового объекта
-//        b=уничтожение объекта с name
-//        c=добавление объекту анимации
-//        g=замена анимации объекта
-//        e=остановка анимации объекта
-//        f=возобновление анимации объекта
-//        d=изменение анимации объекта (например, сдвиг траектории по пальцу)
-    //h=rebind data
-private String nameOfObject;//not use '==' !
-    private boolean needToRebindData = false;
     private GameObjectAnimation[] a;
-    private GameObject o;
-    private int needToGenerateObject = 0;
     private boolean cycled;
-    private boolean randomizedTime;
-    private int randomTop;
-    private int randomBottom;
-    private long waitTime = -1;
-    private boolean pass = false;
-    private boolean timed = false;
-    private long prevTime = -1;
-    private float newAnimX;
-    private float newAnimY;
-
+    private long delay = -1;
+    private int eventType = 0;
     private String name;
+    private String nameOfObject;
+    private int needToGenerateObject = 0;
+    private boolean needToRebindData = false;
+    private GameObject o;
+    private boolean pass = false;
+    private long prevTime = -1;
+    private boolean randomizedTime;
+    private int randomBottom;
+    private int randomTop;
+    private boolean timed = false;
 
-    char getKindOfEvent() {
-        return kindOfEvent;
+    GameObjectEvent() {
+
     }
 
-    void setKindOfEvent(char kindOfEvent) {
-        this.kindOfEvent = kindOfEvent;
+    private GameObjectEvent(Builder builder) {
+        a = builder.a;
+        cycled = builder.cycled;
+        delay = builder.delay;
+        eventType = builder.eventType;
+        name = builder.name;
+        nameOfObject = builder.nameOfObject;
+        needToGenerateObject = builder.needToGenerateObject;
+        needToRebindData = builder.needToRebindData;
+        o = builder.o;
+        pass = builder.pass;
+        prevTime = builder.prevTime;
+        randomizedTime = builder.randomizedTime;
+        randomBottom = builder.randomBottom;
+        randomTop = builder.randomTop;
+        timed = builder.timed;
+    }
+
+    static class Builder {
+        private GameObjectAnimation[] a;
+        private boolean cycled = false;
+        private long delay = -1;
+        private int eventType = 0;
+        private char kindOfEvent = ' ';
+        private String name = " ";
+        private String nameOfObject;
+        private int needToGenerateObject = 0;
+        private boolean needToRebindData = false;
+        private GameObject o;
+        private boolean pass = false;
+        private long prevTime = -1;
+        private boolean randomizedTime = false;
+        private int randomBottom;
+        private int randomTop;
+        private boolean timed = false;
+
+        Builder addObject(GameObject object) {
+            o = object;
+            nameOfObject = object.getName();
+            needToRebindData = true;
+            kindOfEvent = 'a';
+            eventType = EVENT_TYPE_ADD_OBJECT;
+            return this;
+        }
+
+        GameObjectEvent build() {
+            return new GameObjectEvent(this);
+        }
+
+        Builder cycled() {
+            cycled = true;
+            return this;
+        }
+
+        Builder delay(int delay) {
+            this.delay = delay;
+            return this;
+        }
+
+        Builder generateObject(int generatedObjectType) {
+            needToGenerateObject = generatedObjectType;
+            eventType = EVENT_TYPE_ADD_OBJECT;
+            return this;
+        }
+
+        Builder kindOfEvent(char kind) {
+            kindOfEvent = kind;
+            return this;
+        }
+
+        Builder name(String name) {
+            this.name = name;
+            return this;
+        }
+
+        Builder randomizedTime (int bottom, int top) {
+            randomizedTime = true;
+            randomBottom = bottom;
+            randomTop = top;
+            return this;
+        }
+
+
+    }
+
+    int getEventType() {
+        return eventType;
+    }
+
+    void setEventType(int type) {
+        eventType = type;
     }
 
     void setName(String name) {
@@ -81,22 +164,6 @@ private String nameOfObject;//not use '==' !
         this.cycled = cycled;
     }
 
-    float getNewAnimX() {
-        return newAnimX;
-    }
-
-    void setNewAnimX(float newAnimX) {
-        this.newAnimX = newAnimX;
-    }
-
-    float getNewAnimY() {
-        return newAnimY;
-    }
-
-    void setNewAnimY(float newAnimY) {
-        this.newAnimY = newAnimY;
-    }
-
     boolean isRandomizedTime() {
         return randomizedTime;
     }
@@ -121,12 +188,12 @@ private String nameOfObject;//not use '==' !
         this.randomTop = randomTop;
     }
 
-    long getWaitTime() {
-        return waitTime;
+    long getDelay() {
+        return delay;
     }
 
-    void setWaitTime(long waitTime) {
-        this.waitTime = waitTime;
+    void setDelay(long delay) {
+        this.delay = delay;
     }
 
     boolean isPass() {
@@ -171,29 +238,25 @@ private String nameOfObject;//not use '==' !
 
     GameObjectEvent getCopy() {
         GameObjectEvent e = new GameObjectEvent();
-        e.kindOfEvent = kindOfEvent;
+        e.eventType = eventType;
         e.nameOfObject = nameOfObject;
         e.needToRebindData = false;
-//        e.a = a.get;
         if (a != null) {
             e.a = new GameObjectAnimation[a.length];
             for (int i = 0; i < a.length; ++i) {
                 e.a[i] = a[i].getCopy();
             }
-        }
-        else e.a = null;
+        } else e.a = null;
         e.o = o.getCopy();
         e.needToGenerateObject = needToGenerateObject;
         e.cycled = cycled;
         e.randomizedTime = randomizedTime;
         e.randomTop = randomTop;
         e.randomBottom = randomBottom;
-        e.waitTime = waitTime;
+        e.delay = delay;
         e.pass = pass;
         e.timed = timed;
         e.prevTime = prevTime;
-        e.newAnimX = newAnimX;
-        e.newAnimY = newAnimY;
         e.name = name;
         return e;
     }
