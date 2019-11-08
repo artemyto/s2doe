@@ -77,8 +77,10 @@ class Level1 extends Level {
                     GameEvents.addEvent(gameObjectEvent);
                     if (eventMaker == null || !eventMaker.isRunning())
                         eventMaker = new EventMaker();
-                    if (animationMaker == null || !animationMaker.isRunning())
+                    if (animationMaker == null/* || !animationMaker.isRunning()*/) {
                         animationMaker = new AnimationMaker();
+                        animationMaker.execute();
+                    }
                 } else if (touchedObjectName.contains("vertice")) {
                     touchBeginX = x;
                     touchBeginY = y;
