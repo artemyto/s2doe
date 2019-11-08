@@ -26,6 +26,8 @@ class GameObjectEvent {
     private int randomBottom;
     private int randomTop;
     private boolean timed = false;
+    private float newAnimX;
+    private float newAnimY;
 
     GameObjectEvent() {
 
@@ -112,7 +114,10 @@ class GameObjectEvent {
             randomTop = top;
             return this;
         }
-
+        Builder rebindData() {
+            this.needToRebindData = true;
+            return this;
+        }
 
     }
 
@@ -232,6 +237,23 @@ class GameObjectEvent {
         this.o = o;
     }
 
+
+    public float getNewAnimX() {
+        return newAnimX;
+    }
+
+    public void setNewAnimX(float newAnimX) {
+        this.newAnimX = newAnimX;
+    }
+
+    public float getNewAnimY() {
+        return newAnimY;
+    }
+
+    public void setNewAnimY(float newAnimY) {
+        this.newAnimY = newAnimY;
+    }
+
     GameObject getO() {
         return o;
     }
@@ -240,7 +262,7 @@ class GameObjectEvent {
         GameObjectEvent e = new GameObjectEvent();
         e.eventType = eventType;
         e.nameOfObject = nameOfObject;
-        e.needToRebindData = false;
+        e.needToRebindData = needToRebindData;
         if (a != null) {
             e.a = new GameObjectAnimation[a.length];
             for (int i = 0; i < a.length; ++i) {

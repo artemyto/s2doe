@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity implements Level.MyCallback 
         int uiOptions = View.SYSTEM_UI_FLAG_FULLSCREEN;
         decorView.setSystemUiVisibility(uiOptions);
         ActionBar actionBar = getSupportActionBar();
-        actionBar.hide();
+        if (actionBar != null) actionBar.hide();
 //        setContentView(R.layout.activity_main);
 
 
@@ -52,7 +52,8 @@ public class MainActivity extends AppCompatActivity implements Level.MyCallback 
         setContentView(glSurfaceView);
         glSurfaceView.setOnTouchListener(onTouch);
         mode = true;
-        SomeUtils.game = game;
+//        SomeUtils.game = game;
+        GameUtils.setGame(game);
 
     }
     View.OnClickListener onClick = new View.OnClickListener() {
@@ -66,6 +67,7 @@ public class MainActivity extends AppCompatActivity implements Level.MyCallback 
         public boolean onTouch(View v, MotionEvent event) {
             if (game.isRunning()){// && event.getActionIndex() == 0) {//  && event.getAction() == MotionEvent.ACTION_DOWN) );
                 //st();
+//                game.wasTouched(event.getX(), event.getY(), event.getAction());
                 switch (event.getAction()) {
                     case MotionEvent.ACTION_DOWN:
                         game.wasTouched(event.getX(), event.getY(), 0);
@@ -115,12 +117,6 @@ public class MainActivity extends AppCompatActivity implements Level.MyCallback 
         Display display = wm.getDefaultDisplay();
         DisplayMetrics metrics = new DisplayMetrics();
         display.getMetrics(metrics);
-
-        SomeUtils.screenWidth = metrics.widthPixels;
-        SomeUtils.screenHeight = metrics.heightPixels;
-        SomeUtils.aspectRatio = ((float) SomeUtils.screenHeight) / SomeUtils.screenWidth;
-        SomeUtils.screenWidth2 = SomeUtils.screenWidth / 2;
-        SomeUtils.screenHeight2 = SomeUtils.screenHeight / 2;
-
+        ScreenUtils.setScreenParameters(metrics.widthPixels, metrics.heightPixels);
     }
 }

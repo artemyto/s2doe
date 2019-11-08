@@ -11,6 +11,10 @@ class GameObjects {
 
     }
 
+    static List<GameObject> getObjectsReference() {
+        return obj;
+    }
+
     static synchronized ArrayList<GameObject> getObjects() {
         ArrayList<GameObject> arrayList = new ArrayList<>();
         for (GameObject o : obj) {
@@ -108,6 +112,24 @@ class GameObjects {
         }
         return ret;
     }
+    static synchronized GameObject getTouchedObject(float x, float y, String containedString, String notContainedString) {
+//        String ret = "";
+        GameObject ret = null;// = new GameObject();
+        String name;
+        for (GameObject o : obj) {
+            name = o.getName();
+            if (name.contains(containedString) && (notContainedString.equals("") || !name.contains(notContainedString))) {
+                if ((x - o.getCenterX()) * (x - o.getCenterX()) + (y - o.getCenterY()) * ScreenUtils.getAspectRatio() * (y - o.getCenterY()) * ScreenUtils.getAspectRatio() < ScreenUtils.transformDistanceX(70) * ScreenUtils.transformDistanceX(70)) {
+                    ret = o;
+                    break;
+                } else if ((x - o.getCenterX()) * (x - o.getCenterX()) + (y - o.getCenterY()) * ScreenUtils.getAspectRatio() * (y - o.getCenterY()) * ScreenUtils.getAspectRatio() < ScreenUtils.transformDistanceX(100) * ScreenUtils.transformDistanceX(100)) {
+                    ret = new GameObject();
+                    break;
+                }
+            }
+        }
+        return ret;
+    }
 
     static synchronized List<GameObject> getObjectsContainingString(String pattern) {
         List<GameObject> list = new ArrayList<>();
@@ -176,6 +198,22 @@ class GameObjects {
         float sum = 0;
         for (int i = 1; i < f.length; i += 3) {
             sum += f[i];
+        }
+        return sum / (f.length / 3.0f);
+    }
+
+    static float evaluateCenterX(float[] f, float addition) {
+        float sum = 0;
+        for (int i = 0; i < f.length; i += 3) {
+            sum += f[i] + addition;
+        }
+        return sum / (f.length / 3.0f);
+    }
+
+    static float evaluateCenterY(float[] f, float addition) {
+        float sum = 0;
+        for (int i = 1; i < f.length; i += 3) {
+            sum += f[i] + addition;
         }
         return sum / (f.length / 3.0f);
     }

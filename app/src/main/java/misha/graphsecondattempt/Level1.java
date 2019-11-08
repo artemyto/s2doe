@@ -1,10 +1,16 @@
 package misha.graphsecondattempt;
 
 import android.os.SystemClock;
+//import android.view.MotionEvent;
+
+//import static android.view.MotionEvent.ACTION_DOWN;
+//import static android.view.MotionEvent.ACTION_UP;
+//import static android.view.MotionEvent.ACTION_MOVE;
 
 import java.util.List;
 
 import static android.opengl.GLES20.GL_TRIANGLE_FAN;
+//import static android.view.MotionEvent.*;
 
 
 class Level1 extends Level {
@@ -27,6 +33,7 @@ class Level1 extends Level {
     private long lastTouchTime = 0;
     private boolean doubleTouch = false;
     private String touchedObjectName = "";
+    private GameObject touchedObject = null;
     private String creatingEdgeName = "";
     private boolean creatingEdge = false;
 
@@ -61,9 +68,11 @@ class Level1 extends Level {
                 doubleTouch = curTime - lastTouchTime <= 500;
 
                 lastTouchTime = curTime;
-                touchedObjectName = GameObjects.getTouchedObjectName(ScreenUtils.transformXCoordinateScreenToOpengl(x), ScreenUtils.transformYCoordinateScreenToOpengl(y), "vertice", "edge");
-                if (touchedObjectName.equals("")) {
-
+//                touchedObjectName = GameObjects.getTouchedObjectName(ScreenUtils.transformXCoordinateScreenToOpengl(x), ScreenUtils.transformYCoordinateScreenToOpengl(y), "vertice", "edge");
+                touchedObject = GameObjects.getTouchedObject(ScreenUtils.transformXCoordinateScreenToOpengl(x), ScreenUtils.transformYCoordinateScreenToOpengl(y), "vertice", "edge");
+                touchedObjectName = touchedObject == null? "" : touchedObject.getName();
+//                if (touchedObjectName.equals("")) {
+                    if (touchedObject == null) {
                     gameObject = new GameObject.Builder()
                             .color(0.90f,0.50f, 0.10f).drawn().name("vertice" + count)
                             .vertices(ObjectTemplates.getCircle(ScreenUtils.transformXCoordinateScreenToOpengl(x), ScreenUtils.transformYCoordinateScreenToOpengl(y), ScreenUtils.transformDistanceX(50), 'x'))
@@ -71,16 +80,18 @@ class Level1 extends Level {
                     gameObjectEvent = new GameObjectEvent.Builder()
                             .addObject(gameObject)
                             .name("vertice" + count++)
+                            .rebindData()
                             .build();
-                    GameEvents.addEvent(gameObjectEvent);
-                } else if (touchedObjectName.contains("vertice")) {
+//                    GameEvents.addEvent(gameObjectEvent);
+                    GameEvents.getEventsReference().add(gameObjectEvent);
+                } else if (touchedObject.isDrawn()) {
                     touchBeginX = x;
                     touchBeginY = y;
                     if (!(doubleTouch && Math.abs(ScreenUtils.transformXCoordinateScreenToOpengl(x) - ScreenUtils.transformXCoordinateScreenToOpengl(touchLastX)) < ScreenUtils.transformDistanceX(40) && Math.abs(ScreenUtils.transformYCoordinateScreenToOpengl(y) - ScreenUtils.transformYCoordinateScreenToOpengl(touchLastY)) < ScreenUtils.transformDistanceY(40))) {
                         doubleTouch = false;
                     }
                     if (doubleTouch) {
-                        GameObject touchedObject = GameObjects.getObject(touchedObjectName);
+//                        GameObject touchedObject = GameObjects.getObject(touchedObjectName);
                         touchBeginX = ScreenUtils.transformXCoordinateOpenglToScreen(touchedObject.getCenterX());
                         touchBeginY = ScreenUtils.transformYCoordinateOpenglToScreen(touchedObject.getCenterY());
                     }
@@ -94,10 +105,10 @@ class Level1 extends Level {
             case ACTION_MOVE:
                 touchCurY = y;
                 touchCurX = x;
-                if (touchedObjectName.contains("vertice")) {
+                if (touchedObject != null && touchedObject.getName().contains("vertice")) {
                     if (doubleTouch) {
                         if (!creatingEdge) {
-                            creatingEdgeName = "edge" + touchedObjectName;
+                            creatingEdgeName = "edge" + touchedObject.getName();
                             gameObject = new GameObject.Builder()
                                     .color(0.10f,0.50f, 0.90f).drawn().name(creatingEdgeName)
                                     .vertices(ObjectTemplates.getCircle(ScreenUtils.transformXCoordinateScreenToOpengl(touchBeginX), ScreenUtils.transformYCoordinateScreenToOpengl(touchBeginY), ScreenUtils.transformDistanceX(50), 'x'))
@@ -109,8 +120,10 @@ class Level1 extends Level {
                         gameObject.setOpenglDrawingMode(GL_TRIANGLE_FAN);
                         gameObject.setVertices(ObjectTemplates.getLine(touchBeginX, touchBeginY, touchCurX, touchCurY));
                         GameObjects.addOrReplaceObject(gameObject);
+                        GameObjects.setObjectsChanged();
                     } else {
-                        GameObject touchedObject = GameObjects.getObject(touchedObjectName);
+
+//                        GameObject touchedObject = GameObjects.getObject(touchedObjectName);
                         if (touchedObject != null) {
                             float[] v = touchedObject.getVertices();
                             for (int i = 0; i < v.length; i += 3) {
@@ -119,7 +132,7 @@ class Level1 extends Level {
                             }
                             touchedObject.setCenterX(GameObjects.evaluateCenterX(v));
                             touchedObject.setCenterY(GameObjects.evaluateCenterY(v));
-                            GameObjects.changeObject(touchedObjectName, touchedObject);
+//                            GameObjects.changeObject(touchedObjectName, touchedObject);
 
                             String[] pattern = new String[]{"edge", touchedObjectName};
                             List<GameObject> list = GameObjects.getObjectsContainingString(pattern);
@@ -135,6 +148,7 @@ class Level1 extends Level {
                             }
                             touchLastX = touchCurX;
                             touchLastY = touchCurY;
+                            GameObjects.setObjectsChanged();
                         }
                     }
                 } else doubleTouch = false;
@@ -160,6 +174,7 @@ class Level1 extends Level {
                 }
 
                 touchedObjectName = "";
+                touchedObject = null;
 
                 break;
         }

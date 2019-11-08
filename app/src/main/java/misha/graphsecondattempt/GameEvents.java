@@ -1,6 +1,7 @@
 package misha.graphsecondattempt;
 
 import java.util.ArrayList;
+import java.util.List;
 
 class GameEvents {
     private static ArrayList<GameObjectEvent> events = new ArrayList<>();
@@ -33,4 +34,9 @@ class GameEvents {
             }
         }
     }
+
+    static List<GameObjectEvent> getEventsReference() {
+        return events;
+    }
+
 }

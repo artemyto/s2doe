@@ -15,9 +15,11 @@ class GameObject {
     private float colorG;
     private float colorR;
     private boolean drawn = false;
+    private boolean isInOpenglCache;
     private float minX;
     private float minY;
     private String name;
+    private boolean needToDelete= false;
     private int numberOfPoints;
     private int openglDrawingMode = GL_TRIANGLE_FAN;
     private int startPoint;
@@ -39,6 +41,7 @@ class GameObject {
         minX = builder.minX;
         minY = builder.minY;
         name = builder.name;
+        needToDelete = builder.needToDelete;
         numberOfPoints = builder.numberOfPoints;
         openglDrawingMode = builder.openglDrawingMode;
         startPoint = builder.startPoint;
@@ -57,6 +60,7 @@ class GameObject {
         private float minX = -1f;
         private float minY = -1f;
         private String name;
+        private boolean needToDelete= false;
         private int numberOfPoints;
         private int openglDrawingMode = GL_TRIANGLE_FAN;
         private int startPoint = 0;
@@ -127,6 +131,8 @@ class GameObject {
         newO.animated = oldO.animated;
         newO.minX = oldO.minX;
         newO.minY = oldO.minY;
+        newO.isInOpenglCache = oldO.isInOpenglCache;
+        newO.needToDelete = oldO.needToDelete;
         newO.numberOfPoints = oldO.numberOfPoints;
         newO.startPoint = oldO.startPoint;
         newO.name = oldO.name;
@@ -309,5 +315,21 @@ class GameObject {
     }
     void changeCenterY(float f) {
         this.centerY += f;
+    }
+
+    public boolean isNeedToDelete() {
+        return needToDelete;
+    }
+
+    public void setNeedToDelete(boolean needToDelete) {
+        this.needToDelete = needToDelete;
+    }
+
+    public boolean isInOpenglCache() {
+        return isInOpenglCache;
+    }
+
+    public void setInOpenglCache(boolean inOpenglCache) {
+        isInOpenglCache = inOpenglCache;
     }
 }

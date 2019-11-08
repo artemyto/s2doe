@@ -86,11 +86,12 @@ public class OpenGLRenderer implements GLSurfaceView.Renderer {
         doAnimationIfNeed();
         doEvents();
         //удаление объектов, отмеченных на удаление
-        if (this.needToBindData || SomeUtils.needToRebindData) {
+        if (this.needToBindData || GameObjects.isObjectsChanged()) {
             prepareData();
             bindData();
             this.needToBindData = false;
-            SomeUtils.needToRebindData = false;
+//            SomeUtils.needToRebindData = false;
+            GameObjects.setObjectsNotChanged();
         }
 //        glClear(GL_COLOR_BUFFER_BIT);
 
@@ -102,17 +103,19 @@ public class OpenGLRenderer implements GLSurfaceView.Renderer {
             indexes.add(FALSE);
         }
         //Collections.fill(indexes, FALSE);
-        ObjectContainer o;
-        for (int i = 0;i<SomeUtils.obj.size();++i) {
+        GameObject o;
+        for (int i = 0;i< /*SomeUtils.obj*/GameObjects.getObjectsReference().size();++i) {
             boolean cont = true;
 //            if (needToBindData) {
 //                prepareData();
 //                bindData();
 //                needToBindData = false;
 //            }
-            o = SomeUtils.obj.get(i);
+//            o = SomeUtils.obj.get(i);
+            o = GameObjects.getObjectsReference().get(i);
             if (o.isNeedToDelete()) {
-                SomeUtils.obj.remove(i);
+//                SomeUtils.obj.remove(i);
+                GameObjects.getObjectsReference().remove(i);
                 --i;
                 needToBindData = true;
                 cont = false;
@@ -125,7 +128,8 @@ public class OpenGLRenderer implements GLSurfaceView.Renderer {
 
                         if (wantDelete.get(j).equals(o.getName())) {
                             indexes.add(FALSE);
-                            SomeUtils.obj.remove(i);
+//                SomeUtils.obj.remove(i);
+                            GameObjects.getObjectsReference().remove(i);
                             --i;
                             needToBindData = true;
                             //wantDelete.remove(j);
@@ -141,7 +145,7 @@ public class OpenGLRenderer implements GLSurfaceView.Renderer {
 
 
             if (cont) {
-                if (o.isInOpenglCache() && o.isDrawed()) {
+                if (o.isInOpenglCache() && o.isDrawn()) {
                     Matrix.setIdentityM(mModelMatrix, 0);
                     if (o.isAnimated() && !o.getAnim().isEmpty() && o.getAnim().get(0).isRedrawable()) {
                         int sw = redrawableAnimation(o);
@@ -222,7 +226,7 @@ public class OpenGLRenderer implements GLSurfaceView.Renderer {
                     glUniform4f(uColorLocation, o.getColorR(), o.getColorG(), o.getColorB(), 0f);
 //                    int fanOrStrip = GL_TRIANGLE_STRIP;
 //                    if ()
-                    glDrawArrays(o.getFanOrStrip(), o.getStartPoint(), o.getNumberOfPoints());
+                    glDrawArrays(o.getOpenglDrawingMode(), o.getStartPoint(), o.getNumberOfPoints());
                 }
                 game.isClosely(o);
             }
@@ -241,31 +245,36 @@ for (int i=0;i<indexes.size();++i) {
     private void doEvents() {
         //совершение событий, которые должны были произойти к этому моменту, но еще не произошли
         long curTime = SystemClock.uptimeMillis();
-        for (int i = 0; i < SomeUtils.events.size(); ++i) {
-            EventContainer e = SomeUtils.events.get(i);
+        for (int i = 0; i < /*SomeUtils.events*/GameEvents.getEventsReference().size(); ++i) {
+//            GameObjectEvent e = SomeUtils.events.get(i);
+            GameObjectEvent e = GameEvents.getEventsReference().get(i);
             if (!e.isPass()) {
 
                 if (e.getPrevTime() < 0) {
                     e.setPrevTime(curTime);
                 }
 
-                if (e.isRandomizedTime() && e.getWaitTime() <0) {
+                if (e.isRandomizedTime() && e.getDelay() <0) {
                     double rand = Math.random();
-                    e.setWaitTime((int) (rand * (e.getRandomTop() - e.getRandomBottom())) + e.getRandomBottom());
+                    e.setPrevTime((int) (rand * (e.getRandomTop() - e.getRandomBottom())) + e.getRandomBottom());
                 }
-                if (e.getWaitTime() <= curTime - e.getPrevTime()) {
-                    switch (e.getKindOfEvent()) {
-                        case 'a':
+                if (e.getDelay() <= curTime - e.getPrevTime()) {
+                    switch (e.getEventType()) {
+                        case GameObjectEvent.EVENT_TYPE_ADD_OBJECT:
                             //new object
                             //e.o -> SomeUtils.obj
                             if (game != null) {
-                                ObjectContainer newO;
+                                GameObject newO;
                                 if (e.getNeedToGenerateObject() ==1)
-                                    newO=SomeUtils.generateBullet();
+//                                    newO=SomeUtils.generateBullet();
+                                    newO = ObjectTemplates.generateBullet();
                                 else
-                                    newO = ObjectContainer.copy(e.getO());
-                                SomeUtils.obj.add(newO);
-
+                                    newO = GameObject.copy(e.getO());
+//                                    newO = GameObject
+//                                SomeUtils.obj.add(newO);
+//                                GameObjects.addObject(newO);
+                                GameObjects.getObjectsReference().add(newO);
+                                GameObjects.setObjectsChanged();
                             }
 
                             break;
@@ -286,11 +295,12 @@ for (int i=0;i<indexes.size();++i) {
                             //e.newAnimX
                             //e.newAnimY
                             //e.o
-                            AnimationContainer an = e.getO().getAnim().get(0);
+                            GameObjectAnimation an = e.getO().getAnim().get(0);
                            // float speedX = an.distanceX/an.duration;
 //                            float speedY = an.distanceY/an.duration;
 //                            float distance = (float)Math.sqrt(an.distanceX*an.distanceX+an.distanceY*an.distanceY);
-                            float canonDist1 = (float)Math.sqrt(an.getDistanceX() * an.getDistanceX() + an.getDistanceY() /SomeUtils.aspectRatio* an.getDistanceY() /SomeUtils.aspectRatio);
+
+                            float canonDist1 = (float)Math.sqrt(an.getDistanceX() * an.getDistanceX() + an.getDistanceY() /ScreenUtils.getAspectRatio()* an.getDistanceY() /ScreenUtils.getAspectRatio());
 //                            float speed = distance/an.duration;
                             an.setDistanceX(e.getNewAnimX() - e.getO().getCenterX());
                             if (an.getDistanceX() <0) {
@@ -305,9 +315,9 @@ for (int i=0;i<indexes.size();++i) {
                             }
                             else an.setDirectionY(true);
 //                            distance = (float)Math.sqrt(an.distanceX*an.distanceX+an.distanceY*an.distanceY);
-                            float canonDist2 = (float)Math.sqrt(an.getDistanceX() * an.getDistanceX() + an.getDistanceY() /SomeUtils.aspectRatio* an.getDistanceY() /SomeUtils.aspectRatio);
+                            float canonDist2 = (float)Math.sqrt(an.getDistanceX() * an.getDistanceX() + an.getDistanceY() /ScreenUtils.getAspectRatio()* an.getDistanceY() /ScreenUtils.getAspectRatio());
 //                            an.duration = Math.round(distance/speed);
-                            an.setDuration(Math.round(canonDist2 / canonDist1 * an.getDuration()));
+                            an.setDurationMillis(Math.round(canonDist2 / canonDist1 * an.getDurationMillis()));
                             //an.duration = Math.round(an.distanceX/speedX);
                             an.setStarted(false);
                             float differenceX = e.getO().getCenterX() - an.getStartCenterX();
@@ -333,7 +343,7 @@ for (int i=0;i<indexes.size();++i) {
                     e.setPrevTime(curTime);
                     if (e.isRandomizedTime()) {
                         //double rand = Math.random();
-                        e.setWaitTime(-1);
+                        e.setDelay(-1);
                     }
                 }
 
@@ -345,14 +355,15 @@ for (int i=0;i<indexes.size();++i) {
 
     private void prepareData() {
         int sizeOfVertexData = 0;
-        for (int i = 0; i < SomeUtils.obj.size(); ++i) {
-            sizeOfVertexData += SomeUtils.obj.get(i).getVertices().length;
+        for (int i = 0; i < /*SomeUtils.obj*/GameObjects.getObjectsReference().size(); ++i) {
+            sizeOfVertexData += /*SomeUtils.obj*/GameObjects.getObjectsReference().get(i).getVertices().length;
         }
         vertexData = ByteBuffer.allocateDirect(sizeOfVertexData * 4).order(ByteOrder.nativeOrder()).asFloatBuffer();
         //synchronized (SomeUtils.obj) {
         int pos = 0;
-            for (ObjectContainer o : SomeUtils.obj) {
-                    vertexData.put(o.getVertices());
+//            for (GameObject o : SomeUtils.obj) {
+        for (GameObject o : GameObjects.getObjectsReference()) {
+                vertexData.put(o.getVertices());
                     o.setInOpenglCache(true);
                     o.setStartPoint(pos);
                     o.setNumberOfPoints(o.getVertices().length / 3);
@@ -362,12 +373,12 @@ for (int i=0;i<indexes.size();++i) {
     }
 
 
-    private int setModelMatrix(ObjectContainer o) {
+    private int setModelMatrix(GameObject o) {
         int returnedCommand = 1;
         if (o.getAnim().isEmpty()) {
             returnedCommand = 0;
         } else {
-            long duration = o.getAnim().get(0).getDuration();
+            long duration = o.getAnim().get(0).getDurationMillis();
             float distanceX = o.getAnim().get(0).getDistanceX();
             float distanceY = o.getAnim().get(0).getDistanceY();
             long curTime = SystemClock.uptimeMillis();
@@ -377,8 +388,10 @@ for (int i=0;i<indexes.size();++i) {
                 o.getAnim().get(0).setStarted(true);
 //                o.centerX = SomeUtils.evaluateCenter(o.vertices, transX, 'x');
 //                o.centerY = SomeUtils.evaluateCenter(o.vertices, transY, 'y');
-                o.getAnim().get(0).setStartCenterX(SomeUtils.evaluateCenter(o.getVertices(), 0, 'x'));
-                o.getAnim().get(0).setStartCenterY(SomeUtils.evaluateCenter(o.getVertices(), 0, 'y'));
+//                o.getAnim().get(0).setStartCenterX(SomeUtils.evaluateCenter(o.getVertices(), 0, 'x'));
+                o.getAnim().get(0).setStartCenterX(GameObjects.evaluateCenterX(o.getVertices()));
+//                o.getAnim().get(0).setStartCenterY(SomeUtils.evaluateCenter(o.getVertices(), 0, 'y'));
+                o.getAnim().get(0).setStartCenterY(GameObjects.evaluateCenterY(o.getVertices()));
             } else if (o.getAnim().get(0).isStarted()) {
                 long timePassed = curTime - o.getAnim().get(0).getStartTime();
                 if (timePassed >= duration) {
@@ -403,8 +416,10 @@ for (int i=0;i<indexes.size();++i) {
                         }
                     }
                     Matrix.translateM(mModelMatrix, 0, transX, transY, 0);
-                    o.setCenterX(SomeUtils.evaluateCenter(o.getVertices(), transX, 'x'));
-                    o.setCenterY(SomeUtils.evaluateCenter(o.getVertices(), transY, 'y'));
+//                    o.setCenterX(SomeUtils.evaluateCenter(o.getVertices(), transX, 'x'));
+                    o.setCenterX(GameObjects.evaluateCenterX(o.getVertices(), transX));
+//                    o.setCenterY(SomeUtils.evaluateCenter(o.getVertices(), transY, 'y'));
+                    o.setCenterY(GameObjects.evaluateCenterY(o.getVertices(), transY));
                     //game.isClosely(o);
                 }
             }
@@ -412,10 +427,10 @@ for (int i=0;i<indexes.size();++i) {
         return returnedCommand;
     }
 
-    private int redrawableAnimation(ObjectContainer o) {
-        AnimationContainer a = o.getAnim().get(0);
+    private int redrawableAnimation(GameObject o) {
+        GameObjectAnimation a = o.getAnim().get(0);
         int returnedCommand = 1;
-        long duration = a.getDuration();
+        long duration = a.getDurationMillis();
         float distanceX = a.getDistanceX();
         float distanceY = a.getDistanceY();
         long curTime = SystemClock.uptimeMillis();
@@ -425,8 +440,10 @@ for (int i=0;i<indexes.size();++i) {
             a.setStarted(true);
 //                o.centerX = SomeUtils.evaluateCenter(o.vertices, transX, 'x');
 //                o.centerY = SomeUtils.evaluateCenter(o.vertices, transY, 'y');
-            a.setStartCenterX(SomeUtils.evaluateCenter(o.getVertices(), 0, 'x'));
-            a.setStartCenterY(SomeUtils.evaluateCenter(o.getVertices(), 0, 'y'));
+//            a.setStartCenterX(SomeUtils.evaluateCenter(o.getVertices(), 0, 'x'));
+            a.setStartCenterX(GameObjects.evaluateCenterX(o.getVertices()));
+//            a.setStartCenterY(SomeUtils.evaluateCenter(o.getVertices(), 0, 'y'));
+            a.setStartCenterY(GameObjects.evaluateCenterY(o.getVertices()));
         } else if (a.isStarted()) {
             long timePassed = curTime - a.getLastTime();
             if (curTime - a.getStartTime() >= duration) {
@@ -451,10 +468,11 @@ for (int i=0;i<indexes.size();++i) {
                         transY = -transY;
                     }
                 }
-                o.increaseCenterX(transX);
-                o.increaseCenterY(transY);
+                o.changeCenterX(transX);
+                o.changeCenterY(transY);
                 if (o.getName().equals("bullet")) {
-                    o.setVertices(SomeUtils.getEllipse(o.getCenterX(), o.getCenterY(), SomeUtils.changeDistance(22.5f, 'x'), SomeUtils.changeDistance(45, 'y')));
+//                    o.setVertices(ObjectTemplates.getEllipse(o.getCenterX(), o.getCenterY(), SomeUtils.changeDistance(22.5f, 'x'), SomeUtils.changeDistance(45, 'y')));
+                    o.setVertices(ObjectTemplates.getEllipse(o.getCenterX(), o.getCenterY(), ScreenUtils.transformDistanceX(22.5f), ScreenUtils.transformDistanceY(45)));
                 }
                 else {
                     for (int x = 0, y = 1; x < o.getVertices().length; x += 3, y += 3) {
