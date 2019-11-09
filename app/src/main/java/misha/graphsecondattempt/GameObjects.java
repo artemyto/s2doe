@@ -2,9 +2,11 @@ package misha.graphsecondattempt;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 class GameObjects {
     private static List<GameObject> obj = new ArrayList<>();
+    private static CopyOnWriteArrayList<GameObject> objects = new CopyOnWriteArrayList<>();
     private static volatile boolean objectsChanged = false;
 
     private GameObjects() {
@@ -19,10 +21,22 @@ class GameObjects {
         return arrayList;
     }
 
+    static CopyOnWriteArrayList<GameObject> getObjectsCopyOnWrite() {
+        return objects;
+    }
+
     static synchronized GameObject getObject(String name) {
         GameObject ret = null;
         for (GameObject o : obj) {
             if (name.equals(o.getName())) ret = o.getCopy();
+        }
+        return ret;
+    }
+
+    static GameObject getObjectCopyOnWrite(String name) {
+        GameObject ret = null;
+        for (GameObject o : obj) {
+            if (name.equals(o.getName())) ret = o;
         }
         return ret;
     }
@@ -36,6 +50,10 @@ class GameObjects {
     
     static synchronized void addObject(GameObject o) {
         obj.add(o);
+    }
+
+    static void addObjectCopyOnWrite(GameObject o) {
+        objects.add(o);
     }
 
     static synchronized void addOrReplaceObject(GameObject o) {

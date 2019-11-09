@@ -91,7 +91,7 @@ class OpenGLRenderer implements GLSurfaceView.Renderer {
 
     private void prepareData() {
         int sizeOfVertexData = 0;
-        obj = GameObjects.getObjects();
+        obj = GameObjects.getObjectsCopyOnWrite();
         for (int i = 0; i < obj.size(); ++i) {
             sizeOfVertexData += obj.get(i).getVertices().length;
         }

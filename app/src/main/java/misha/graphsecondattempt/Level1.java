@@ -47,7 +47,8 @@ class Level1 extends Level {
                                       ScreenUtils.transformXCoordinateScreenToOpengl(720), ScreenUtils.transformYCoordinateScreenToOpengl(0), 0.99f,
                                       ScreenUtils.transformXCoordinateScreenToOpengl(720), ScreenUtils.transformYCoordinateScreenToOpengl(1280), 0.99f,
                                       ScreenUtils.transformXCoordinateScreenToOpengl(0), ScreenUtils.transformYCoordinateScreenToOpengl(1280), 0.99f}).build();
-        GameObjects.addObject(gameObject);
+//        GameObjects.addObject(gameObject);
+        GameObjects.addObjectCopyOnWrite(gameObject);
     }
 
     @Override
@@ -64,6 +65,7 @@ class Level1 extends Level {
 
                 lastTouchTime = curTime;
                 touchedObjectName = GameObjects.getTouchedObjectName(ScreenUtils.transformXCoordinateScreenToOpengl(x), ScreenUtils.transformYCoordinateScreenToOpengl(y), "vertice", "edge");
+
                 if (touchedObjectName.equals("")) {
 
                     gameObject = new GameObject.Builder()
